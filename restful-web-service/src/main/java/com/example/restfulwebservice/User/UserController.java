@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 public class UserController {
+
     private UserDaoService service;
 
     public UserController(UserDaoService service) {
