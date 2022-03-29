@@ -22,8 +22,19 @@ public class AdminUserController {
 
 
     @GetMapping("/users")
-    public List<User> retrieveAllUsers() {
-        return service.findAll();
+    public MappingJacksonValue retrieveAllUsers() {
+
+        List<User> users = service.findAll();
+
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
+                .filterOutAllExcept("id","name","password","ssn"); // SimpleBeanPropertyFilter : 지정된 필드들만 JSON 변환하고, 알 수 없는 필드는 무시
+
+        FilterProvider filters = new SimpleFilterProvider().addFilter("UserInfo",filter);
+
+        MappingJacksonValue mapping = new MappingJacksonValue(users);
+        mapping.setFilters(filters);
+
+        return mapping;
     }
 
 
@@ -37,7 +48,7 @@ public class AdminUserController {
         }
 
         SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
-                .filterOutAllExcept("id", "name", "joinDate", "password", "ssn");
+                .filterOutAllExcept("id", "name", "joinDate", "ssn");
 
         FilterProvider filters = new SimpleFilterProvider().addFilter("UserInfo", filter);
         MappingJacksonValue mapping = new MappingJacksonValue(user);
