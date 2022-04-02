@@ -35,3 +35,4 @@ build/
 application-oauth.yml
 application.yml
 src/main/resources/
+src/main/java/com/recoder/hong/AdminInit.java
