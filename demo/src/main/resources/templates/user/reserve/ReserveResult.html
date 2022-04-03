@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>예약정보</title>
+
+  <link rel="icon" th:href="@{/images/home.png}">
+  <link rel="stylesheet" th:href="@{/css/reserveState.css}">
+  <link rel="stylesheet" th:href="@{/css/navBar.css}">
+</head>
+<body>
+<header th:replace="~{fragment/header :: bar}">
+
+</header>
+<div class="frame">
+<table class="reserve-info">
+  <caption>예약조회</caption>
+  <thead>
+    <tr>
+      <th>주차장 명</th>
+      <th>주차 구역</th>
+      <th>예약일자</th>
+      <th>예약시간</th>
+      <th>예약상태</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="cursor:pointer;">
+      <td th:text="${reserveResult.collegeName}"></td>
+      <td th:text="${reserveResult.parkingName}"></td>
+      <td th:text="${reserveResult.reserveDate}"></td>
+      <td th:text="|${reserveResult.reserveTime}시|"></td>
+      <td th:text="${reserveResult.getReserveStatus().name()}"></td>
+      <td class="btn">
+        <button th:onclick="|location.href='@{/reserve/{reserveItemId}/cancel (reserveItemId=${reserveResult.reserveItemId})}'|">
+            예약취소
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</body>
+</html>

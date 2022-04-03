@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap');
+
+@font-face {
+  font-family: 'SLEIGothicTTF';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* basic */
+*{
+  font-family: 'Noto Sans KR', sans-serif;
+  box-sizing: border-box;
+  outline: none;
+}
+body {
+  font-size: 14px;
+  background-color: #f5f6f7;
+  line-height: 1.5em;
+  color:#222;
+  font-weight: 300;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #222;
+}
+input, select {
+  cursor: pointer;
+}
+
+/* signup 폼 CSS*/
+.sign {
+  width: 460px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
+.sign .hS{
+  color: dodgerblue;
+  text-align: center;
+}
+.info {
+  margin : 5px 0;
+}
+.info b {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+/* .sign input, select { */
+  .sign input,
+  .sign select{
+    border: 1px solid #dadada;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 5px;
+  }
+  .sign input[type=submit] {
+    color: #fff;
+    background-color: dodgerblue;
+    margin-top: 20px;
+  }
+
+  .sign input:focus,
+  .sign select:focus {
+    border: 1px solid dodgerblue;
+  }
+
+  /* Checked radio button(성별) */
+.info.gender div{
+  margin-bottom: 10px;
+}
+.info.gender input {
+  display: inline-block;
+  width: 20px;
+}
+.info.gender div span {
+  display:inline-block;
+}
+
+/* 주소 */
+.info-address div{
+  display: flex;
+  gap:15px;
+}
+.info-address div input[type=text]{
+  flex: 10;
+}
+.info-address div input[type=button]{
+  flex:1;
+}

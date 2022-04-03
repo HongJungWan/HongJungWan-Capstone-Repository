@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>주차장 목록</title>
+
+  <link rel="icon" th:href="@{/images/home.png}">
+  <link rel="stylesheet" th:href="@{/css/adminlist.css}">
+  <link rel="stylesheet" th:href="@{/css/navBar.css}">
+
+</head>
+
+<body>
+<header th:replace="~{fragment/header :: bar}">
+
+</header>
+
+<table class="college-List">
+
+  <caption>주차장 목록</caption>
+
+  <caption class="search">
+  <div>
+      <form method="get" th:action="@{/reserve/search}">
+        <label for="addressSearch">주소검색 </label>
+        <input type="text" id="addressSearch" name="addressSearch">
+        <button type="submit">검색</button>
+      </form>
+
+      <button th:onclick="|location.href='@{/reserve/colleges}'|">
+        전체보기
+      </button>
+  </div>
+  </caption>
+
+
+  <tr>
+    <th>주차장 명</th>
+    <th>주소</th>
+    <th>남은 자리 수</th>
+  </tr>
+
+  <tr th:if="${collegeList.size() > 0}" th:each="college : ${collegeList}" style="cursor:pointer;"
+      th:onclick="|location.href='@{/reserve/{collegeId}/dates (collegeId=${college.id})}'|">
+
+    <td th:text="${college.collegeName}">한신대학교 중앙도서관 주차장</td>
+    <td th:text="${college.address}">경기 오산시 한신대133번길 5</td>
+    <td th:text="${college.qty}">20</td>
+  </tr>
+
+  <tr th:unless="${collegeList.size() > 0}">
+    <td colspan="3"> 결과 없음</td>
+  </tr>
+
+</table>
+
+</body>
+</html>
