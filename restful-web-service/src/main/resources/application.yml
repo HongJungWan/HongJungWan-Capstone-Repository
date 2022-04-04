@@ -8,3 +8,15 @@ logging:
 spring:
   messages:
     basename: messages
+  security:
+    user:
+      name: test
+      password: test
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+

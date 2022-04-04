@@ -49,6 +49,8 @@ public class UserController {
         return ResponseEntity.ok(CollectionModel.of(result, linkTo(methodOn(this.getClass()).retrieveAllUsers()).withSelfRel()));
     }
 
+
+
     // GET /users/1 or /users/10 -> String
     @GetMapping("/users/{id}")
     public User retrieveUser(@PathVariable int id) {

@@ -13,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 //@JsonIgnoreProperties(value={"password"})
-// @JsonFilter("UserInfo") // Controller, Service 클래스에서 사용,
+//@JsonFilter("UserInfo") // Controller, Service 클래스에서 사용,
 // Filter ID를 문자열로 지정, 이 어노테이션 사용 시 무조건
 // FilterProvider와 해당 ID를 처리하는 필터를 제공해야함.
 public class User {
