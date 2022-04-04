@@ -1,5 +1,6 @@
 package com.example.restfulwebservice.User;
 
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +10,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.methodOn;
 
 
 @RestController
@@ -25,6 +29,24 @@ public class UserController {
     @GetMapping("/users")
     public List<User> retrieveAllUsers() {
         return service.findAll();
+    }
+
+    // HATEOAS
+    //"all-users", SERVER_PATH + "/users"
+    //retrieveAllUsers (전체 사용자 목록)
+    @GetMapping("/users2")
+    public ResponseEntity<CollectionModel<EntityModel<User>>> retrieveUserList2() {
+        List<EntityModel<User>> result = new ArrayList<>();
+        List<User> users = service.findAll();
+
+        for (User user : users) {
+            EntityModel entityModel = EntityModel.of(user);
+            entityModel.add(linkTo(methodOn(this.getClass()).retrieveAllUsers()).withSelfRel());
+
+            result.add(entityModel);
+        }
+
+        return ResponseEntity.ok(CollectionModel.of(result, linkTo(methodOn(this.getClass()).retrieveAllUsers()).withSelfRel()));
     }
 
     // GET /users/1 or /users/10 -> String
