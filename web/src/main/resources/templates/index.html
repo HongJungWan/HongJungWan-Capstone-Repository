@@ -5,6 +5,7 @@
     <title>본인인증 및 예약하기</title>
     <link rel="icon" th:href="@{/images/home.png}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/adminlist.css}">
     <link rel="stylesheet" th:href="@{/css/navBar.css}">
 </head>
 
@@ -15,17 +16,16 @@
 <div class="frame">
     <!-- 본인 인증 -->
     <div class="init check" sec:authorize="!isAuthenticated()">
-        <h1>본인인증</h1>
+        <h1> 관리자 등록 문의</h1>
 
-        <!-- sns 연동 -->
         <div class="sns-info">
-            계정 연동하기
             <div class="sns">
-                <a th:href="@{/oauth2/authorization/google}" data-text="google"><i class="xi-google"></i></a>
-                <a th:href="@{/oauth2/authorization/naver}" data-text="naver"><i class="xi-naver"></i></a>
-                <a th:href="@{/oauth2/authorization/kakao}" data-text="kakaotalk"><i class="xi-kakaotalk"></i></a>
+                <a th:href="@{/}" data-text="google"><i class="xi-google"></i></a>
+                <div>
+                    <h3> hjw43ok@hs.ac.kr </h3>
+                </div>
             </div>
-            <a th:href="@{/adminLogin}">Admin Login</a>
+            <a th:href="@{/adminLogin}"><button type="button">Admin Login</button></a>
         </div>
     </div>
 
