@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap');
+
+@font-face {
+  font-family: 'SLEIGothicTTF';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* basic */
+*{
+  font-family: 'Noto Sans KR', sans-serif;
+  box-sizing: border-box;
+  outline: none;
+}
+body {
+  font-size: 14px;
+  background-color: #f5f6f7;
+  line-height: 1.5em;
+  color:#222;
+  font-weight: 300;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #222;
+}
+input, select {
+  cursor: pointer;
+}
+
+/* register 폼 CSS*/
+.register {
+  width: 460px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
+.register .hR{
+  color: dodgerblue;
+  text-align: center;
+}
+.info {
+  margin : 5px 0;
+}
+.info b {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+/* 날짜 */
+.info.date div ,
+.info.time div,
+.info-btns {
+  display: flex;
+  gap:15px;
+}
+.info.date input {
+  flex: 1;
+  background: url(/Front/images/date_1.PNG) no-repeat center right 10px;
+}
+.info.date div b,
+.info.time div b {
+  display: inline-block;
+  line-height: 21px;
+  margin-top: 15px;
+}
+
+/* 백신 종류 */
+.info.kind b,
+.info.max b {
+  margin-bottom:10px;
+}
+
+.info.kind div,
+.info.max div {
+  display: flex;
+  margin-bottom: 10px;
+}
+.info.kind div label,
+.info.kind div input,
+.info.max div label,
+.info.max div input {
+  display: inline-block;
+}
+.info.kind div label,
+.info.max div label {
+  flex: 1;
+  text-align: center;
+}
+.info.kind div input,
+.info.max div input {
+  flex: 2;
+}
+
+/* .register input { */
+.register input:not(input[type=number]){
+  border: 1px solid #dadada;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 5px;
+}
+.register input[type=submit] {
+  color: #fff;
+  background-color: dodgerblue;
+  margin-top: 20px;
+}
+
+.register input:not(input[type=number]):focus {
+  border: 1px solid skyblue;
+}

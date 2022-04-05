@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>주차장 목록</title>
+
+  <link rel="icon" th:href="@{/images/home.png}">
+  <link rel="stylesheet" th:href="@{/css/adminlist.css}">
+  <link rel="stylesheet" th:href="@{/css/navBar.css}">
+</head>
+
+<body>
+<header th:replace="~{fragment/header :: bar}">
+
+</header>
+
+
+<table class="college-List" >
+  <caption>예약 현황</caption>
+  <tr>
+    <th>주차장 명</th>
+    <th>예약자</th>
+    <th>주차 구역</th>
+    <th>예약일자</th>
+    <th>예약시간</th>
+    <th>예약상태</th>
+  </tr>
+
+  <tr th:each="reserveItemCondition : ${reserveItemConditions}" style="cursor:pointer;" th:if="${reserveItemConditions!=null}">
+    <td th:text="${reserveItemCondition.collegeName}"></td>
+    <td th:text="${reserveItemCondition.username}"></td>
+    <td th:text="${reserveItemCondition.parkingName}"></td>
+    <td th:text="${reserveItemCondition.reserveDate}"></td>
+    <td th:text="|${reserveItemCondition.reserveTime}시|"></td>
+    <td th:text="${reserveItemCondition.getReserveStatus().name()}"></td>
+  </tr>
+  <tr th:unless="${reserveItemConditions!=null}">
+    <td colspan="6"> 조회된 예약 없음</td>
+  </tr>
+
+
+</table>
+</body>
+</html>
