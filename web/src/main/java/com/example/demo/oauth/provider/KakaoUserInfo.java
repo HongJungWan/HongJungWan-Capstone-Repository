@@ -12,11 +12,11 @@ public class KakaoUserInfo implements OAuth2UserInfo{
 
 
     @Override
-    public String getPhonnumber() {
-        if((String)normalAttributes.get("phonnumber")==null){
+    public String getPhonNumber() {
+        if((String)normalAttributes.get("phonNumber")==null){
             return idAttributes.get("id")+"@kakao.com";
         }
-        return (String)normalAttributes.get("phonnumber");
+        return (String)normalAttributes.get("phonNumber");
     }
 
     @Override

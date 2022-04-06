@@ -10,8 +10,8 @@ public class NaverUserInfo implements OAuth2UserInfo{
     private final Map<String,Object> attributes;
 
     @Override
-    public String getPhonnumber() {
-        return (String) attributes.get("phonnumber");
+    public String getPhonNumber() {
+        return (String) attributes.get("phonNumber");
     }
 
     @Override

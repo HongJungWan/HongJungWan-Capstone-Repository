@@ -23,7 +23,7 @@ public class User {
     private String id;
 
     @Column(name="phon_number",nullable = false)
-    private String phonnumber;
+    private String phonNumber;
 
     @Column(nullable = false)
     private String password;
@@ -44,10 +44,10 @@ public class User {
     private Role role;
 
     @Builder(builderMethodName = "createUser")
-    public User(String phonnumber, String password, String name,
+    public User(String phonNumber, String password, String name,
                 Gender gender, Integer age, Role role) {
 
-        this.phonnumber = phonnumber;
+        this.phonNumber = phonNumber;
         this.password = password;
         this.name=name;
         this.gender = gender;

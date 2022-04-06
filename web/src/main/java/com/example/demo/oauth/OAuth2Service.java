@@ -27,7 +27,7 @@ public class OAuth2Service extends DefaultOAuth2UserService {
 
 
         User buildUser = User.createUser()
-                .phonnumber(oAuth2UserInfo.getPhonnumber())
+                .phonNumber(oAuth2UserInfo.getPhonNumber())
                 .password(bCryptPasswordEncoder.encode("hong"))
                 .name(oAuth2UserInfo.getName())
                 .role(Role.ROLE_USER)
