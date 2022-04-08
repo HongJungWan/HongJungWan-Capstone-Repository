@@ -35,6 +35,11 @@ public class Collage {
     @JsonIgnoreProperties({"collage"})
     private List<AvailableDate> availableDates = new ArrayList<>();
 
+    // 양방향 0408 수정
+    @OneToMany(mappedBy = "collage", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"collage"})
+    private List<Charge> charges = new ArrayList<>();
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "admin_id")
     private Admin admin;

@@ -21,6 +21,9 @@ import java.util.List;
 public class Admin {
 
     @Id @GeneratedValue
+    private Long admin_id;
+
+    @Column(name = "id", nullable = false)
     private Long id;
 
     private String name;
@@ -32,7 +35,8 @@ public class Admin {
     private List<Collage> collages = new ArrayList<>();
 
     @Builder(builderMethodName = "createAdmin")
-    public Admin(String name, String password) {
+    public Admin(Long id, String name, String password) {
+        this.id = id;
         this.name = name;
         this.password = password;
     }

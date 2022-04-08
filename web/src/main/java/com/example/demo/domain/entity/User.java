@@ -44,9 +44,9 @@ public class User {
     private Role role;
 
     @Builder(builderMethodName = "createUser")
-    public User(String phonNumber, String password, String name,
+    public User(String id, String phonNumber, String password, String name,
                 Gender gender, Integer age, Role role) {
-
+        this.id = id;
         this.phonNumber = phonNumber;
         this.password = password;
         this.name=name;

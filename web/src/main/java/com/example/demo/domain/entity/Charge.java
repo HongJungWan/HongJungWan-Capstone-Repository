@@ -28,6 +28,11 @@ public class Charge {
     @JoinColumn(name = "collage_id", nullable = false)
     private Collage collage;
 
+    // 양방향 연관관계 편의 메서드 0408
+    public void addCollage(Collage collage) {
+        this.collage = collage;
+        collage.getCharges().add(this);
+    }
 
     @Builder(builderMethodName = "createCharge")
     public Charge(String charge_name, Integer amount, Collage collage) {
