@@ -31,7 +31,7 @@ header .logout a:last-child {
 }
 
 /* 테이블 CSS */
-.college-List {
+.collage-List {
   width: 900px;
   background-color: #fff;
   border-collapse: collapse;
@@ -40,7 +40,7 @@ header .logout a:last-child {
   overflow: hidden;
   margin-top:10px;
 }
-.college-List caption:not(.search) {
+.collage-List caption:not(.search) {
   font-family: 'SLEIGothicTTF';
   font-size: 30px;
   margin-bottom: 30px;
@@ -66,19 +66,19 @@ caption.search button{
   padding: 5px;
 }
 
-.college-List tr {
+.collage-List tr {
   transition: 0.3s;
 }
-.college-List tr:hover {
+.collage-List tr:hover {
   background-color: #eee;
 }
-.college-List th,
-.college-List td {
+.collage-List th,
+.collage-List td {
   padding: 12px;
   text-align: center;
 }
 /* 첫 줄 */
-.college-List tr th{
+.collage-List tr th{
   background-color: dodgerblue;
   color:#eee;
 }

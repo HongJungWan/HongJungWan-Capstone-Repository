@@ -31,10 +31,10 @@
 
     <!-- 예약하기 -->
     <div sec:authorize="isAuthenticated()" class="init reserve">
-        <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve/colleges}"> 주차장 <span> 예약하기 </span></a>
+        <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve/collages}"> 주차장 <span> 예약하기 </span></a>
         <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve}">주차장 예약 <span> 조회 / 취소 </span></a>
-        <a th:href="@{/admin/college/add}" sec:authorize="hasRole('ROLE_ADMIN')">주차장<span> 등록 </span></a>
-        <a th:href="@{/admin/college/list}" sec:authorize="hasRole('ROLE_ADMIN')">주차장<span> 목록 </span></a>
+        <a th:href="@{/admin/collage/add}" sec:authorize="hasRole('ROLE_ADMIN')">주차장<span> 등록 </span></a>
+        <a th:href="@{/admin/collage/list}" sec:authorize="hasRole('ROLE_ADMIN')">주차장<span> 목록 </span></a>
 
     </div>
 </div>

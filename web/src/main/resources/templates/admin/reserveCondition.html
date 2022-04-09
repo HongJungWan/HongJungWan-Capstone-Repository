@@ -17,7 +17,7 @@
 </header>
 
 
-<table class="college-List" >
+<table class="collage-List" >
   <caption>예약 현황</caption>
   <tr>
     <th>주차장 명</th>
@@ -29,7 +29,7 @@
   </tr>
 
   <tr th:each="reserveItemCondition : ${reserveItemConditions}" style="cursor:pointer;" th:if="${reserveItemConditions!=null}">
-    <td th:text="${reserveItemCondition.collegeName}"></td>
+    <td th:text="${reserveItemCondition.collageName}"></td>
     <td th:text="${reserveItemCondition.username}"></td>
     <td th:text="${reserveItemCondition.parkingName}"></td>
     <td th:text="${reserveItemCondition.reserveDate}"></td>
