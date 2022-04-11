@@ -1,9 +1,6 @@
 package com.example.demo.service.admin;
 
-import com.example.demo.dto.collage.CollageListDto;
-import com.example.demo.dto.collage.CollageRequestDto;
-import com.example.demo.dto.collage.CollageResponseDto;
-import com.example.demo.dto.collage.CollageSimpleInfoDto;
+import com.example.demo.dto.collage.*;
 
 import java.text.ParseException;
 import java.util.List;
@@ -28,5 +25,9 @@ public interface AdminService {
 
     List<CollageListDto> getCollageList(String name, String address);
 
+    /**
+     * 주차장 상세 정보 조회 후 dto로 변환
+     */
+    CollageUpdateDto getCollage(Long id);
 
 }

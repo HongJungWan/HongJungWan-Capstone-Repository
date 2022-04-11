@@ -73,7 +73,7 @@ public class Collage {
             setEnabled(false);
         }
         if(restStock<0){
-            throw new NotEnoughStockException("예약 가능한 수량이 부족합니다.");
+            throw new NotEnoughStockException("예약 가능한 자리가 부족합니다.");
         }
 
         this.totalQuantity=restStock;

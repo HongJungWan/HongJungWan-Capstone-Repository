@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 
 import com.example.demo.dto.collage.CollageListDto;
+import com.example.demo.dto.collage.CollageRequestDto;
 import com.example.demo.dto.collage.CollageResponseDto;
 import com.example.demo.dto.collage.CollageSimpleInfoDto;
 import com.example.demo.dto.security.PrincipalDetails;
@@ -41,7 +42,16 @@ public class AdminController {
         return ResponseEntity.ok(collageResponseDto);
     }
 
-    
+
+    /**
+     * 주차장 등록 폼 랜더링
+     */
+    @GetMapping("/collage/add")
+    public String collageForm(Model model){
+        model.addAttribute("collageRequestDto",new CollageRequestDto());
+        return "admin/collageRegister";
+    }
+
     /**
      * 현재 어드민이 관리하는 주차장 목록 조회 (주차장이름, 주소만 조회)
      */
@@ -53,6 +63,33 @@ public class AdminController {
         return collages;
     }
 
+
+    /**
+     * 주차장 등록
+     * @param authentication 등록되는 주차장애 admin을 추가해주기 위해 현재 인증 객체를 사용
+     */
+    @PostMapping("/collage/add")
+    public String addCollage(
+            Authentication authentication,
+            @Validated @ModelAttribute CollageRequestDto form, BindingResult result, HttpServletRequest request) throws Exception{
+
+        if(result.hasErrors()){
+            return "admin/collageRegister";
+        }
+
+        makeParkingInfoMap(form.getA(), form.getB(), form.getC(), form.getD(), form.getParkingInfoMap());
+
+        /**
+         * /admin/** 으로 접근되었다는 것은 security filter를 지나 인가된 사용자라는 것. (Role = ADMIN)
+         * 따라서 주차장 등록시 Authentication에서 얻어온 유저 정보를 그대로 사용 (주차장에 Admin을 넣어주기 위함)
+         */
+        PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
+        log.info("principal.name = {}", principal.getName());
+
+        adminService.addCollage(form, principal.getName());
+
+        return "redirect:/admin/collage/list";
+    }
 
     /**
      * 주차장 목록

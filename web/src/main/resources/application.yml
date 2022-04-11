@@ -3,7 +3,7 @@ spring:
    include: oauth
   jpa:
     hibernate:
-      ddl-auto: none # none으로 다시 바꾸기 0408
+      ddl-auto: none # none으로 다시 바꾸기 0410
     properties:
       hibernate:
         #show_sql: true

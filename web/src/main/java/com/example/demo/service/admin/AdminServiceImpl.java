@@ -5,17 +5,18 @@ import com.example.demo.domain.entity.Admin;
 import com.example.demo.domain.entity.AvailableDate;
 import com.example.demo.domain.entity.Collage;
 import com.example.demo.domain.entity.Parking;
-import com.example.demo.dto.collage.CollageListDto;
-import com.example.demo.dto.collage.CollageRequestDto;
-import com.example.demo.dto.collage.CollageResponseDto;
-import com.example.demo.dto.collage.CollageSimpleInfoDto;
+import com.example.demo.dto.collage.*;
 import com.example.demo.repository.AdminRepository;
 import com.example.demo.repository.CollageRepository;
 import com.ibm.icu.util.Holiday;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.ParseException;
 import java.util.*;
@@ -28,7 +29,6 @@ public class AdminServiceImpl implements AdminService {
 
     private final CollageRepository collageRepository;
     private final AdminRepository adminRepository;
-
 
 
     /**
@@ -105,7 +105,36 @@ public class AdminServiceImpl implements AdminService {
         return collageRepository.findCollageListByAddressAndAdmin(address, admin.getId());
     }
 
+    /**
+     * 주차장 상세 정보 조회 후 dto로 변환
+     */
+    @Override
+    public CollageUpdateDto getCollage(Long id) {
+        Optional<Collage> collageDetail = collageRepository.findCollageDetail(id);
+        Collage collage = collageDetail.stream().findFirst().orElse(null);
 
+        List<AvailableDate> availableDates = collage.getAvailableDates();
+        List<Parking> parkings = collage.getParkings();
+
+        Map<String,Integer> parkingMap=new HashMap<>();
+
+        for (Parking parking : parkings) {
+            parkingMap.put(parking.getParkingName(), parking.getQuantity());
+        }
+
+        return CollageUpdateDto.createCollageUpdateDto()
+                .id(collage.getId())
+                .collageName(collage.getCollageName())
+                .address(collage.getAddress())
+                .detailAddress(collage.getDetailAddress())
+                .startDate(availableDates.get(0).getDate())
+                .endDate(availableDates.get(availableDates.size()-1).getDate())
+                .a(parkingIsPresent(parkingMap,"A 구역"))
+                .b(parkingIsPresent(parkingMap,"B 구역"))
+                .c(parkingIsPresent(parkingMap,"C 구역"))
+                .d(parkingIsPresent(parkingMap,"D 구역"))
+                .build();
+    }
 
 
     /**
