@@ -24,11 +24,6 @@ public class CollageRequestDto {
     @NotEmpty(message = "주차장이름을 입력해주세요.")
     private String collageName;
 
-    @NotEmpty(message = "예약가능 시작날짜를 선택해주세요.")
-    private String startDate;
-    @NotEmpty(message = "예약가능 종료날짜를 선택해주세요.")
-    private String endDate;
-
     @NotNull(message = "일일 최대 예약가능 차량을 입력해주세요.")
     private Integer dateAccept;
 
@@ -65,13 +60,11 @@ public class CollageRequestDto {
     }
 
     @Builder(builderMethodName = "createCollageRequestDto")
-    public CollageRequestDto(String collageName, String startDate, String endDate, String address, Integer dateAccept,
+    public CollageRequestDto(String collageName, String address, Integer dateAccept,
                              String detailAddress, Integer a,
                              Integer b, Integer c, Integer d) {
 
         this.collageName = collageName;
-        this.startDate = startDate;
-        this.endDate = endDate;
         this.dateAccept = dateAccept;
         this.address = address;
         this.detailAddress = detailAddress;

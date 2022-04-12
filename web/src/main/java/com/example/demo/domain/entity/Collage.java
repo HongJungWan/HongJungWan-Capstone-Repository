@@ -4,7 +4,7 @@
 
 package com.example.demo.domain.entity;
 
-//import com.example.demo.domain.entity.AvailableDate;
+
 import com.example.demo.exception.parking.NotEnoughStockException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AccessLevel;
@@ -29,11 +29,6 @@ public class Collage {
 
     @Column(name = "collage_name",nullable = false)
     private String collageName;
-
-//    // 양방향
-//    @OneToMany(mappedBy = "collage",cascade = CascadeType.ALL)
-//    @JsonIgnoreProperties({"collage"})
-//    private List<AvailableDate> availableDates = new ArrayList<>();
 
     // 양방향 0408 수정
     @OneToMany(mappedBy = "collage", cascade = CascadeType.ALL)
