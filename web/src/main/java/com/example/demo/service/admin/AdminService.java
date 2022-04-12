@@ -30,4 +30,10 @@ public interface AdminService {
      */
     CollageUpdateDto getCollage(Long id);
 
+
+    /**
+     * 주차장 update
+     */
+    Long collageUpdate(CollageUpdateDto dto) throws ParseException;
+
 }

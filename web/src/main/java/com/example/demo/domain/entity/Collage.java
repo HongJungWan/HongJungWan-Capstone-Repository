@@ -4,7 +4,7 @@
 
 package com.example.demo.domain.entity;
 
-import com.example.demo.domain.entity.AvailableDate;
+//import com.example.demo.domain.entity.AvailableDate;
 import com.example.demo.exception.parking.NotEnoughStockException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AccessLevel;
@@ -30,10 +30,10 @@ public class Collage {
     @Column(name = "collage_name",nullable = false)
     private String collageName;
 
-    // 양방향
-    @OneToMany(mappedBy = "collage",cascade = CascadeType.ALL)
-    @JsonIgnoreProperties({"collage"})
-    private List<AvailableDate> availableDates = new ArrayList<>();
+//    // 양방향
+//    @OneToMany(mappedBy = "collage",cascade = CascadeType.ALL)
+//    @JsonIgnoreProperties({"collage"})
+//    private List<AvailableDate> availableDates = new ArrayList<>();
 
     // 양방향 0408 수정
     @OneToMany(mappedBy = "collage", cascade = CascadeType.ALL)
@@ -49,6 +49,9 @@ public class Collage {
         admin.getCollages().add(this);
     }
 
+    @Column(name = "date_accept")
+    private Integer dateAccept;
+
     @Column(name = "address",nullable = false)
     private String address;
 
@@ -62,6 +65,7 @@ public class Collage {
         this.totalQuantity++;
     }
 
+    public void updateDateAccept(Integer dateAccept){this.dateAccept=dateAccept;}
 
     public void setTotalParkingQuantity(Integer qty) {
         this.totalQuantity = qty;
@@ -99,10 +103,12 @@ public class Collage {
 
 
     @Builder(builderMethodName = "createCollage")
-    public Collage(String collageName, String address, String detailAddress ) {
+    public Collage(String collageName, String address, String detailAddress, Integer dateAccept ) {
         this.collageName = collageName;
         this.address = address;
         this.detailAddress = detailAddress;
+        this.dateAccept=dateAccept;
 
     }
+
 }

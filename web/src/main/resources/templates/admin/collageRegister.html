@@ -79,21 +79,31 @@
       </div>
     </div>
 
-    <div class="info date">
-      <b><br/>운영 가능 날짜</b>
+<!--    <div class="info date">-->
+<!--      <b><br/>운영 가능 날짜</b>-->
+<!--      <div>-->
+<!--        <input type="text" id="datepicker1" name="datepicker1" th:field="*{startDate}">-->
+<!--        <b>~</b>-->
+<!--        <input type="text" id="datepicker2" name="datepicker2" th:field="*{endDate}">-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="field-error" th:errors="*{startDate}">-->
+<!--    </div>-->
+<!--    <div class="field-error" th:errors="*{endDate}">-->
+<!--    </div>-->
+
+    <div class="info max">
+      <b><br/>최대 운영 가능 자리수</b>
       <div>
-        <input type="text" id="datepicker1" name="datepicker1" th:field="*{startDate}">
-        <b>~</b>
-        <input type="text" id="datepicker2" name="datepicker2" th:field="*{endDate}">
+        <label>정기권</label>
+        <input type="number" placeholder="운영 가능한 자릿수를 입력하세요." th:field="*{dateAccept}">
       </div>
-    </div>
-    <div class="field-error" th:errors="*{startDate}">
-    </div>
-    <div class="field-error" th:errors="*{endDate}">
+      <div class="field-error" th:errors="*{dateAccept}">
+      </div>
     </div>
 
     <div class="info kind">
-      <b><br/>주차장 구역 / 자리수</b>
+      <b><br/>주차 구역 / 자리수</b>
       <div>
         <label for="a">A 구역</label>
         <input type="number" placeholder="운영 가능한 자릿수를 입력하세요." th:field="*{a}" id="a">

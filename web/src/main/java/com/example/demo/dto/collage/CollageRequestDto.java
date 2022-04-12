@@ -29,6 +29,9 @@ public class CollageRequestDto {
     @NotEmpty(message = "예약가능 종료날짜를 선택해주세요.")
     private String endDate;
 
+    @NotNull(message = "일일 최대 예약가능 차량을 입력해주세요.")
+    private Integer dateAccept;
+
     @NotEmpty(message = "주차장 주소를 입력해주세요.")
     private String address;
     @NotEmpty(message = "주차장 상세주소를 입력해주세요.")
@@ -55,18 +58,21 @@ public class CollageRequestDto {
     public Collage toCollageEntity() {
         return Collage.createCollage()
                 .collageName(this.collageName)
+                .dateAccept(dateAccept)
                 .address(this.address)
                 .detailAddress(this.detailAddress)
                 .build();
     }
 
     @Builder(builderMethodName = "createCollageRequestDto")
-    public CollageRequestDto(String collageName, String startDate, String endDate, String address,
+    public CollageRequestDto(String collageName, String startDate, String endDate, String address, Integer dateAccept,
                              String detailAddress, Integer a,
                              Integer b, Integer c, Integer d) {
+
         this.collageName = collageName;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.dateAccept = dateAccept;
         this.address = address;
         this.detailAddress = detailAddress;
         this.a = a;

@@ -51,7 +51,6 @@ input, select {
 
 /* 날짜 */
 .info.date div ,
-.info.time div,
 .info-btns {
   display: flex;
   gap:15px;
@@ -60,14 +59,13 @@ input, select {
   flex: 1;
   background: url(/Front/images/date_1.PNG) no-repeat center right 10px;
 }
-.info.date div b,
-.info.time div b {
+.info.date div b {
   display: inline-block;
   line-height: 21px;
   margin-top: 15px;
 }
 
-/* 백신 종류 */
+/* 주차 구역 종류 */
 .info.kind b,
 .info.max b {
   margin-bottom:10px;

@@ -1,10 +1,7 @@
 package com.example.demo.controller;
 
 
-import com.example.demo.dto.collage.CollageListDto;
-import com.example.demo.dto.collage.CollageRequestDto;
-import com.example.demo.dto.collage.CollageResponseDto;
-import com.example.demo.dto.collage.CollageSimpleInfoDto;
+import com.example.demo.dto.collage.*;
 import com.example.demo.dto.security.PrincipalDetails;
 import com.example.demo.service.admin.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -101,6 +98,37 @@ public class AdminController {
         List<CollageListDto> collageList = adminService.getCollageList(adminName,addressSearch);
         model.addAttribute("collageList", collageList);
         return "admin/collageList";
+    }
+
+    /**
+     * 주차장 상세정보 조회
+     */
+    @GetMapping("/collage/{collageId}")
+    public String collageInfo(Model model,@PathVariable("collageId")Long id){
+
+        CollageUpdateDto collageUpdateDto = adminService.getCollage(id);
+        model.addAttribute("collageUpdateDto", collageUpdateDto);
+
+        return "admin/collageDetail";
+    }
+
+    /**
+     * 주차장 수정
+     */
+    @PostMapping("/collage/" +
+            "edit/{collageId}")
+    public String collageEdit(@PathVariable Long collageId,
+                              @Validated @ModelAttribute CollageUpdateDto collageUpdateDto, BindingResult result)
+            throws ParseException {
+        if(result.hasErrors()){
+            return "admin/collageDetail";
+        }
+        collageUpdateDto.setId(collageId);
+        makeParkingInfoMap(collageUpdateDto.getA(), collageUpdateDto.getB(),
+                collageUpdateDto.getC(), collageUpdateDto.getD(), collageUpdateDto.getParkingInfoMap());
+        adminService.collageUpdate(collageUpdateDto);
+
+        return "redirect:/admin/collage/list";
     }
 
     // parkingInfoMap만드는 메서드
