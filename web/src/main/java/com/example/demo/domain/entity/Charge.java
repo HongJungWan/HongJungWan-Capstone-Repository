@@ -24,7 +24,7 @@ public class Charge {
     @Column(name = "amount")
     private Integer amount;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "collage_id", nullable = false)
     private Collage collage;
 
