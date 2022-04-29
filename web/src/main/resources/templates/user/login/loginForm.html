@@ -1,42 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>AdminLoginPage</title>
 
     <link rel="icon" th:href="@{/images/home.png}">
     <link rel="stylesheet" th:href="@{/css/register.css}">
     <link rel="stylesheet" th:href="@{/css/navBar.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
     <link rel="stylesheet" th:href="@{/css/custom.css}">
     <style>
          .field-error {
          color: #dc3545;
          }
+
+
+
     </style>
 </head>
 
 <body>
-<header th:replace="~{fragment/header :: bar}">
-
-</header>
+<header th:replace="~{fragment/header :: bar}"></header>
 <div class="register">
     <h1 class="hR">Admin Login</h1>
 
-    <form th:action="@{/login}" method="post">
-        <input type="hidden" th:value="${'admin'}" id="username" name="username">
+    <form method="post" th:action="@{/login}">
+        <input id="username" name="username" th:value="${'admin'}" type="hidden">
         <div class="info">
             <label for="password" th:text="${'password'}"></label>
-            <input type="password" id="password" name="password" placeholder="비밀번호를 입력 해 주세요.">
+            <input id="password" name="password" placeholder="비밀번호를 입력 해 주세요." type="password">
             <div th:if="${errorMsg!=null}">
-                <p th:text="${errorMsg}" class="field-error"></p>
+                <p class="field-error" th:text="${errorMsg}"></p>
             </div>
 
         </div>
         <input type="submit" value="Login">
-        <input type="button" th:onclick="|location.href='@{/}'|" value="취소">
+        <input th:onclick="|location.href='@{/}'|" type="button" value="취소">
     </form>
 </div>
-
+<footer th:replace="~{fragment/footer :: footer}"></footer>
 </body>
 </html>

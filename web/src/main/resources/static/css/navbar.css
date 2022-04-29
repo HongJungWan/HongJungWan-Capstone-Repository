@@ -25,3 +25,21 @@ header .logout a {
 header .logout a:hover {
   text-decoration: underline;
 }
+
+.footer {
+     position: absolute;
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     padding: 15px 0;
+     text-align: center;
+     color: #222;
+     background: #eee;
+}
+
+img{
+    max-width: 75%;
+    height: auto;
+    display: block;
+    margin: 0px auto;
+}

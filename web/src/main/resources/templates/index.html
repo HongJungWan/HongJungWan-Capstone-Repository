@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>관리자 인증</title>
@@ -11,28 +11,28 @@
 
 <body>
 <header th:replace="~{fragment/header :: bar}"></header>
+<img src="images/home-bg.jpg">
 <div class="frame">
     <!-- 본인 인증 -->
     <div class="init check" sec:authorize="!isAuthenticated()">
         <h1> 관리자 등록 문의</h1>
-
         <div class="sns-info">
             <div class="sns">
-                <a th:href="@{/}" data-text="Login"><i class="xi-car"></i></a>  <!-- 여기 관리자 로고로 바꾸고 넘겨주면 될듯 -->
                 <div>
-                    <a th:href="@{/adminLogin}">관리자<span> 로그인 </span></a>
+                    <a data-text="Login" th:href="@{/adminLogin}"><i class="xi-car"></i></a>
+                    <!-- 여기 관리자 로고로 바꾸고 넘겨주면 될듯 -->
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Admin 관리 -->
-    <div sec:authorize="isAuthenticated()" class="init reserve">
-        <a th:href="@{/admin/car/list}" sec:authorize="hasRole('ROLE_ADMIN')">차량<span> 관리 </span></a>
-        <a th:href="@{/admin/collage/add}" sec:authorize="hasRole('ROLE_ADMIN')">주차장<span> 등록 </span></a>
-        <a th:href="@{/admin/collage/list}" sec:authorize="hasRole('ROLE_ADMIN')">주차장<span> 목록 </span></a>
-
+    <div class="init reserve" sec:authorize="isAuthenticated()">
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/car/list}">차량<span> 관리 </span></a>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/collage/add}">주차장<span> 등록 </span></a>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/collage/list}">주차장<span> 목록 </span></a>
     </div>
 </div>
+<footer th:replace="~{fragment/footer :: footer}"></footer>
 </body>
 </html>
