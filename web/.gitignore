@@ -32,6 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 
+application.yml
 application-oauth.yml
 src/main/java/com/example/demo/AdminInit.java
 src/main/java/com/example/demo/test

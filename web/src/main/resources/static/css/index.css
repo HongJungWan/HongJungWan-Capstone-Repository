@@ -175,7 +175,7 @@ header .logout a:last-child {
 }
 .reserve a:nth-child(3) span {
   font-weight: 600;
-  color: crimson;
+  color: green;
 }
 
 .reserve a:hover {

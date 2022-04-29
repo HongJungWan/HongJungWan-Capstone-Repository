@@ -16,13 +16,14 @@ import javax.persistence.*;
 public class User {
 
     @Column(name = "user_id")
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long user_id;
 
     @Column(nullable = false)
     private String id;
 
-    @Column(name="phon_number",nullable = false)
+    @Column(name = "phon_number", nullable = false)
     private String phonNumber;
 
     @Column(nullable = false)
@@ -38,7 +39,6 @@ public class User {
     @Column(nullable = false)
     private Integer age;
 
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
@@ -49,7 +49,7 @@ public class User {
         this.id = id;
         this.phonNumber = phonNumber;
         this.password = password;
-        this.name=name;
+        this.name = name;
         this.gender = gender;
         this.age = age;
         this.role = role;

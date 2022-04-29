@@ -5,15 +5,12 @@
     <title>관리자 인증</title>
     <link rel="icon" th:href="@{/images/home.png}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
-    <link rel="stylesheet" th:href="@{/css/adminlist.css}">
     <link rel="stylesheet" th:href="@{/css/navBar.css}">
     <link rel="stylesheet" th:href="@{/css/custom.css}">
 </head>
 
 <body>
-<header th:replace="~{fragment/header :: bar}">
-
-</header>
+<header th:replace="~{fragment/header :: bar}"></header>
 <div class="frame">
     <!-- 본인 인증 -->
     <div class="init check" sec:authorize="!isAuthenticated()">
@@ -21,19 +18,17 @@
 
         <div class="sns-info">
             <div class="sns">
-                <a th:href="@{/}" data-text="google"><i class="xi-google"></i></a>
+                <a th:href="@{/}" data-text="Login"><i class="xi-car"></i></a>  <!-- 여기 관리자 로고로 바꾸고 넘겨주면 될듯 -->
                 <div>
-                    <h3> hjw43ok@hs.ac.kr </h3>
+                    <a th:href="@{/adminLogin}">관리자<span> 로그인 </span></a>
                 </div>
             </div>
-            <a th:href="@{/adminLogin}"><button type="button">Admin Login</button></a>
         </div>
     </div>
 
-    <!-- 예약하기 -->
+    <!-- Admin 관리 -->
     <div sec:authorize="isAuthenticated()" class="init reserve">
-        <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve/collages}"> 주차장 <span> 예약하기 </span></a>
-        <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve}">주차장 예약 <span> 조회 / 취소 </span></a>
+        <a th:href="@{/admin/car/list}" sec:authorize="hasRole('ROLE_ADMIN')">차량<span> 관리 </span></a>
         <a th:href="@{/admin/collage/add}" sec:authorize="hasRole('ROLE_ADMIN')">주차장<span> 등록 </span></a>
         <a th:href="@{/admin/collage/list}" sec:authorize="hasRole('ROLE_ADMIN')">주차장<span> 목록 </span></a>
 
