@@ -12,51 +12,13 @@
     <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
     <script th:src="@{https://code.jquery.com/jquery-1.12.4.js}"></script>
     <script th:src="@{https://code.jquery.com/ui/1.12.1/jquery-ui.js}"></script>
-
-    <script>
-    $.datepicker.setDefaults({
-      dateFormat: 'yy-mm-dd',
-      prevText: '이전 달',
-      nextText: '다음 달',
-      monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-      monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-      dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-      dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-      dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-      showMonthAfterYear: true,
-      yearSuffix: '년'
-    });
-
-
-
-
-
-    </script>
-
-    <script>
-    $(function () {
-      $("#datepicker1, #datepicker2").datepicker({
-        dateFormat: 'yy.mm.dd'
-      });
-    });
-
-
-
-
-
-    </script>
     <style>
     .field-error{
       color:red;
       font-weight:bold;
     }
 
-
-
-
-
     </style>
-
     <link rel="icon" th:href="@{/images/home.png}">
     <link rel="stylesheet" th:href="@{/css/collageDetail.css}">
     <link rel="stylesheet" th:href="@{/css/navBar.css}">
@@ -104,25 +66,25 @@
         <div class="info kind">
             <b><br/>주차 구역 / 자리수</b>
             <div>
-                <label for="a">A 구역</label>
+                <label for="a">장애인 전용 구역</label>
                 <input id="a" placeholder="운영 가능한 자릿수를 입력하세요." th:field="*{a}" type="number">
             </div>
             <div class="field-error" th:errors="*{a}">
             </div>
             <div>
-                <label for="b">B 구역</label>
+                <label for="b">전기차 전용 구역</label>
                 <input id="b" placeholder="운영 가능한 자릿수를 입력하세요." th:field="*{b}" type="number">
             </div>
             <div class="field-error" th:errors="*{b}">
             </div>
             <div>
-                <label for="c">C 구역</label>
+                <label for="c">경차 전용 구역</label>
                 <input id="c" placeholder="운영 가능한 자릿수를 입력하세요." th:field="*{c}" type="number">
             </div>
             <div class="field-error" th:errors="*{c}">
             </div>
             <div>
-                <label for="d">D 구역</label>
+                <label for="d">어르신 우선 구역</label>
                 <input id="d" placeholder="운영 가능한 자릿수를 입력하세요." th:field="*{d}" type="number">
             </div>
             <div class="field-error" th:errors="*{d}">
