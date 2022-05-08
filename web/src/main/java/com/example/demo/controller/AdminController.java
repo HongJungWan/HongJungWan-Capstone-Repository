@@ -2,8 +2,10 @@ package com.example.demo.controller;
 
 
 import com.example.demo.dto.collage.*;
+import com.example.demo.dto.reserve.ReserveWithUsernameDto;
 import com.example.demo.dto.security.PrincipalDetails;
 import com.example.demo.service.admin.AdminService;
+import com.example.demo.service.admin.AdminServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +29,7 @@ import java.util.Map;
 public class AdminController {
 
     private final AdminService adminService;
+    private final AdminServiceImpl adminServiceImpl;
 
     /**
      * 주차장 이름으로 주차장 단건 조회
@@ -44,8 +47,8 @@ public class AdminController {
      * 주차장 등록 폼 랜더링
      */
     @GetMapping("/collage/add")
-    public String collageForm(Model model){
-        model.addAttribute("collageRequestDto",new CollageRequestDto());
+    public String collageForm(Model model) {
+        model.addAttribute("collageRequestDto", new CollageRequestDto());
         return "admin/collageRegister";
     }
 
@@ -63,14 +66,15 @@ public class AdminController {
 
     /**
      * 주차장 등록
+     *
      * @param authentication 등록되는 주차장애 admin을 추가해주기 위해 현재 인증 객체를 사용
      */
     @PostMapping("/collage/add")
     public String addCollage(
             Authentication authentication,
-            @Validated @ModelAttribute CollageRequestDto form, BindingResult result, HttpServletRequest request) throws Exception{
+            @Validated @ModelAttribute CollageRequestDto form, BindingResult result, HttpServletRequest request) throws Exception {
 
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "admin/collageRegister";
         }
 
@@ -93,9 +97,9 @@ public class AdminController {
      */
     @GetMapping("/collage/list")
     public String collageList(@AuthenticationPrincipal PrincipalDetails principal, Model model,
-                               @RequestParam(defaultValue = "noSearch")String addressSearch) {
+                              @RequestParam(defaultValue = "noSearch") String addressSearch) {
         String adminName = principal.getName();
-        List<CollageListDto> collageList = adminService.getCollageList(adminName,addressSearch);
+        List<CollageListDto> collageList = adminService.getCollageList(adminName, addressSearch);
         model.addAttribute("collageList", collageList);
         return "admin/collageList";
     }
@@ -104,7 +108,7 @@ public class AdminController {
      * 주차장 상세정보 조회
      */
     @GetMapping("/collage/{collageId}")
-    public String collageInfo(Model model,@PathVariable("collageId")Long id){
+    public String collageInfo(Model model, @PathVariable("collageId") Long id) {
 
         CollageUpdateDto collageUpdateDto = adminService.getCollage(id);
         model.addAttribute("collageUpdateDto", collageUpdateDto);
@@ -115,12 +119,11 @@ public class AdminController {
     /**
      * 주차장 수정
      */
-    @PostMapping("/collage/" +
-            "edit/{collageId}")
+    @PostMapping("/collage/" + "edit/{collageId}")
     public String collageEdit(@PathVariable Long collageId,
                               @Validated @ModelAttribute CollageUpdateDto collageUpdateDto, BindingResult result)
             throws ParseException {
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "admin/collageDetail";
         }
         collageUpdateDto.setId(collageId);
@@ -131,19 +134,30 @@ public class AdminController {
         return "redirect:/admin/collage/list";
     }
 
-    // parkingInfoMap만드는 메서드
-    private void makeParkingInfoMap(Integer a, Integer b, Integer c, Integer d, Map<String,Integer> parkingInfoMap) {
+    /**
+     * 예약 현황 조회
+     */
+    @GetMapping("/collage/reserves/{collageId}")
+    public String reserveCondition(@PathVariable Long collageId, Model model) {
+        List<ReserveWithUsernameDto> reserveConditions = adminService.getReserveCondition(collageId);
 
-        if(a !=null && a !=0){
+        model.addAttribute("reserveConditions", reserveConditions);
+        return "admin/reserveCondition";
+    }
+
+    // parkingInfoMap만드는 메서드
+    private void makeParkingInfoMap(Integer a, Integer b, Integer c, Integer d, Map<String, Integer> parkingInfoMap) {
+
+        if (a != null && a != 0) {
             parkingInfoMap.put("A 구역", a); // A구역 이런식으로 아래도 싹다 바꿔야함
         }
-        if(b !=null && b !=0){
+        if (b != null && b != 0) {
             parkingInfoMap.put("B 구역", b);
         }
-        if(c !=null && c !=0){
+        if (c != null && c != 0) {
             parkingInfoMap.put("C 구역", c);
         }
-        if(d !=null && d !=0){
+        if (d != null && d != 0) {
             parkingInfoMap.put("D 구역", d);
         }
     }

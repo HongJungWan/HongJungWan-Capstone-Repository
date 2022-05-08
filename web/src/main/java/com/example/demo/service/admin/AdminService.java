@@ -1,12 +1,12 @@
 package com.example.demo.service.admin;
 
 import com.example.demo.dto.collage.*;
+import com.example.demo.dto.reserve.ReserveWithUsernameDto;
 
 import java.text.ParseException;
 import java.util.List;
 
 public interface AdminService {
-
 
     /**
      * 주차장등록
@@ -35,5 +35,10 @@ public interface AdminService {
      * 주차장 update
      */
     Long collageUpdate(CollageUpdateDto dto) throws ParseException;
+
+    /**
+     * 예약 현황 정보
+     */
+    List<ReserveWithUsernameDto> getReserveCondition(Long collegeId);
 
 }

@@ -25,20 +25,21 @@ public class CollageCustomRepositoryImpl implements CollageCustomRepository {
                 "select new com.example.demo.dto.collage.CollageListDto(h.id, h.collageName, h.address, h.totalQuantity) " +
                         "from Collage h " +
                         "where h.admin.id = :id"
-        , CollageListDto.class).setParameter("id",id).getResultList();
-    };
+                , CollageListDto.class).setParameter("id", id).getResultList();
+    }
+
 
     /**
      * 주차장아이디로 주차장정보 조회
      */
     @Override
-    public Optional<Collage> findCollageDetail(Long id){
+    public Optional<Collage> findCollageDetail(Long id) {
         return Optional.of(em.createQuery(
                 "select distinct h from Collage h " +
                         "join fetch h.admin a " +
                         "join fetch h.parkings v " +
                         "where h.id= :id", Collage.class)
-                .setParameter("id",id).getSingleResult());
+                .setParameter("id", id).getSingleResult());
     }
 
     /**
@@ -76,11 +77,11 @@ public class CollageCustomRepositoryImpl implements CollageCustomRepository {
     @Override
     public List<CollageListDto> findCollageListByAddressAndAdmin(@Param("address") String address, Long adminId) {
         return em.createQuery(
-                        "select new com.example.demo.dto.collage.CollageListDto(h.id, h.collageName, h.address, h.totalQuantity) " +
-                                "from Collage h " +
-                                "where h.admin.id= :adminId and h.address like '%'||:address||'%'", CollageListDto.class)
+                "select new com.example.demo.dto.collage.CollageListDto(h.id, h.collageName, h.address, h.totalQuantity) " +
+                        "from Collage h " +
+                        "where h.admin.id= :adminId and h.address like '%'||:address||'%'", CollageListDto.class)
                 .setParameter("address", address)
-                .setParameter("adminId",adminId)
+                .setParameter("adminId", adminId)
                 .getResultList();
     }
 

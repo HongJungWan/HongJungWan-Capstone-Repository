@@ -16,8 +16,9 @@ public interface CollageRepository extends JpaRepository<Collage, Long>, Collage
     Optional<Collage> findByCollageName(String collageName);
 
     /**
-     *  CollageSimpleInfoDto 를 이용한 모든 주차장의 이름, 주소 조회
-     *  @return CollageSimpleInfoDto
+     * CollageSimpleInfoDto 를 이용한 모든 주차장의 이름, 주소 조회
+     *
+     * @return CollageSimpleInfoDto
      */
     @Query("select new com.example.demo.dto.collage.CollageSimpleInfoDto(h.collageName,h.address) " +
             "from Collage h " +
@@ -32,4 +33,5 @@ public interface CollageRepository extends JpaRepository<Collage, Long>, Collage
             "from Collage h " +
             "where h.admin = :admin")
     List<CollageSimpleInfoDto> findAllByAdmin(Admin admin);
+
 }

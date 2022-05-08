@@ -3,17 +3,16 @@ package com.example.demo.service.admin;
 import com.example.demo.domain.entity.Admin;
 import com.example.demo.domain.entity.Collage;
 import com.example.demo.domain.entity.Parking;
+import com.example.demo.domain.entity.Reserve;
 import com.example.demo.dto.collage.*;
+import com.example.demo.dto.reserve.ReserveWithUsernameDto;
 import com.example.demo.repository.AdminRepository;
 import com.example.demo.repository.CollageRepository;
+import com.example.demo.repository.ReserveRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.ParseException;
 import java.util.*;
@@ -26,14 +25,14 @@ public class AdminServiceImpl implements AdminService {
 
     private final CollageRepository collageRepository;
     private final AdminRepository adminRepository;
-
+    private final ReserveRepository reserveRepository;
 
     /**
      * 주차장 정보 등록
      */
     @Transactional
     @Override
-    public Long addCollage(CollageRequestDto collageRequestDto, String adminName) throws Exception{
+    public Long addCollage(CollageRequestDto collageRequestDto, String adminName) throws Exception {
 
         // 주차장 엔티티 생성
         Collage collage = collageRequestDto.toCollageEntity();
@@ -61,7 +60,6 @@ public class AdminServiceImpl implements AdminService {
         return savedCollage.getId();
 
     }
-
 
 
     /**
@@ -96,8 +94,9 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<CollageListDto> getCollageList(String name, String address) {
         Admin admin = adminRepository.findByName(name).get();
-        if(address.equals("noSearch"))
+        if (address.equals("noSearch")) {
             return collageRepository.findAllCollageInfo(admin.getId());
+        }
 
         return collageRepository.findCollageListByAddressAndAdmin(address, admin.getId());
     }
@@ -146,15 +145,15 @@ public class AdminServiceImpl implements AdminService {
         Integer total = 0;
 
         //주차장 구역 이름 리스트. 추가된 주차장 구역, 가용 수량이 0이된 주차장 구역 확인 위해
-        List<String> parkingNames=new ArrayList<>();
+        List<String> parkingNames = new ArrayList<>();
         for (Parking parking : parkings) {
             parkingNames.add(parking.getParkingName());
         }
 
-        for(String key:parkingInfoMap.keySet()){
-            total+=parkingInfoMap.get(key);
+        for (String key : parkingInfoMap.keySet()) {
+            total += parkingInfoMap.get(key);
             //추가된 주차장 구역이 있는 지 확인
-            if(!parkingNames.contains(key)){
+            if (!parkingNames.contains(key)) {
                 Parking aditionalParking = Parking.createParking()
                         .parkingName(key)
                         .quantity(parkingInfoMap.get(key))
@@ -178,10 +177,10 @@ public class AdminServiceImpl implements AdminService {
             }
         }
         // 비어있지 않다면, 수정 폼에서 0으로 설정되었다는 뜻. 가용 수량을 0으로 설정하자
-        if(!parkingNames.isEmpty()){
+        if (!parkingNames.isEmpty()) {
             for (String parkingName : parkingNames) {
                 Parking parking = parkings.stream().filter(v -> v.getParkingName().equals(parkingName)).findFirst().orElse(null);
-                if(parking !=null){
+                if (parking != null) {
                     parking.updateParkingQty(0);
                     parking.setEnabled(false);
                 }
@@ -189,30 +188,48 @@ public class AdminServiceImpl implements AdminService {
         }
 
         //총 가용 수량의 합이 같다면 update x
-        if(total!= collage.getTotalQuantity()) {
+        if (total != collage.getTotalQuantity()) {
             //원래 0이었다면 false 였으니
-            if(collage.getTotalQuantity()==0)
+            if (collage.getTotalQuantity() == 0) {
                 collage.setEnabled(true);
+            }
 
             collage.setTotalParkingQuantity(total);
 
-            if(collage.getTotalQuantity()==0)
+            if (collage.getTotalQuantity() == 0) {
                 collage.setEnabled(false);
+            }
         }
-        
+
         return collage.getId();
     }
-
 
     /**
      * 주차장 정보 조회 시 , 해당 주차장 구역이 존재하는 지에 대한 여부
      */
-    private Integer parkingIsPresent(Map<String, Integer> parkingMap,String key){
+    private Integer parkingIsPresent(Map<String, Integer> parkingMap, String key) {
         Integer parkingQty = parkingMap.get(key);
 
-        if(parkingQty ==null)
+        if (parkingQty == null) {
             return 0;
+        }
         return parkingQty;
+    }
+
+    /**
+     * 예약 현황 정보 얻어오기
+     */
+    @Transactional(readOnly = true)
+    @Override
+    public List<ReserveWithUsernameDto> getReserveCondition(Long collageId) {
+        List<Reserve> reserves = reserveRepository.findAllReserve(collageId);
+        if (reserves.isEmpty()) {
+            return null;
+        }
+
+        return reserves.stream()
+                .map(ri -> new ReserveWithUsernameDto(ri))
+                .collect(Collectors.toList());
     }
 
 }

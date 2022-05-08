@@ -19,6 +19,10 @@
       font-weight:bold;
     }
 
+
+
+
+
     </style>
     <link rel="icon" th:href="@{/images/home.png}">
     <link rel="stylesheet" th:href="@{/css/register.css}">
@@ -68,25 +72,25 @@
         <div class="info kind">
             <b><br/>주차 구역 / 자리수</b>
             <div>
-                <label for="a">A 구역</label>
+                <label for="a">장애인 전용 구역</label>
                 <input id="a" placeholder="운영 가능한 자릿수를 입력하세요." th:field="*{a}" type="number">
             </div>
             <div class="field-error" th:errors="*{a}">
             </div>
             <div>
-                <label for="b">B 구역</label>
+                <label for="b">전기차 전용 구역</label>
                 <input id="b" placeholder="운영 가능한 자릿수를 입력하세요." th:field="*{b}" type="number">
             </div>
             <div class="field-error" th:errors="*{b}">
             </div>
             <div>
-                <label for="c">C 구역</label>
+                <label for="c">경차 전용 구역</label>
                 <input id="c" placeholder="운영 가능한 자릿수를 입력하세요." th:field="*{c}" type="number">
             </div>
             <div class="field-error" th:errors="*{c}">
             </div>
             <div>
-                <label for="d">D 구역</label>
+                <label for="d">어르신 우선 구역</label>
                 <input id="d" placeholder="운영 가능한 자릿수를 입력하세요." th:field="*{d}" type="number">
             </div>
             <div class="field-error" th:errors="*{d}">
@@ -123,6 +127,10 @@ document.getElementById("address").value = jibunAddr;
 }
 }).open();
 }
+
+
+
+
 
 
 

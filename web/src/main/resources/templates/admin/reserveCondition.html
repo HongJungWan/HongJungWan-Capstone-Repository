@@ -9,12 +9,13 @@
     <link rel="icon" th:href="@{/images/home.png}">
     <link rel="stylesheet" th:href="@{/css/adminlist.css}">
     <link rel="stylesheet" th:href="@{/css/navBar.css}">
-    <link rel="stylesheet" th:href="@{/css/custom.css}">
-    <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 
 <body>
-<header th:replace="~{fragment/header :: bar}"></header>
+<header th:replace="~{fragment/header :: bar}">
+
+</header>
+
 
 <table class="collage-List">
     <caption>예약 현황</caption>
@@ -22,23 +23,20 @@
         <th>주차장 명</th>
         <th>예약자</th>
         <th>주차 구역</th>
-        <th>예약일자</th>
-        <th>예약시간</th>
         <th>예약상태</th>
     </tr>
 
-    <tr style="cursor:pointer;" th:each="reserveItemCondition : ${reserveItemConditions}"
-        th:if="${reserveItemConditions!=null}">
-        <td th:text="${reserveItemCondition.collageName}"></td>
-        <td th:text="${reserveItemCondition.username}"></td>
-        <td th:text="${reserveItemCondition.parkingName}"></td>
-        <td th:text="${reserveItemCondition.reserveDate}"></td>
-        <td th:text="|${reserveItemCondition.reserveTime}시|"></td>
-        <td th:text="${reserveItemCondition.getReserveStatus().name()}"></td>
+    <tr style="cursor:pointer;" th:each="reserveCondition : ${reserveConditions}"
+        th:if="${reserveConditions!=null}">
+        <td th:text="${reserveCondition.collageName}"></td>
+        <td th:text="${reserveCondition.username}"></td>
+        <td th:text="${reserveCondition.parkingName}"></td>
+        <td th:text="${reserveCondition.getReserveStatus().name()}"></td>
     </tr>
-    <tr th:unless="${reserveItemConditions!=null}">
+    <tr th:unless="${reserveConditions!=null}">
         <td colspan="6"> 조회된 예약 없음</td>
     </tr>
+
 
 </table>
 </body>
