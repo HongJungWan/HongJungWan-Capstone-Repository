@@ -43,9 +43,13 @@ public class User {
     @Column(nullable = false)
     private Role role;
 
+    //0509 수정
+    @Column(nullable = false)
+    private String car_number;
+
     @Builder(builderMethodName = "createUser")
     public User(String id, String phonNumber, String password, String name,
-                Gender gender, Integer age, Role role) {
+                Gender gender, Integer age, Role role, String car_number) {
         this.id = id;
         this.phonNumber = phonNumber;
         this.password = password;
@@ -53,5 +57,6 @@ public class User {
         this.gender = gender;
         this.age = age;
         this.role = role;
+        this.car_number = car_number;
     }
 }

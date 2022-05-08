@@ -1,9 +1,9 @@
 package com.example.demo.domain.entity;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.AccessLevel;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -19,7 +19,7 @@ public class Car {
     @GeneratedValue
     private Long car_id;
 
-    @Column(name = "car_number", nullable =false)
+    @Column(name = "car_number", nullable = false)
     private String car_number;
 
     @OneToOne(fetch = FetchType.LAZY)
@@ -29,15 +29,15 @@ public class Car {
     @Type(type = "yes_no")
     private Boolean enabled = true;
 
-    public void setEnabled(boolean flag) {
-        this.enabled = flag;
+    @Builder(builderMethodName = "createCar")
+    public Car(String car_number, User user) {
+
+        this.car_number = car_number;
+        this.user = user;
     }
 
-    @Builder(builderMethodName = "createCar")
-    public Car( String car_number, User user) {
-
-        this.car_number=car_number;
-        this.user = user;
+    public void setEnabled(boolean flag) {
+        enabled = flag;
     }
 
 }

@@ -25,6 +25,7 @@ public class ReserveCustomRepositoryImpl implements ReserveCustomRepository {
                 .getResultList();
     }
 
+    //0508 애 건들여야 할듯
     @Override
     public List<Reserve> findAllReserve(Long collageId) {
         return em.createQuery(

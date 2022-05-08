@@ -20,8 +20,10 @@
 <table class="collage-List">
     <caption>예약 현황</caption>
     <tr>
-        <th>주차장 명</th>
+        <th>주차장</th>
+        <th>차량 번호</th>
         <th>예약자</th>
+        <th>연락처</th>
         <th>주차 구역</th>
         <th>예약상태</th>
     </tr>
@@ -29,7 +31,9 @@
     <tr style="cursor:pointer;" th:each="reserveCondition : ${reserveConditions}"
         th:if="${reserveConditions!=null}">
         <td th:text="${reserveCondition.collageName}"></td>
+        <td th:text="${reserveCondition.car_number}"></td>
         <td th:text="${reserveCondition.username}"></td>
+        <td th:text="${reserveCondition.phon_number}"></td>
         <td th:text="${reserveCondition.parkingName}"></td>
         <td th:text="${reserveCondition.getReserveStatus().name()}"></td>
     </tr>

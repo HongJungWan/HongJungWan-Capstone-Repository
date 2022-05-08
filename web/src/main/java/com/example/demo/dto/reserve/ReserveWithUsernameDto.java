@@ -19,12 +19,19 @@ public class ReserveWithUsernameDto {
 
     private ReserveStatus reserveStatus;
 
+    //0509 수정
+    private String phon_number;
+
+    private String car_number;
+
     public ReserveWithUsernameDto(Reserve reserve) {
         reserveId = reserve.getReserve_id();
         username = reserve.getUser().getName();
         collageName = reserve.getCollage().getCollageName();
         parkingName = reserve.getParkingName();
         reserveStatus = reserve.getStatus();
+        phon_number = reserve.getUser().getPhonNumber();
+        car_number = reserve.getUser().getCar_number();
     }
 
 }

@@ -34,6 +34,7 @@ public class Reserve {
     @Enumerated(value = EnumType.STRING)
     private ReserveStatus status = ReserveStatus.COMP;
 
+
     @Column(name = "parking_area_name", nullable = false)
     private String parkingName;
 

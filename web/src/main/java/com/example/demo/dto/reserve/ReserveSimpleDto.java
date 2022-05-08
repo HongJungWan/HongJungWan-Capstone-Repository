@@ -17,4 +17,5 @@ public class ReserveSimpleDto {
     private String parkingName;
 
     private ReserveStatus reserveStatus;
+
 }
