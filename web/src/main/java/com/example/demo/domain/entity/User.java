@@ -1,3 +1,6 @@
+/*
+ * 0509 매핑 완료
+ * */
 package com.example.demo.domain.entity;
 
 import com.example.demo.domain.value.Gender;
@@ -8,12 +11,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "user")
 @Getter
 public class User {
+
+    // 양방향 0509 수정
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private final List<Charge> charges = new ArrayList<>();
+
+    // 양방향 0509 추가
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private final List<Entry> entries = new ArrayList<>();
+
+    // 양방향 0509 추가
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private final List<Departure> departures = new ArrayList<>();
 
     @Column(name = "user_id")
     @Id

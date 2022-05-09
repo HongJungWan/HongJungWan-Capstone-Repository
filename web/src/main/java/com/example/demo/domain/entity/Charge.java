@@ -1,3 +1,4 @@
+/*0509 통과*/
 package com.example.demo.domain.entity;
 
 import lombok.AccessLevel;
@@ -24,21 +25,25 @@ public class Charge {
     @Column(name = "amount")
     private Integer amount;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "collage_id", nullable = false)
-    private Collage collage;
+    @Column(name = "deadline")
+    private String deadline;
 
-    // 양방향 연관관계 편의 메서드 0408
-    public void addCollage(Collage collage) {
-        this.collage = collage;
-        collage.getCharges().add(this);
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Builder(builderMethodName = "createCharge")
-    public Charge(String charge_name, Integer amount, Collage collage) {
+    public Charge(String charge_name, Integer amount, String deadline, User user) {
         this.charge_name = charge_name;
         this.amount = amount;
-        this.collage = collage;
+        this.deadline = deadline;
+        this.user = user;
+    }
+
+    // 양방향 연관관계 편의 메서드 0509
+    public void addUser(User user) {
+        this.user = user;
+        user.getCharges().add(this);
     }
 
 }

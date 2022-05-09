@@ -149,16 +149,16 @@ public class AdminController {
     private void makeParkingInfoMap(Integer a, Integer b, Integer c, Integer d, Map<String, Integer> parkingInfoMap) {
 
         if (a != null && a != 0) {
-            parkingInfoMap.put("A 구역", a); // A구역 이런식으로 아래도 싹다 바꿔야함
+            parkingInfoMap.put("장애인 전용 구역", a); // 0509 수정
         }
         if (b != null && b != 0) {
-            parkingInfoMap.put("B 구역", b);
+            parkingInfoMap.put("전기차 전용 구역", b);
         }
         if (c != null && c != 0) {
-            parkingInfoMap.put("C 구역", c);
+            parkingInfoMap.put("경차 전용 구역", c);
         }
         if (d != null && d != 0) {
-            parkingInfoMap.put("D 구역", d);
+            parkingInfoMap.put("어르신 우선 구역", d);
         }
     }
 

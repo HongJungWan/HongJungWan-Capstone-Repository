@@ -1,9 +1,13 @@
+/*
+ * 0509매핑 완료
+ * */
 package com.example.demo.domain.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.example.demo.domain.value.ReserveStatus;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -13,25 +17,26 @@ import javax.persistence.*;
 @Getter
 public class Purchase {
 
+    @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false)
+    private ReserveStatus status = ReserveStatus.COMP;
+
     @Column(name = "purchase_id")
     @Id
     @GeneratedValue
     private Long purchase_id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "charge_id", nullable = false)
-    private Charge charge;
+    @Column(name = "amount")
+    private Integer amount;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
+    @Column(name = "car_num", nullable = false)
+    private String car_num;
 
     @Builder(builderMethodName = "createPurchase")
-    public Purchase(Charge charge, User user) {
-
-        this.charge = charge;
-        this.user = user;
+    public Purchase(ReserveStatus status, Integer amount, String car_num) {
+        this.status = status;
+        this.amount = amount;
+        this.car_num = car_num;
     }
 
 }

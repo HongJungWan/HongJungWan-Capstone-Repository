@@ -1,5 +1,5 @@
 /*
- * 매핑 완료
+ * 0509 매핑 완료
  * */
 package com.example.demo.domain.entity;
 

@@ -1,6 +1,6 @@
 /*
-*  매핑 완료
-* */
+ *  0509 매핑 완료
+ * */
 
 package com.example.demo.domain.entity;
 
@@ -20,7 +20,8 @@ import java.util.List;
 @Getter
 public class Admin {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long admin_id;
 
     @Column(name = "id", nullable = false)
@@ -32,7 +33,7 @@ public class Admin {
 
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"admin"})
-    private List<Collage> collages = new ArrayList<>();
+    private final List<Collage> collages = new ArrayList<>();
 
     @Builder(builderMethodName = "createAdmin")
     public Admin(Long id, String name, String password) {

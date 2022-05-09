@@ -1,3 +1,4 @@
+/*0509 통과*/
 package com.example.demo.domain.entity;
 
 import lombok.AccessLevel;
