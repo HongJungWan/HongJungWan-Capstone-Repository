@@ -9,5 +9,5 @@ import lombok.Setter;
 public class CarSearch {
 
     private String userName; // 예약자 이름
-    private EnrollStatus enrollStatus; //등록 상태[ENROLL, CANCEL]
+    private EnrollStatus enrollStatus; // [register, unregister]
 }

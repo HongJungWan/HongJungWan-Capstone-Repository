@@ -25,7 +25,7 @@ public class Car {
     private User user;
 
     @Enumerated(EnumType.STRING)
-    private EnrollStatus status; // 등록상태 [ENROLL, CANCEL]
+    private EnrollStatus status; // 등록상태 [register, unregister]
 
     @Builder(builderMethodName = "createCar")
     public Car(String car_number, User user, EnrollStatus status) {
@@ -37,20 +37,20 @@ public class Car {
 
     //==비즈니스 로직==//
 
-    /**
-     * 등록 취소
-     */
-    public void cancel(Long carId) {
-
-        setStatus(EnrollStatus.CANCEL);
-    }
-
-    /**
-     * 등록
-     */
-    public void enroll(Long carId) {
-
-        setStatus(EnrollStatus.ENROLL);
-    }
+//    /**
+//     * 등록 취소
+//     */
+//    public void cancel(Long carId) {
+//
+//        setStatus(EnrollStatus.CANCEL);
+//    }
+//
+//    /**
+//     * 등록
+//     */
+//    public void enroll(Long carId) {
+//
+//        setStatus(EnrollStatus.ENROLL);
+//    }
 
 }

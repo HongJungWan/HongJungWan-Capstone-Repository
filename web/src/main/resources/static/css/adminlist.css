@@ -45,6 +45,22 @@ header .logout a:last-child {
   font-size: 30px;
   margin-bottom: 30px;
 }
+
+.car-List {
+  width: 900px;
+  background-color: #fff;
+  border-collapse: collapse;
+  box-shadow: 0 0 15px rgba(0,0,0,0.200);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top:10px;
+}
+.car-List caption:not(.search) {
+  font-family: 'SLEIGothicTTF';
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
 /* Search */
 caption.search{
   font-family: 'SLEIGothicTTF';
@@ -79,6 +95,23 @@ caption.search button{
 }
 /* 첫 줄 */
 .collage-List tr th{
+  background-color: dodgerblue;
+  color:#eee;
+}
+
+.car-List tr {
+  transition: 0.3s;
+}
+.car-List tr:hover {
+  background-color: #eee;
+}
+.car-List th,
+.car-List td {
+  padding: 12px;
+  text-align: center;
+}
+/* 첫 줄 */
+.car-List tr th{
   background-color: dodgerblue;
   color:#eee;
 }

@@ -174,16 +174,4 @@ public class AdminController {
         return "admin/carList";
     }
 
-    @PostMapping("/cars/{carId}/cancel")
-    public String cancelCar(@PathVariable("carId") Long carId) {
-        carService.cancelCar(carId);
-        return "redirect:/car/list";
-    }
-
-    @PostMapping("/cars/{carId}/enroll")
-    public String enrollCar(@PathVariable("carId") Long carId) {
-        carService.enrollCar(carId);
-        return "redirect:/car/list";
-    }
-
 }
