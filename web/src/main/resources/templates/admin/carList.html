@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>차량 목록</title>
+
+    <link rel="icon" th:href="@{/images/home.png}">
+    <link rel="stylesheet" th:href="@{/css/adminlist.css}">
+    <link rel="stylesheet" th:href="@{/css/navBar.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+
+</head>
+
+<body>
+<header th:replace="~{fragment/header :: bar}"></header>
+
+<div class="container">
+
+    <div>
+        <div>
+            <form class="form-inline" th:object="${carSearch}">
+                <div class="form-group mb-2">
+                    <input class="form-control" placeholder="이름" th:field="*{userName}" type="text"/>
+                </div>
+                <div class="form-group mx-sm-1 mb-2">
+                    <select class="form-control" th:field="*{enrollStatus}">
+                        <option value="">등록 상태</option>
+                        <option th:each="status : ${T(com.example.demo.domain.entity.EnrollStatus).values()}"
+                                th:text="${status}"
+                                th:value="${status}">option
+                        </option>
+                    </select>
+                </div>
+                <button class="btn btn-primary mb-2" type="submit">검색</button>
+            </form>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>이름</th>
+                <th>차량번호</th>
+                <th>상태</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="car : ${cars}">
+                <td th:text="${car.car_id}"></td>
+                <td th:text="${car.user.name}"></td>
+                <td th:text="${car.car_number}"></td>
+                <td th:text="${car.status}"></td>
+                <td>
+                    <a class="btn btn-danger" href="#" th:href="'javascript:cancel('+${car.car_id}+')'"
+                       th:if="${car.status.name() == 'ENROLL'}">CANCEL</a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div> <!-- /container -->
+
+</body>
+<script>
+    function cancel(id) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/cars/" + id + "/cancel");
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+</script>
+</html>

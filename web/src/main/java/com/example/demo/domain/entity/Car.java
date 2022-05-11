@@ -1,11 +1,7 @@
 /*0509 통과*/
 package com.example.demo.domain.entity;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,6 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "car")
 @Getter
+@Setter
 public class Car {
 
     @Column(name = "car_id")
@@ -27,18 +24,33 @@ public class Car {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Type(type = "yes_no")
-    private Boolean enabled = true;
+    @Enumerated(EnumType.STRING)
+    private EnrollStatus status; // 등록상태 [ENROLL, CANCEL]
 
     @Builder(builderMethodName = "createCar")
-    public Car(String car_number, User user) {
+    public Car(String car_number, User user, EnrollStatus status) {
 
         this.car_number = car_number;
         this.user = user;
+        this.status = status;
     }
 
-    public void setEnabled(boolean flag) {
-        enabled = flag;
+    //==비즈니스 로직==//
+
+    /**
+     * 등록 취소
+     */
+    public void cancel(Long carId) {
+
+        setStatus(EnrollStatus.CANCEL);
+    }
+
+    /**
+     * 등록
+     */
+    public void enroll(Long carId) {
+
+        setStatus(EnrollStatus.ENROLL);
     }
 
 }

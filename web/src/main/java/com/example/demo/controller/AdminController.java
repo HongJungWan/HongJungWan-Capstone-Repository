@@ -1,11 +1,14 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.domain.entity.Car;
 import com.example.demo.dto.collage.*;
 import com.example.demo.dto.reserve.ReserveWithUsernameDto;
 import com.example.demo.dto.security.PrincipalDetails;
+import com.example.demo.repository.CarSearch;
 import com.example.demo.service.admin.AdminService;
 import com.example.demo.service.admin.AdminServiceImpl;
+import com.example.demo.service.admin.CarService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +33,7 @@ public class AdminController {
 
     private final AdminService adminService;
     private final AdminServiceImpl adminServiceImpl;
+    private final CarService carService;
 
     /**
      * 주차장 이름으로 주차장 단건 조회
@@ -160,6 +164,26 @@ public class AdminController {
         if (d != null && d != 0) {
             parkingInfoMap.put("어르신 우선 구역", d);
         }
+    }
+
+    @GetMapping("/car/list")
+    public String carList(@ModelAttribute("carSearch") CarSearch carSearch, Model model) {
+        List<Car> cars = carService.findAll(carSearch);
+        model.addAttribute("cars", cars);
+
+        return "admin/carList";
+    }
+
+    @PostMapping("/cars/{carId}/cancel")
+    public String cancelCar(@PathVariable("carId") Long carId) {
+        carService.cancelCar(carId);
+        return "redirect:/car/list";
+    }
+
+    @PostMapping("/cars/{carId}/enroll")
+    public String enrollCar(@PathVariable("carId") Long carId) {
+        carService.enrollCar(carId);
+        return "redirect:/car/list";
     }
 
 }
