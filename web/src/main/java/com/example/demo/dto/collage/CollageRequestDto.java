@@ -33,7 +33,6 @@ public class CollageRequestDto {
     private String detailAddress;
 
 
-
     private List<String> parkingNames = new ArrayList<>();
 
     private List<Integer> parkingQuantities = new ArrayList<>();
@@ -47,17 +46,8 @@ public class CollageRequestDto {
     @NotNull(message = "운영 가능한 수를 입력해주세요.")
     private Integer d;
 
-    // 주차장 구역마다 운영 가능한 수를 달리하기 위해 Map 사용 (key:주차장 구역이름, value:잔여 좌석?)
+    // 주차장 구역마다 운영 가능한 수를 달리하기 위해 Map 사용 (key:주차장 구역이름, value:잔여 자리?)
     private Map<String, Integer> parkingInfoMap = new HashMap<>();
-
-    public Collage toCollageEntity() {
-        return Collage.createCollage()
-                .collageName(this.collageName)
-                .dateAccept(dateAccept)
-                .address(this.address)
-                .detailAddress(this.detailAddress)
-                .build();
-    }
 
     @Builder(builderMethodName = "createCollageRequestDto")
     public CollageRequestDto(String collageName, String address, Integer dateAccept,
@@ -73,6 +63,15 @@ public class CollageRequestDto {
         this.c = c;
         this.d = d;
 
+    }
+
+    public Collage toCollageEntity() {
+        return Collage.createCollage()
+                .collageName(collageName)
+                .dateAccept(dateAccept)
+                .address(address)
+                .detailAddress(detailAddress)
+                .build();
     }
 
 }

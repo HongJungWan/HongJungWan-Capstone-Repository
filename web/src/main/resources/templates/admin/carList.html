@@ -11,7 +11,6 @@
     <link rel="stylesheet" th:href="@{/css/navBar.css}">
     <link rel="stylesheet" th:href="@{/css/custom.css}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
-
 </head>
 
 <body>
@@ -42,7 +41,6 @@
         <th>차주</th>
         <th>차량 번호</th>
         <th>등록 상태</th>
-        <th>수정</th>
         <th></th>
     </tr>
     <tr style="cursor:pointer;" th:each="car : ${cars}">
@@ -50,14 +48,22 @@
         <td th:text="${car.user.name}"></td>
         <td th:text="${car.car_number}"></td>
         <td th:text="${car.status}"></td>
-        <td class="btn">
-            <button th:onclick="|location.href='@{/admin/car/{car.id} (car.id=${car.id})}'|">
-                등록 정보 수정
-            </button>
+        <td>
+            <a class="w-btn-outline" href="#" th:href="'javascript:cancel('+${car.id}+')'"
+               th:if="${car.status.name() == 'REGISTER'}">CANCEL</a>
+        </td>
         </td>
     </tr>
 </table>
 </div>
-<footer th:replace="~{fragment/footer :: footer}"></footer>
 </body>
+<script>
+    function cancel(car_id) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/admin/car/" + car_id + "/cancel");
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
 </html>

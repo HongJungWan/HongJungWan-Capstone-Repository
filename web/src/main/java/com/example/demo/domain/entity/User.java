@@ -5,19 +5,20 @@ package com.example.demo.domain.entity;
 
 import com.example.demo.domain.value.Gender;
 import com.example.demo.domain.value.Role;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
+
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "user")
 @Getter
+@Setter
 public class User {
 
     // 양방향 0509 수정
@@ -59,6 +60,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    // 0512 수정
+    @JsonIgnore
+    @OneToOne(mappedBy = "user", fetch = LAZY)
+    private Car car;
 
     //0509 수정
     @Column(nullable = false)

@@ -16,6 +16,13 @@
     vertical-align:top;
 }
 
+.w-btn-outline{
+   letter-spacing: 2px;
+   transform: scale(1.2);
+   cursor: pointer;
+   color: #64D2D2;
+}
+
 .field_custom .field_divide {
     display:table;
     height:40px;

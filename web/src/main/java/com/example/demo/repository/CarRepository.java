@@ -11,7 +11,6 @@ import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class CarRepository {
@@ -61,13 +60,16 @@ public class CarRepository {
         return QUser.user.name.like(userName);
     }
 
+    /**
+     * 차량 아이디로 주차장 정보 조회
+     */
     // 05-12 작성
-    public Optional<Car> findCarDetail(Long id) {
-        return Optional.of(em.createQuery(
-                "select distinct c from Car c " +
-                        "join fetch c.user u " +
-                        "where c.id= :id", Car.class)
-                .setParameter("id", id).getSingleResult());
-    }
+//    public Optional<Car> findCarDetail(Long id) {
+//        return Optional.of(em.createQuery(
+//                "select distinct c from Car c " +
+//                        "join fetch c.user u " +
+//                        "where c.id= :id", Car.class)
+//                .setParameter("id", id).getSingleResult());
+//    }
 
 }
