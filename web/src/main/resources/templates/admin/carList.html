@@ -46,12 +46,12 @@
         <th></th>
     </tr>
     <tr style="cursor:pointer;" th:each="car : ${cars}">
-        <td th:text="${car.car_id}"></td>
+        <td th:text="${car.id}"></td>
         <td th:text="${car.user.name}"></td>
         <td th:text="${car.car_number}"></td>
         <td th:text="${car.status}"></td>
         <td class="btn">
-            <button th:onclick="|location.href='@{/admin/car/{car.car_id} (car_id=${car.car_id})}'|">
+            <button th:onclick="|location.href='@{/admin/car/{car.id} (car.id=${car.id})}'|">
                 등록 정보 수정
             </button>
         </td>

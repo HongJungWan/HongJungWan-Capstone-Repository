@@ -18,14 +18,11 @@ public class CollageUpdateDto {
 
     private String collageName;
 
-    private String startDate;
-
-    private String endDate;
-
     @NotNull(message = "일일 최대 예약가능 차량을 입력해주세요.")
     private Integer dateAccept;
 
     private String address;
+
     private String detailAddress;
 
 
@@ -41,22 +38,12 @@ public class CollageUpdateDto {
     // 주차장 구역마다 남은 좌석 수를 달리하기 위해 Map 사용 (key:주차장 구역이름, value:잔여수령)
     private Map<String, Integer> parkingInfoMap = new HashMap<>();
 
-    public Collage toCollageEntity() {
-        return Collage.createCollage()
-                .collageName(this.collageName)
-                .address(this.address)
-                .detailAddress(this.detailAddress)
-                .build();
-    }
-
     @Builder(builderMethodName = "createCollageUpdateDto")
-    public CollageUpdateDto(Long id, String collageName, String startDate, String endDate, Integer dateAccept,
+    public CollageUpdateDto(Long id, String collageName, Integer dateAccept,
                             String address, String detailAddress, Integer a, Integer b, Integer c, Integer d) {
 
-        this.id=id;
+        this.id = id;
         this.collageName = collageName;
-        this.startDate = startDate;
-        this.endDate = endDate;
         this.dateAccept = dateAccept;
         this.address = address;
         this.detailAddress = detailAddress;
@@ -65,5 +52,13 @@ public class CollageUpdateDto {
         this.c = c;
         this.d = d;
 
+    }
+
+    public Collage toCollageEntity() {
+        return Collage.createCollage()
+                .collageName(collageName)
+                .address(address)
+                .detailAddress(detailAddress)
+                .build();
     }
 }
