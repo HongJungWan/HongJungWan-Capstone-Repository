@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>차량 등록 정보</title>
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css}">
+    <link rel="stylesheet" th:href="@{/css/navBar.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <script th:src="@{https://code.jquery.com/jquery-1.12.4.js}"></script>
+    <script th:src="@{https://code.jquery.com/ui/1.12.1/jquery-ui.js}"></script>
+    <style>
+    .field-error{
+      color:red;
+      font-weight:bold;
+    }
+
+
+
+
+    </style>
+    <link rel="icon" th:href="@{/images/home.png}">
+    <link rel="stylesheet" th:href="@{/css/collageDetail.css}">
+    <link rel="stylesheet" th:href="@{/css/navBar.css}">
+</head>
+
+<body>
+<header th:replace="~{fragment/header :: bar}"></header>
+<div class="register">
+    <h1 class="hR">차량 등록 정보 수정</h1>
+
+    <form method="post"
+          th:action="@{/admin/car/edit/{car_id} (car_id=${carUpdateDto.car_id})}"
+          th:object="${carUpdateDto}">
+
+        <div class="info">
+            <label fdr="carNumber"><b><br/>차량 번호</b></label>
+            <input disabled id="carNumber" th:field="*{carNumber}" type="text">
+            <div class="field-error" th:errors="*{carNumber}">
+            </div>
+        </div>
+
+        <div class="info">
+            <label><b><br/>등록 설정</b></label>
+            <input placeholder="(등록 / 미_등록) 등록 상태를 입력해주세요." th:field="*{status}" type="text">
+            <div class="field-error" th:errors="*{status}"></div>
+        </div>
+
+        <div><br/></div>
+
+        <input type="submit" value="수정">
+        <input th:onclick="|location.href='@{/admin/car/list}'|" type="button" value="취소">
+    </form>
+</div>
+</body>
+</html>

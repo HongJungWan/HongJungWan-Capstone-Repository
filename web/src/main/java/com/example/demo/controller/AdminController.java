@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 
 import com.example.demo.domain.entity.Car;
+import com.example.demo.dto.car.CarUpdateDto;
 import com.example.demo.dto.collage.*;
 import com.example.demo.dto.reserve.ReserveWithUsernameDto;
 import com.example.demo.dto.security.PrincipalDetails;
@@ -173,5 +174,35 @@ public class AdminController {
 
         return "admin/carList";
     }
+
+    /**
+     * 차량 상세정보 조회
+     */
+    @GetMapping("/car/{carId}")
+    public String carInfo(Model model, @PathVariable("carId") Long id) {
+
+        CarUpdateDto carUpdateDto = carService.getCar(id);
+        model.addAttribute("carUpdateDto", carUpdateDto);
+
+        return "admin/carDetail";
+    }
+
+    /**
+     * 차량 수정
+     */
+    @PostMapping("/car/" + "edit/{carId}")
+    public String carEdit(@PathVariable Long carId,
+                          @Validated @ModelAttribute CarUpdateDto carUpdateDto, BindingResult result)
+            throws ParseException {
+        if (result.hasErrors()) {
+            return "admin/carDetail";
+        }
+        carUpdateDto.setCar_id(carId);
+
+        carService.carUpdate(carUpdateDto);
+
+        return "redirect:/admin/car/list";
+    }
+
 
 }

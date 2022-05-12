@@ -1,8 +1,8 @@
 package com.example.demo.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
 
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@AllArgsConstructor
 public enum EnrollStatus {
     등록, 미_등록
 }

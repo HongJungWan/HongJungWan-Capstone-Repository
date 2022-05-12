@@ -29,28 +29,9 @@ public class Car {
 
     @Builder(builderMethodName = "createCar")
     public Car(String car_number, User user, EnrollStatus status) {
-
         this.car_number = car_number;
         this.user = user;
         this.status = status;
     }
-
-    //==비즈니스 로직==//
-
-//    /**
-//     * 등록 취소
-//     */
-//    public void cancel(Long carId) {
-//
-//        setStatus(EnrollStatus.CANCEL);
-//    }
-//
-//    /**
-//     * 등록
-//     */
-//    public void enroll(Long carId) {
-//
-//        setStatus(EnrollStatus.ENROLL);
-//    }
 
 }
