@@ -1,9 +1,6 @@
 package com.example.demo.service.admin;
 
-import com.example.demo.domain.entity.Admin;
-import com.example.demo.domain.entity.Collage;
-import com.example.demo.domain.entity.Parking;
-import com.example.demo.domain.entity.Reserve;
+import com.example.demo.domain.entity.*;
 import com.example.demo.dto.collage.*;
 import com.example.demo.dto.reserve.ReserveWithUsernameDto;
 import com.example.demo.repository.AdminRepository;
@@ -61,6 +58,19 @@ public class AdminServiceImpl implements AdminService {
 
     }
 
+    /**
+     * 주차장 등록 취소(히든)
+     */
+    @Transactional
+    public void cancelCollage(Long collageId) {
+
+        //등록 엔티티 조회
+        Collage collage = collageRepository.findOne(collageId);
+
+        //등록 취소
+        collage.hidden();
+    }
+    
 
     /**
      * 주차장이름으로 주차장 정보 얻어오기

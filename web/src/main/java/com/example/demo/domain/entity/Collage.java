@@ -69,6 +69,10 @@ public class Collage {
         admin.getCollages().add(this);
     }
 
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     public void cancel() {
         totalQuantity++;
     }
@@ -103,4 +107,14 @@ public class Collage {
         admin.getCollages().add(this);
     }
 
+    // 비즈니스 로직
+    /**
+     * 등록 취소
+     */
+    public void hidden() {
+
+        this.setEnabled(false);
+    }
+
+    
 }

@@ -194,4 +194,14 @@ public class AdminController {
         return "redirect:/admin/car/list";
     }
 
+    /**
+     * 주차장 등록 취소
+     */
+    @PostMapping("/collage/{collageId}/hidden")
+    public String cancelCollage(@PathVariable("collageId") Long collageId) {
+        adminServiceImpl.cancelCollage(collageId);
+
+        return "redirect:/admin/collage/list";
+    }
+    
 }

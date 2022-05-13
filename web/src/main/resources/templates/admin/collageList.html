@@ -11,7 +11,6 @@
     <link rel="stylesheet" th:href="@{/css/navBar.css}">
     <link rel="stylesheet" th:href="@{/css/custom.css}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
-
 </head>
 
 <body>
@@ -38,9 +37,10 @@
         <th>운영 가능 (정기권)</th>
         <th>상세 정보 / 수정</th>
         <th>예약 현황</th>
+        <th>삭제</th>
     </tr>
 
-    <tr style="cursor:pointer;" th:each="collage : ${collageList}" th:if="${collageList.size() > 0}">
+    <tr style="cursor:pointer;" th:each="collage : ${collageList}" th:if="${collage.enabled == true}">
         <td th:text="${collage.collageName}">한신대학교 중앙도서관 주차장</td>
         <td th:text="${collage.address}">경기 오산시 한신대133번길 5</td>
         <td th:text="${collage.qty}">20</td>
@@ -54,6 +54,10 @@
                 예약 현황
             </button>
         </td>
+        <td>
+            <a class="w-btn-outline" href="#" th:href="'javascript:hidden('+${collage.id}+')'"
+               th:if="${collage.enabled == true}">삭제</a>
+        </td>
     </tr>
     <tr th:unless="${collageList.size() > 0}">
         <td colspan="5"> 결과 없음</td>
@@ -61,4 +65,13 @@
 </table>
 <footer th:replace="~{fragment/footer :: footer}"></footer>
 </body>
+<script>
+    function hidden(collage_id) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/admin/collage/" + collage_id + "/hidden");
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
 </html>

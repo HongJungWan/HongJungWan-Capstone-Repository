@@ -22,12 +22,16 @@ public class CollageCustomRepositoryImpl implements CollageCustomRepository {
     @Override
     public List<CollageListDto> findAllCollageInfo(Long id) {
         return em.createQuery(
-                "select new com.example.demo.dto.collage.CollageListDto(h.id, h.collageName, h.address, h.totalQuantity) " +
+                "select new com.example.demo.dto.collage.CollageListDto(h.id, h.collageName, h.address, h.totalQuantity, h.enabled) " +
                         "from Collage h " +
                         "where h.admin.id = :id"
                 , CollageListDto.class).setParameter("id", id).getResultList();
     }
 
+    @Override
+    public Collage findOne(Long collageId) {
+        return em.find(Collage.class, collageId);
+    }
 
     /**
      * 주차장아이디로 주차장정보 조회

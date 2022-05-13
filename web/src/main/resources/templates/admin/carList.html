@@ -51,7 +51,7 @@
         <td>
             <a class="w-btn-outline" href="#" th:href="'javascript:cancel('+${car.id}+')'"
                th:if="${car.status.name() == '등록'}">등록 취소</a>
-            <a class="w-btn-outline" href="#" th:href="'javascript:register('+${car.id}+')'"
+            <a class="w-btn-danger" href="#" th:href="'javascript:register('+${car.id}+')'"
                th:if="${car.status.name() == '미_등록'}">등록</a>
         </td>
     </tr>

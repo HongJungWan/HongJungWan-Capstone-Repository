@@ -20,7 +20,19 @@
    letter-spacing: 2px;
    transform: scale(1.2);
    cursor: pointer;
+   color: #ff4040;
+}
+
+.w-btn-danger{
+   letter-spacing: 2px;
+   transform: scale(1.2);
+   cursor: pointer;
    color: #64D2D2;
+}
+
+.field-error{
+   color:red;
+   font-weight:bold;
 }
 
 .field_custom .field_divide {

@@ -10,6 +10,8 @@ import java.util.Optional;
 
 public interface CollageCustomRepository {
 
+    Collage findOne(Long collageId);
+
     List<CollageListDto> findAllCollageInfo(Long id);
 
     Optional<Collage> findCollageDetail(Long id);

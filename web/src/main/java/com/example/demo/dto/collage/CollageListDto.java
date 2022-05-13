@@ -14,4 +14,7 @@ public class CollageListDto {
     private String address;
 
     private Integer qty;
+
+    private Boolean enabled;
+
 }
