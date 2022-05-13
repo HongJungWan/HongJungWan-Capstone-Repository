@@ -1,5 +1,5 @@
 package com.example.demo.domain.entity;
 
 public enum EnrollStatus {
-    REGISTER, CANCEL
+    등록, 미_등록
 }

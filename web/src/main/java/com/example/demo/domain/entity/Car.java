@@ -47,7 +47,15 @@ public class Car {
      */
     public void cancel() {
 
-        this.setStatus(EnrollStatus.CANCEL);
+        this.setStatus(EnrollStatus.미_등록);
+    }
+
+    /**
+     * 등록
+     */
+    public void register() {
+
+        this.setStatus(EnrollStatus.등록);
     }
 
 }

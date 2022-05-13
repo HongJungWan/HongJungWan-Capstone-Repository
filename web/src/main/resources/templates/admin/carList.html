@@ -50,8 +50,9 @@
         <td th:text="${car.status}"></td>
         <td>
             <a class="w-btn-outline" href="#" th:href="'javascript:cancel('+${car.id}+')'"
-               th:if="${car.status.name() == 'REGISTER'}">CANCEL</a>
-        </td>
+               th:if="${car.status.name() == '등록'}">등록 취소</a>
+            <a class="w-btn-outline" href="#" th:href="'javascript:register('+${car.id}+')'"
+               th:if="${car.status.name() == '미_등록'}">등록</a>
         </td>
     </tr>
 </table>
@@ -62,6 +63,15 @@
         var form = document.createElement("form");
         form.setAttribute("method", "post");
         form.setAttribute("action", "/admin/car/" + car_id + "/cancel");
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
+<script>
+    function register(car_id) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/admin/car/" + car_id + "/register");
         document.body.appendChild(form);
         form.submit();
     }

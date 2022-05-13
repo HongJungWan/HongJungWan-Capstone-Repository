@@ -53,10 +53,25 @@ public class CarService {
      */
     @Transactional
     public void cancelCar(Long car_id) {
-        //주문 엔티티 조회
+
+        //등록 엔티티 조회
         Car car = carRepository.findOne(car_id);
-        //주문 취소
+
+        //등록 취소
         car.cancel();
+    }
+
+    /**
+     * 등록
+     */
+    @Transactional
+    public void registerCar(Long car_id) {
+
+        //등록 엔티티 조회
+        Car car = carRepository.findOne(car_id);
+
+        //등록
+        car.register();
     }
 
 }
