@@ -25,14 +25,6 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private final List<Charge> charges = new ArrayList<>();
 
-    // 양방향 0509 추가
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private final List<Entry> entries = new ArrayList<>();
-
-    // 양방향 0509 추가
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private final List<Departure> departures = new ArrayList<>();
-
     @Column(name = "user_id")
     @Id
     @GeneratedValue
@@ -82,4 +74,5 @@ public class User {
         this.role = role;
         this.car_number = car_number;
     }
+
 }

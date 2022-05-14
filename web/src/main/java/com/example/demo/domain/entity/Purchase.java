@@ -32,11 +32,20 @@ public class Purchase {
     @Column(name = "car_num", nullable = false)
     private String car_num;
 
+    @Column(name = "entry", nullable = false)
+    private String entry;
+
+    @Column(name = "departure", nullable = false)
+    private String departure;
+
+
     @Builder(builderMethodName = "createPurchase")
-    public Purchase(ReserveStatus status, Integer amount, String car_num) {
+    public Purchase(ReserveStatus status, Integer amount, String car_num, String entry, String departure) {
         this.status = status;
         this.amount = amount;
         this.car_num = car_num;
+        this.entry = entry;
+        this.departure = departure;
     }
 
 }
