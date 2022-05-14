@@ -116,5 +116,4 @@ public class Collage {
         this.setEnabled(false);
     }
 
-    
 }

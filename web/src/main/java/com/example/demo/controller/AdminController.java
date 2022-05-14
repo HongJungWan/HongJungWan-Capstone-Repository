@@ -195,7 +195,7 @@ public class AdminController {
     }
 
     /**
-     * 주차장 등록 취소
+     * 주차장 등록 취소(hidden)
      */
     @PostMapping("/collage/{collageId}/hidden")
     public String cancelCollage(@PathVariable("collageId") Long collageId) {
