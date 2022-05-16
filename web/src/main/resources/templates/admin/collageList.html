@@ -40,7 +40,7 @@
         <th>삭제</th>
     </tr>
 
-    <tr style="cursor:pointer;" th:each="collage : ${collageList}" th:if="${collage.enabled == true}">
+    <tr style="cursor:pointer;" th:each="collage : ${collageList}" th:if="${collage.enabled == true} and ${collageList.size() > 0}">
         <td th:text="${collage.collageName}">한신대학교 중앙도서관 주차장</td>
         <td th:text="${collage.address}">경기 오산시 한신대133번길 5</td>
         <td th:text="${collage.qty}">20</td>

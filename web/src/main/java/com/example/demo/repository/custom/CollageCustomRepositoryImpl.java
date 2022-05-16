@@ -76,12 +76,12 @@ public class CollageCustomRepositoryImpl implements CollageCustomRepository {
     }
 
     /**
-     * 주소, admin으로 주차장 조회
+     * 주소로, admin으로 주차장 조회
      */
     @Override
     public List<CollageListDto> findCollageListByAddressAndAdmin(@Param("address") String address, Long adminId) {
         return em.createQuery(
-                "select new com.example.demo.dto.collage.CollageListDto(h.id, h.collageName, h.address, h.totalQuantity) " +
+                "select new com.example.demo.dto.collage.CollageListDto(h.id, h.collageName, h.address, h.totalQuantity, h.enabled) " +
                         "from Collage h " +
                         "where h.admin.id= :adminId and h.address like '%'||:address||'%'", CollageListDto.class)
                 .setParameter("address", address)

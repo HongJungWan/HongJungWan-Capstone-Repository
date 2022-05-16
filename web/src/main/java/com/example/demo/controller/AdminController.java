@@ -53,6 +53,7 @@ public class AdminController {
     @GetMapping("/collage/add")
     public String collageForm(Model model) {
         model.addAttribute("collageRequestDto", new CollageRequestDto());
+
         return "admin/collageRegister";
     }
 
@@ -64,6 +65,7 @@ public class AdminController {
     public List<CollageSimpleInfoDto> asd(Authentication authentication) {
         PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
         List<CollageSimpleInfoDto> collages = adminService.getAllSimpleCollageInfo(principal.getName());
+
         return collages;
     }
 
