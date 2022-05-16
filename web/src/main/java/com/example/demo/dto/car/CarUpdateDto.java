@@ -1,7 +1,7 @@
 package com.example.demo.dto.car;
 
 import com.example.demo.domain.entity.Car;
-import com.example.demo.domain.entity.EnrollStatus;
+import com.example.demo.domain.value.EnrollStatus;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;

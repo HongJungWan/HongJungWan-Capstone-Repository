@@ -1,6 +1,7 @@
 /*0509 통과*/
 package com.example.demo.domain.entity;
 
+import com.example.demo.domain.value.EnrollStatus;
 import lombok.*;
 
 import javax.persistence.*;

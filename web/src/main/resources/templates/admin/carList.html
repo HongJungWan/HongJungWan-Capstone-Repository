@@ -27,7 +27,7 @@
                     <div>&nbsp;</div>
                     <select class="form-control" th:field="*{enrollStatus}">
                         <option value=""> 전체보기</option>
-                        <option th:each="status : ${T(com.example.demo.domain.entity.EnrollStatus).values()}"
+                        <option th:each="status : ${T(com.example.demo.domain.value.EnrollStatus).values()}"
                                 th:text="${status}"
                                 th:value="${status}">option
                         </option>

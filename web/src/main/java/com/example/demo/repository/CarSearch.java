@@ -1,6 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.domain.entity.EnrollStatus;
+import com.example.demo.domain.value.EnrollStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,5 +9,5 @@ import lombok.Setter;
 public class CarSearch {
 
     private String userName; // 예약자 이름
-    private EnrollStatus enrollStatus; // [register, unregister]
+    private EnrollStatus enrollStatus; // [등록, 미_등록]
 }

@@ -1,7 +1,7 @@
 package com.example.demo.repository;
 
 import com.example.demo.domain.entity.Car;
-import com.example.demo.domain.entity.EnrollStatus;
+import com.example.demo.domain.value.EnrollStatus;
 import com.example.demo.domain.entity.QCar;
 import com.example.demo.domain.entity.QUser;
 import com.querydsl.core.types.dsl.BooleanExpression;
