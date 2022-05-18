@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>주차장 목록</title>
+
+    <link rel="icon" th:href="@{/images/computer.png}">
+    <link rel="stylesheet" th:href="@{/css/adminlist.css}">
+    <link rel="stylesheet" th:href="@{/css/navBar.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+
+<body>
+<header th:replace="~{fragment/header :: bar}"></header>
+
+<table class="college-List">
+    <caption>주차장 목록</caption>
+    <caption class="search">
+        <div>
+            <form method="get" th:action="@{/admin/college/list}">
+                <label for="addressSearch">주소검색 </label>
+                <input id="addressSearch" name="addressSearch" type="text">
+                <button type="submit">검색</button>
+            </form>
+
+            <button th:onclick="|location.href='@{/admin/college/list}'|">
+                전체보기
+            </button>
+        </div>
+    </caption>
+    <tr>
+        <th>주차장 명</th>
+        <th>주소</th>
+        <th>운영 가능 (정기권)</th>
+        <th>상세 정보 / 수정</th>
+        <th>예약 현황</th>
+        <th>삭제</th>
+    </tr>
+
+    <tr style="cursor:pointer;" th:each="college : ${collegeList}" th:if="${college.enabled == true} and ${collegeList.size() > 0}">
+        <td th:text="${college.collegeName}">한신대학교 중앙도서관 주차장</td>
+        <td th:text="${college.address}">경기 오산시 한신대133번길 5</td>
+        <td th:text="${college.qty}">20</td>
+        <td class="btn">
+            <button th:onclick="|location.href='@{/admin/college/{collegeId} (collegeId=${college.id})}'|">
+                상세 정보 및 수정
+            </button>
+        </td>
+        <td class="btn">
+            <button th:onclick="|location.href='@{/admin/college/reserves/{collegeId} (collegeId=${college.id})}'|">
+                예약 현황
+            </button>
+        </td>
+        <td>
+            <a class="w-btn-outline" href="#" th:href="'javascript:hidden('+${college.id}+')'"
+               th:if="${college.enabled == true}">삭제</a>
+        </td>
+    </tr>
+    <tr th:unless="${collegeList.size() > 0}">
+        <td colspan="5"> 결과 없음</td>
+    </tr>
+</table>
+<footer th:replace="~{fragment/footer :: footer}"></footer>
+</body>
+<script>
+    function hidden(college_id) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/admin/college/" + college_id + "/hidden");
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
+</html>

@@ -4,7 +4,7 @@ import com.example.demo.domain.entity.Car;
 import com.example.demo.domain.entity.QCar;
 import com.example.demo.domain.entity.QUser;
 import com.example.demo.domain.value.EnrollStatus;
-import com.example.demo.repository.CarSearch;
+import com.example.demo.domain.value.CarSearch;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.stereotype.Repository;

@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface ReserveRepository extends JpaRepository<Reserve, Long>, ReserveCustomRepository {
 
     //0508 수정, 이 Query 안쓰는데 혹시 모르니까 냅두기, 나중에 써먹게
-    @Query("select new com.example.demo.dto.reserve.ReserveSimpleDto(ri.id, ri.Collage.collageName, ri.parkingName, ri.status) " +
+    @Query("select new com.example.demo.dto.reserve.ReserveSimpleDto(ri.id, ri.College.collegeName, ri.parkingName, ri.status) " +
             "from Reserve ri " +
             "where ri.user.id = :userId")
     Optional<ReserveSimpleDto> findByUserId(Long userId);

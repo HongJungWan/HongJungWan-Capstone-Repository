@@ -1,7 +1,7 @@
 package com.example.demo.repository.custom;
 
 import com.example.demo.domain.entity.Car;
-import com.example.demo.repository.CarSearch;
+import com.example.demo.domain.value.CarSearch;
 
 import java.util.List;
 

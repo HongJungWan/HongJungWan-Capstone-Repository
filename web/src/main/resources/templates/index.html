@@ -29,8 +29,8 @@
     <!-- Admin 관리 -->
     <div class="init reserve" sec:authorize="isAuthenticated()">
         <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/car/list}">차량<span> 관리 </span></a>
-        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/collage/add}">주차장<span> 등록 </span></a>
-        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/collage/list}">주차장<span> 목록 </span></a>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/college/add}">주차장<span> 등록 </span></a>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/college/list}">주차장<span> 목록 </span></a>
     </div>
 </div>
 <footer th:replace="~{fragment/footer :: footer}"></footer>

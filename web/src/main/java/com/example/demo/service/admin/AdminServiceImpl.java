@@ -1,10 +1,10 @@
 package com.example.demo.service.admin;
 
 import com.example.demo.domain.entity.*;
-import com.example.demo.dto.collage.*;
+import com.example.demo.dto.college.*;
 import com.example.demo.dto.reserve.ReserveWithUsernameDto;
 import com.example.demo.repository.AdminRepository;
-import com.example.demo.repository.CollageRepository;
+import com.example.demo.repository.CollegeRepository;
 import com.example.demo.repository.ReserveRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Service
 public class AdminServiceImpl implements AdminService {
 
-    private final CollageRepository collageRepository;
+    private final CollegeRepository collegeRepository;
     private final AdminRepository adminRepository;
     private final ReserveRepository reserveRepository;
 
@@ -29,32 +29,32 @@ public class AdminServiceImpl implements AdminService {
      */
     @Transactional
     @Override
-    public Long addCollage(CollageRequestDto collageRequestDto, String adminName) throws Exception {
+    public Long addCollege(CollegeRequestDto collegeRequestDto, String adminName) throws Exception {
 
         // 주차장 엔티티 생성
-        Collage collage = collageRequestDto.toCollageEntity();
+        College college = collegeRequestDto.toCollegeEntity();
         /**
          * 현재 Authentication 객체로부터 받은 adminName을 등록하는 주차장의 admin으로 설정하는 방식
          */
         Admin admin = adminRepository.findByName(adminName).get();
-        collage.setAdmin(admin);
+        college.setAdmin(admin);
         // 총 주차장 구역 가용 수량 (구역 상관X)
         Integer total = 0;
         // 주차장 구역 엔티티 생성 및 주차장 엔티티에 add
-        Map<String, Integer> parkingInfoMap = collageRequestDto.getParkingInfoMap();
+        Map<String, Integer> parkingInfoMap = collegeRequestDto.getParkingInfoMap();
         for (String key : parkingInfoMap.keySet()) {
             Parking parking = Parking.createParking()
                     .parkingName(key)
                     .quantity(parkingInfoMap.get(key))
                     .build();
-            parking.addCollage(collage);
+            parking.addCollege(college);
             total += parkingInfoMap.get(key);
         }
-        collage.setTotalParkingQuantity(total);
+        college.setTotalParkingQuantity(total);
 
-        Collage savedCollage = collageRepository.save(collage);
+        College savedCollege = collegeRepository.save(college);
 
-        return savedCollage.getId();
+        return savedCollege.getId();
 
     }
 
@@ -62,13 +62,13 @@ public class AdminServiceImpl implements AdminService {
      * 주차장 등록 취소(히든)
      */
     @Transactional
-    public void cancelCollage(Long collageId) {
+    public void cancelCollege(Long collegeId) {
 
         //등록 엔티티 조회
-        Collage collage = collageRepository.findOne(collageId);
+        College college = collegeRepository.findOne(collegeId);
 
         //등록 취소
-        collage.hidden();
+        college.hidden();
     }
     
 
@@ -77,12 +77,12 @@ public class AdminServiceImpl implements AdminService {
      */
     @Transactional(readOnly = true)
     @Override
-    public CollageResponseDto getCollageInfo(String collageName) {
-        Collage findCollage = collageRepository.findByCollageName(collageName)
+    public CollegeResponseDto getCollegeInfo(String collegeName) {
+        College findCollege = collegeRepository.findByCollegeName(collegeName)
                 .orElseThrow(() -> {
                     throw new IllegalArgumentException("존재하지 않는 주차장입니다.");
                 });
-        List<Parking> parkings = findCollage.getParkings();
+        List<Parking> parkings = findCollege.getParkings();
         Map<String, Integer> map = new HashMap<>();
         for (Parking parking : parkings) {
             map.put(parking.getParkingName(), parking.getQuantity());
@@ -96,30 +96,30 @@ public class AdminServiceImpl implements AdminService {
      * 어드민이 관리하는 주차장 리스트를 보여주기 위한 메서드
      */
     @Override
-    public List<CollageSimpleInfoDto> getAllSimpleCollageInfo(String name) {
+    public List<CollegeSimpleInfoDto> getAllSimpleCollegeInfo(String name) {
         Admin admin = adminRepository.findByName(name).get();
-        return collageRepository.findAllByAdmin(admin);
+        return collegeRepository.findAllByAdmin(admin);
     }
 
     @Override
-    public List<CollageListDto> getCollageList(String name, String address) {
+    public List<CollegeListDto> getCollegeList(String name, String address) {
         Admin admin = adminRepository.findByName(name).get();
         if (address.equals("noSearch")) {
-            return collageRepository.findAllCollageInfo(admin.getId());
+            return collegeRepository.findAllCollegeInfo(admin.getId());
         }
 
-        return collageRepository.findCollageListByAddressAndAdmin(address, admin.getId());
+        return collegeRepository.findCollegeListByAddressAndAdmin(address, admin.getId());
     }
 
     /**
      * 주차장 상세 정보 조회 후 dto로 변환
      */
     @Override
-    public CollageUpdateDto getCollage(Long id) {
-        Optional<Collage> collageDetail = collageRepository.findCollageDetail(id);
-        Collage collage = collageDetail.stream().findFirst().orElse(null);
+    public CollegeUpdateDto getCollege(Long id) {
+        Optional<College> collegeDetail = collegeRepository.findCollegeDetail(id);
+        College college = collegeDetail.stream().findFirst().orElse(null);
 
-        List<Parking> parkings = collage.getParkings();
+        List<Parking> parkings = college.getParkings();
 
         Map<String, Integer> parkingMap = new HashMap<>();
 
@@ -127,12 +127,12 @@ public class AdminServiceImpl implements AdminService {
             parkingMap.put(parking.getParkingName(), parking.getQuantity());
         }
 
-        return CollageUpdateDto.createCollageUpdateDto()
-                .id(collage.getId())
-                .collageName(collage.getCollageName())
-                .address(collage.getAddress())
-                .detailAddress(collage.getDetailAddress())
-                .dateAccept(collage.getDateAccept())
+        return CollegeUpdateDto.createCollegeUpdateDto()
+                .id(college.getId())
+                .collegeName(college.getCollegeName())
+                .address(college.getAddress())
+                .detailAddress(college.getDetailAddress())
+                .dateAccept(college.getDateAccept())
                 .a(parkingIsPresent(parkingMap, "A 구역"))
                 .b(parkingIsPresent(parkingMap, "B 구역"))
                 .c(parkingIsPresent(parkingMap, "C 구역"))
@@ -142,12 +142,12 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     @Transactional
-    public Long collageUpdate(CollageUpdateDto dto) throws ParseException {
-        Optional<Collage> collageDetail = collageRepository.findCollageDetail(dto.getId());
-        Collage collage = collageDetail.stream().findFirst().orElse(null);
+    public Long collegeUpdate(CollegeUpdateDto dto) throws ParseException {
+        Optional<College> collegeDetail = collegeRepository.findCollegeDetail(dto.getId());
+        College college = collegeDetail.stream().findFirst().orElse(null);
 
         //수정 목록
-        List<Parking> parkings = collage.getParkings();
+        List<Parking> parkings = college.getParkings();
 
         //==주차장 구역 수정==//
         Map<String, Integer> parkingInfoMap = dto.getParkingInfoMap();
@@ -168,7 +168,7 @@ public class AdminServiceImpl implements AdminService {
                         .parkingName(key)
                         .quantity(parkingInfoMap.get(key))
                         .build();
-                aditionalParking.addCollage(collage);
+                aditionalParking.addCollege(college);
             }
             // 기존의 주차장 구역에서 가용 수량이 바뀌었는지 확인
             else {
@@ -198,20 +198,20 @@ public class AdminServiceImpl implements AdminService {
         }
 
         //총 가용 수량의 합이 같다면 update x
-        if (total != collage.getTotalQuantity()) {
+        if (total != college.getTotalQuantity()) {
             //원래 0이었다면 false 였으니
-            if (collage.getTotalQuantity() == 0) {
-                collage.setEnabled(true);
+            if (college.getTotalQuantity() == 0) {
+                college.setEnabled(true);
             }
 
-            collage.setTotalParkingQuantity(total);
+            college.setTotalParkingQuantity(total);
 
-            if (collage.getTotalQuantity() == 0) {
-                collage.setEnabled(false);
+            if (college.getTotalQuantity() == 0) {
+                college.setEnabled(false);
             }
         }
 
-        return collage.getId();
+        return college.getId();
     }
 
     /**
@@ -231,8 +231,8 @@ public class AdminServiceImpl implements AdminService {
      */
     @Transactional(readOnly = true)
     @Override
-    public List<ReserveWithUsernameDto> getReserveCondition(Long collageId) {
-        List<Reserve> reserves = reserveRepository.findAllReserve(collageId);
+    public List<ReserveWithUsernameDto> getReserveCondition(Long collegeId) {
+        List<Reserve> reserves = reserveRepository.findAllReserve(collegeId);
         if (reserves.isEmpty()) {
             return null;
         }

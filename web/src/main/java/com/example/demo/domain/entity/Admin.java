@@ -33,7 +33,7 @@ public class Admin {
 
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"admin"})
-    private final List<Collage> collages = new ArrayList<>();
+    private final List<College> colleges = new ArrayList<>();
 
     @Builder(builderMethodName = "createAdmin")
     public Admin(Long id, String name, String password) {

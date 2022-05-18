@@ -28,8 +28,8 @@ public class Reserve {
     private User user;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "collage_id")
-    private Collage Collage;
+    @JoinColumn(name = "college_id")
+    private College College;
 
     @Enumerated(value = EnumType.STRING)
     private ReserveStatus status = ReserveStatus.COMP;
@@ -40,9 +40,9 @@ public class Reserve {
 
     @Builder(builderMethodName = "createReserve")
     public Reserve(
-            User user, Collage Collage, ReserveStatus status, String parkingName) {
+            User user, College College, ReserveStatus status, String parkingName) {
         this.user = user;
-        this.Collage = Collage;
+        this.College = College;
         this.status = status;
         this.parkingName = parkingName;
 

@@ -30,8 +30,8 @@ public class Parking {
     private Integer quantity;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "collage_id")
-    private Collage collage;
+    @JoinColumn(name = "college_id")
+    private College college;
 
     @Type(type = "yes_no")
     @Column(nullable = false)
@@ -54,9 +54,9 @@ public class Parking {
     }
 
     // 연관관계 편의 메서드
-    public void addCollage(Collage collage) {
-        this.collage = collage;
-        collage.getParkings().add(this);
+    public void addCollege(College college) {
+        this.college = college;
+        college.getParkings().add(this);
     }
 
     //==비즈니스 로직==//

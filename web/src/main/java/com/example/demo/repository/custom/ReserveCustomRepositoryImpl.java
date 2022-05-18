@@ -15,26 +15,26 @@ public class ReserveCustomRepositoryImpl implements ReserveCustomRepository {
     private final EntityManager em;
 
     @Override
-    public List<Parking> findAvailableParkings(Long collageId) {
+    public List<Parking> findAvailableParkings(Long collegeId) {
         return em.createQuery(
                 "select v " +
                         "from Parking v " +
-                        "where v.collage.id = :collageId and v.quantity > 0 and v.enabled = true", Parking.class
+                        "where v.college.id = :collegeId and v.quantity > 0 and v.enabled = true", Parking.class
         )
-                .setParameter("collageId", collageId)
+                .setParameter("collegeId", collegeId)
                 .getResultList();
     }
 
     //0508 애 건들여야 할듯
     @Override
-    public List<Reserve> findAllReserve(Long collageId) {
+    public List<Reserve> findAllReserve(Long collegeId) {
         return em.createQuery(
                 "select distinct ri " +
                         "from Reserve ri " +
                         "join fetch ri.user u " +
-                        "where ri.Collage.id = :collageId"
+                        "where ri.College.id = :collegeId"
                 , Reserve.class)
-                .setParameter("collageId", collageId)
+                .setParameter("collegeId", collegeId)
                 .getResultList();
     }
 }

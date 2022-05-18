@@ -13,7 +13,7 @@ public class ReserveWithUsernameDto {
 
     private String username;
 
-    private String collageName;
+    private String collegeName;
 
     private String parkingName;
 
@@ -27,7 +27,7 @@ public class ReserveWithUsernameDto {
     public ReserveWithUsernameDto(Reserve reserve) {
         reserveId = reserve.getReserve_id();
         username = reserve.getUser().getName();
-        collageName = reserve.getCollage().getCollageName();
+        collegeName = reserve.getCollege().getCollegeName();
         parkingName = reserve.getParkingName();
         reserveStatus = reserve.getStatus();
         phon_number = reserve.getUser().getPhonNumber();
