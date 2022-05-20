@@ -2,26 +2,33 @@
 <html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>관리자 인증</title>
+    <title>인증 및 예약</title>
     <link rel="icon" th:href="@{/images/computer.png}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <link rel="stylesheet" th:href="@{/css/navBar.css}">
-    <link rel="stylesheet" th:href="@{/css/custom.css}">
 </head>
 
 <body>
 <header th:replace="~{fragment/header :: bar}"></header>
-<img src="images/home-bg.jpg">
+
 <div class="frame">
     <!-- 본인 인증 -->
     <div class="init check" sec:authorize="!isAuthenticated()">
-        <h1> 주차 통합 솔루션 </h1>
+        <h1> 예약 </h1>
+
         <div class="sns-info">
             <div class="sns">
-                <div>
-                    <a data-text="Login" th:href="@{/adminLogin}"><i class="xi-car"></i></a>
-                    <!-- 여기 관리자 로고로 바꾸고 넘겨주면 될듯 -->
-                </div>
+                <a data-text="User" th:href="@{/userLogin}"><i class="xi-car"></i></a>
+            </div>
+        </div>
+    </div>
+    <img src="images/reserved.png">
+    <div class="init check" sec:authorize="!isAuthenticated()">
+        <h1> 관리자 </h1>
+
+        <div class="sns-info">
+            <div class="sns">
+                <a data-text="Admin" th:href="@{/adminLogin}"><i class="xi-user"></i></a>
             </div>
         </div>
     </div>
