@@ -8,4 +8,6 @@ import java.util.List;
 public interface CarCustomRepository {
 
     List<Car> findAll(CarSearch carSearch);
+
+    Car findOne(Long id);
 }

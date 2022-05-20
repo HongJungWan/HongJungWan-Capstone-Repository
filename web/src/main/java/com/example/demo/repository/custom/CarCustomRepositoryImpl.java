@@ -27,7 +27,6 @@ public class CarCustomRepositoryImpl implements CarCustomRepository{
         em.persist(car);
     }
 
-
     public Car findOne(Long id) {
         return em.find(Car.class, id);
     }
