@@ -19,7 +19,7 @@ import javax.persistence.*;
 public class Parking {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "parking_area_id")
     private Long id;
 

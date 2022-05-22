@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +22,9 @@ import static javax.persistence.FetchType.LAZY;
 @Setter
 public class User {
 
-    // 양방향 0509 수정
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private final List<Charge> charges = new ArrayList<>();
-
     @Column(name = "user_id")
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_id;
 
     @Column(nullable = false)
@@ -52,6 +49,10 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    // 양방향 0509 수정
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private final List<Charge> charges = new ArrayList<>();
 
     // 0512 수정
     @JsonIgnore

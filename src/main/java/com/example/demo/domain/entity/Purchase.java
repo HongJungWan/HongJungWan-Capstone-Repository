@@ -17,13 +17,9 @@ import javax.persistence.*;
 @Getter
 public class Purchase {
 
-    @Enumerated(value = EnumType.STRING)
-    @Column(nullable = false)
-    private ReserveStatus status = ReserveStatus.COMP;
-
     @Column(name = "purchase_id")
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long purchase_id;
 
     @Column(name = "amount")
@@ -38,6 +34,9 @@ public class Purchase {
     @Column(name = "departure", nullable = false)
     private String departure;
 
+    @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false)
+    private ReserveStatus status = ReserveStatus.COMP;
 
     @Builder(builderMethodName = "createPurchase")
     public Purchase(ReserveStatus status, Integer amount, String car_num, String entry, String departure) {

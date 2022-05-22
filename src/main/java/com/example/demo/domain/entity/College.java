@@ -22,13 +22,8 @@ import java.util.List;
 @Getter
 public class College {
 
-    // 0509 수정, JPA 영속성 전이, 삭제 안먹어서 PERSIST 에서 ALL로 수정
-    @OneToMany(mappedBy = "college", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnoreProperties({"college"})
-    private final List<Parking> parkings = new ArrayList<>();
-
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "college_id")
     private Long id;
 
@@ -54,6 +49,11 @@ public class College {
     // true: y, false: n
     @Type(type = "yes_no")
     private Boolean enabled = true; // 예약 가능 여부
+
+    // 0509 수정, JPA 영속성 전이, 삭제 안먹어서 PERSIST 에서 ALL로 수정
+    @OneToMany(mappedBy = "college", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties({"college"})
+    private final List<Parking> parkings = new ArrayList<>();
 
     @Builder(builderMethodName = "createCollege")
     public College(String collegeName, String address, String detailAddress, Integer dateAccept) {
