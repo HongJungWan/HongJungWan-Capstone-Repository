@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -37,9 +37,11 @@
         </div>
 
         <div class="info-address">
-            <label for="address"><b><br/>주차장 주소</b></label>
-            <input id="address" readonly th:field="*{address}" type="text">
-            <input onclick="findAddr()" type="button" value="주소 검색">
+            <label fdr="address"><b><br/>주차장 주소</b></label>
+            <div>
+                <input id="address" readonly th:field="*{address}" type="text">
+                <input onclick="findAddr()" type="button" value="주소 검색">
+            </div>
             <div class="field-error" th:errors="*{address}">
             </div>
         </div>
@@ -55,9 +57,7 @@
             <b><br/>최대 운영 가능 자리수</b>
             <div>
                 <label>정기권</label>
-                <label>
-                    <input placeholder="운영 가능한 자릿수를 입력하세요." th:field="*{dateAccept}" type="number">
-                </label>
+                <input placeholder="운영 가능한 자릿수를 입력하세요." th:field="*{dateAccept}" type="number">
             </div>
             <div class="field-error" th:errors="*{dateAccept}">
             </div>

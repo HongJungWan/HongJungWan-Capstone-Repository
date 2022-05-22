@@ -32,7 +32,9 @@ input, select {
 /* register 폼 CSS*/
 .register {
   width: 460px;
-  margin: 100px auto 40px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 40px;
 }
 .register .hR{
   color: dodgerblue;
@@ -47,6 +49,21 @@ input, select {
   margin-bottom: 5px;
 }
 
+/* 날짜 */
+.info.date div ,
+.info-btns {
+  display: flex;
+  gap:15px;
+}
+.info.date input {
+  flex: 1;
+  background: url(/Front/images/date_1.PNG) no-repeat center right 10px;
+}
+.info.date div b {
+  display: inline-block;
+  line-height: 21px;
+  margin-top: 15px;
+}
 
 /* 주차 구역 종류 */
 .info.kind b,
