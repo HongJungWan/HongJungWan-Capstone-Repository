@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>주차장 등록하기 (관리자)</title>
 
-    <link href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css}">
     <link rel="stylesheet" th:href="@{/css/navBar.css}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
@@ -38,11 +37,9 @@
         </div>
 
         <div class="info-address">
-            <label fdr="address"><b><br/>주차장 주소</b></label>
-            <div>
-                <input id="address" readonly th:field="*{address}" type="text">
-                <input onclick="findAddr()" type="button" value="주소 검색">
-            </div>
+            <label for="address"><b><br/>주차장 주소</b></label>
+            <input id="address" readonly th:field="*{address}" type="text">
+            <input onclick="findAddr()" type="button" value="주소 검색">
             <div class="field-error" th:errors="*{address}">
             </div>
         </div>
@@ -58,7 +55,9 @@
             <b><br/>최대 운영 가능 자리수</b>
             <div>
                 <label>정기권</label>
-                <input placeholder="운영 가능한 자릿수를 입력하세요." th:field="*{dateAccept}" type="number">
+                <label>
+                    <input placeholder="운영 가능한 자릿수를 입력하세요." th:field="*{dateAccept}" type="number">
+                </label>
             </div>
             <div class="field-error" th:errors="*{dateAccept}">
             </div>

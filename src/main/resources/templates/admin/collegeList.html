@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
@@ -66,7 +66,7 @@
 </body>
 <script>
     function hidden(college_id) {
-        var form = document.createElement("form");
+        const form = document.createElement("form");
         form.setAttribute("method", "post");
         form.setAttribute("action", "/admin/college/" + college_id + "/hidden");
         document.body.appendChild(form);

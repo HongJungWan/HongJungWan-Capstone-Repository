@@ -32,9 +32,7 @@ input, select {
 /* signup 폼 CSS*/
 .sign {
   width: 460px;
-  margin: auto;
-  margin-top: 100px;
-  margin-bottom: 40px;
+  margin: 100px auto 40px;
 }
 .sign .hS{
   color: dodgerblue;

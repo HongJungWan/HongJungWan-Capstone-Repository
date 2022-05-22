@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
@@ -22,16 +22,20 @@
         <div>
             <form class="form-inline" th:object="${carSearch}">
                 <div>
-                    <input class="form-control" placeholder="이름을 입력해주세요." th:field="*{userName}" type="text"/>
+                    <label>
+                        <input class="form-control" placeholder="이름을 입력해주세요." th:field="*{userName}" type="text"/>
+                    </label>
                     <button class="btn btn-primary mb-2" type="submit"> 검색</button>
                     <div>&nbsp;</div>
-                    <select class="form-control" th:field="*{enrollStatus}">
-                        <option value=""> 전체보기</option>
-                        <option th:each="status : ${T(com.example.demo.domain.value.EnrollStatus).values()}"
-                                th:text="${status}"
-                                th:value="${status}">option
-                        </option>
-                    </select>
+                    <label>
+                        <select class="form-control" th:field="*{enrollStatus}">
+                            <option value=""> 전체보기</option>
+                            <option th:each="status : ${T(com.example.demo.domain.value.EnrollStatus).values()}"
+                                    th:text="${status}"
+                                    th:value="${status}">option
+                            </option>
+                        </select>
+                    </label>
                 </div>
             </form>
         </div>
@@ -56,11 +60,10 @@
         </td>
     </tr>
 </table>
-</div>
 </body>
 <script>
     function cancel(car_id) {
-        var form = document.createElement("form");
+        const form = document.createElement("form");
         form.setAttribute("method", "post");
         form.setAttribute("action", "/admin/car/" + car_id + "/cancel");
         document.body.appendChild(form);
@@ -69,7 +72,7 @@
 </script>
 <script>
     function register(car_id) {
-        var form = document.createElement("form");
+        const form = document.createElement("form");
         form.setAttribute("method", "post");
         form.setAttribute("action", "/admin/car/" + car_id + "/register");
         document.body.appendChild(form);

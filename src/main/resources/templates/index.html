@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>인증 및 예약</title>
@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-    <img src="images/reserved.png">
+    <img src="/images/reserved.png">
     <div class="init check" sec:authorize="!isAuthenticated()">
         <h1> 관리자 </h1>
 
