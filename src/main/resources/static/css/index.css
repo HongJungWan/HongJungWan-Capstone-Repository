@@ -108,6 +108,7 @@ header .logout a:last-child {
 }
 .sns-info .sns a:nth-child(3) i{
   background-color: #ffdc00;
+  color:brown;
 }
 /* sns 알려주는 박스 */
 .sns a {

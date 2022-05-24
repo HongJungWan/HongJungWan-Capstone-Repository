@@ -30,6 +30,9 @@ public class User {
     @Column(nullable = false)
     private String id;
 
+    @Column(nullable = false)
+    private String email;
+
     @Column(name = "phon_number", nullable = false)
     private String phonNumber;
 
@@ -65,7 +68,7 @@ public class User {
 
     @Builder(builderMethodName = "createUser")
     public User(String id, String phonNumber, String password, String name,
-                Gender gender, Integer age, Role role, String car_number) {
+                Gender gender, Integer age, Role role, String car_number, String email) {
         this.id = id;
         this.phonNumber = phonNumber;
         this.password = password;
@@ -74,6 +77,7 @@ public class User {
         this.age = age;
         this.role = role;
         this.car_number = car_number;
+        this.email = email;
     }
 
 }

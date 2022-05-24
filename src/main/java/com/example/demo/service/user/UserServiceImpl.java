@@ -24,8 +24,8 @@ public class UserServiceImpl implements UserService {
      * Entity가 존재 한다면 그 Entity를 반환 존재 안한다면 null을 반환
      */
     @Override
-    public User getUserByPhonNumber(String phonNumber) {
-        Optional<User> findUser = userRepository.findByPhonNumber(phonNumber);
+    public User getUserByEmail(String email) {
+        Optional<User> findUser = userRepository.findByEmail(email);
 
         return findUser.stream().findFirst().orElse(null);
     }
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> findUser = userRepository.findByPhonNumber(username);
+        Optional<User> findUser = userRepository.findByEmail(username);
 
         return findUser.stream().findFirst().map(user -> new PrincipalDetails(user)).orElseThrow(
                 () -> {
