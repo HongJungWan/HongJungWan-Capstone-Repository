@@ -3,6 +3,7 @@ package com.example.demo.repository.custom;
 
 import com.example.demo.domain.entity.College;
 import com.example.demo.dto.college.CollegeListDto;
+import com.example.demo.dto.college.CollegeListUserDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.repository.query.Param;
@@ -39,10 +40,10 @@ public class CollegeCustomRepositoryImpl implements CollegeCustomRepository {
     @Override
     public Optional<College> findCollegeDetail(Long id) {
         return Optional.of(em.createQuery(
-                "select distinct h from College h " +
-                        "join fetch h.admin a " +
-                        "join fetch h.parkings v " +
-                        "where h.id= :id", College.class)
+                        "select distinct h from College h " +
+                                "join fetch h.admin a " +
+                                "join fetch h.parkings v " +
+                                "where h.id= :id", College.class)
                 .setParameter("id", id).getSingleResult());
     }
 
@@ -50,11 +51,11 @@ public class CollegeCustomRepositoryImpl implements CollegeCustomRepository {
      * 예약가능 주차장 조회 + 페이징
      */
     @Override
-    public List<CollegeListDto> findCollegeListPaging(int offset, int limit) {
+    public List<CollegeListUserDto> findCollegeListPaging(int offset, int limit) {
         return em.createQuery(
-                "select new com.example.demo.dto.college.CollegeListDto(h.id, h.collegeName, h.address, h.totalQuantity) " +
-                        "from College h " +
-                        "where h.enabled = true", CollegeListDto.class)
+                        "select new com.example.demo.dto.college.CollegeListUserDto(h.id, h.collegeName, h.address, h.totalQuantity) " +
+                                "from College h " +
+                                "where h.enabled = true", CollegeListUserDto.class)
                 .setFirstResult(offset)
                 .setMaxResults(limit)
                 .getResultList();
@@ -64,11 +65,11 @@ public class CollegeCustomRepositoryImpl implements CollegeCustomRepository {
      * 주소로 예약가능 주차장 조회 + 페이징
      */
     @Override
-    public List<CollegeListDto> findCollegeListByAddressPaging(int offset, int limit, @Param("address") String address) {
+    public List<CollegeListUserDto> findCollegeListByAddressPaging(int offset, int limit, @Param("address") String address) {
         return em.createQuery(
-                "select new com.example.demo.dto.college.CollegeListDto(h.id, h.collegeName, h.address, h.totalQuantity) " +
-                        "from College h " +
-                        "where h.enabled = true and h.address like '%'||:address||'%'", CollegeListDto.class)
+                        "select new com.example.demo.dto.college.CollegeListUserDto(h.id, h.collegeName, h.address, h.totalQuantity) " +
+                                "from College h " +
+                                "where h.enabled = true and h.address like '%'||:address||'%'", CollegeListUserDto.class)
                 .setParameter("address", address)
                 .setFirstResult(offset)
                 .setMaxResults(limit)
@@ -81,9 +82,9 @@ public class CollegeCustomRepositoryImpl implements CollegeCustomRepository {
     @Override
     public List<CollegeListDto> findCollegeListByAddressAndAdmin(@Param("address") String address, Long adminId) {
         return em.createQuery(
-                "select new com.example.demo.dto.college.CollegeListDto(h.id, h.collegeName, h.address, h.totalQuantity, h.enabled) " +
-                        "from College h " +
-                        "where h.admin.id= :adminId and h.address like '%'||:address||'%'", CollegeListDto.class)
+                        "select new com.example.demo.dto.college.CollegeListDto(h.id, h.collegeName, h.address, h.totalQuantity, h.enabled) " +
+                                "from College h " +
+                                "where h.admin.id= :adminId and h.address like '%'||:address||'%'", CollegeListDto.class)
                 .setParameter("address", address)
                 .setParameter("adminId", adminId)
                 .getResultList();

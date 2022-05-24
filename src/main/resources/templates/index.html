@@ -38,7 +38,7 @@
     <!-- Admin 관리 -->
     <div class="init reserve" sec:authorize="isAuthenticated()">
         <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve/colleges}">주차구역 <span>예약하기</span></a>
-        <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve}">주차장 <span>목록</span></a>
+        <a sec:authorize="hasRole('ROLE_USER')" ></a>
         <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve}">예약 주차구역 <span>조회/취소</span></a>
         <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/car/list}">차량<span> 관리 </span></a>
         <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/college/add}">주차장<span> 등록 </span></a>

@@ -18,4 +18,5 @@ public interface ReserveCustomRepository {
      */
     List<Reserve> findAllReserve(Long collegeId);
 
+
 }
