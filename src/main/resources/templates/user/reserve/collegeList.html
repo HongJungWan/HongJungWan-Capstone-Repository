@@ -39,7 +39,7 @@
     </tr>
 
     <tr style="cursor:pointer;" th:each="college : ${collegeList}" th:if="${collegeList.size() > 0}"
-        th:onclick="|location.href='@{/reserve/{collegeId}/dates (collegeId=${college.id})}'|">
+        th:onclick="|location.href='@{/reserve/{collegeId}/parking (collegeId=${college.id})}'|">
 
         <td th:text="${college.collegeName}">송암관 주차장</td>
         <td th:text="${college.address}">한신대길 137번길</td>
@@ -51,7 +51,6 @@
     </tr>
 
 </table>
-
 
 </body>
 </html>

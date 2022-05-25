@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,16 +15,13 @@ import java.util.Map;
 @NoArgsConstructor
 public class CollegeResponseDto {
     private String collegeName;
-    private List<String> availableDates;
     private String address;
     private String detailAddress;
 
     private Map<String, Integer> parkingInfoMap = new HashMap<>();
 
-    public CollegeResponseDto createDto(String collegeName, List<String> availableDates,
-                                        String address, String detailAddress, Map<String, Integer> parkingInfoMap) {
+    public CollegeResponseDto createDto(String collegeName, String address, String detailAddress, Map<String, Integer> parkingInfoMap) {
         this.collegeName = collegeName;
-        this.availableDates = availableDates;
         this.address = address;
         this.detailAddress = detailAddress;
         this.parkingInfoMap = parkingInfoMap;

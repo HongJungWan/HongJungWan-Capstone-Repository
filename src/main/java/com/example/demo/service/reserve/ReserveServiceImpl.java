@@ -5,8 +5,8 @@ import com.example.demo.domain.entity.Parking;
 import com.example.demo.domain.entity.Reserve;
 import com.example.demo.domain.entity.User;
 import com.example.demo.domain.value.ReserveStatus;
-import com.example.demo.dto.Parking.ParkingReserveDto;
 import com.example.demo.dto.college.CollegeListUserDto;
+import com.example.demo.dto.parking.ParkingReserveDto;
 import com.example.demo.dto.reserve.ReserveSimpleDto;
 import com.example.demo.repository.CollegeRepository;
 import com.example.demo.repository.ReserveRepository;
@@ -117,7 +117,7 @@ public class ReserveServiceImpl implements ReserveService {
      * 하나의 주차 구역만 예약 가능, 중복 방지.
      */
     @Override
-    public void validateDuplicateUser(String username) {
+    public Integer validateDuplicateUser(String username) {
         User user = userRepository.findByEmail(username).orElseThrow(
                 () -> {
                     throw new IllegalArgumentException("존재하지 않는 사용자입니다.");
@@ -126,9 +126,11 @@ public class ReserveServiceImpl implements ReserveService {
 
         Optional<ReserveSimpleDto> reserveByUserId = reserveRepository.findByUserId(user.getUser_id());
         if (!reserveByUserId.isEmpty()) {
-            throw new IllegalStateException("이미 예약한 회원 입니다.");
+            return 1;
+//            throw new IllegalStateException("이미 예약한 회원 입니다.");
+        } else {
+            return 0;
         }
-
     }
 
     /**

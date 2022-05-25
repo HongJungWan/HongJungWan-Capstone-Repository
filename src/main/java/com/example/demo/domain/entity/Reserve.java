@@ -20,7 +20,7 @@ public class Reserve {
 
     @Column(name = "reserve_id")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long reserve_id;
 
     @OneToOne(fetch = FetchType.LAZY)

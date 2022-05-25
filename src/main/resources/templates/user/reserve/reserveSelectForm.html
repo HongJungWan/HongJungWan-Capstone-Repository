@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>주차 구역 선택</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+</head>
+<body>
+
+<header th:replace="~{fragment/header :: header}"></header>
+
+<div class="register">
+    <div class="container text-center my-4">
+        <br/>
+        <h1 class="my-4"><br/><br/>주차 구역 선택</h1><br/>
+        <form class="form-control" method="POST" th:action="@{/reserve}">
+
+            <input id="collegeId" name="collegeId" th:value="${collegeId}" type="hidden">
+
+            <div class="form-check form-check-inline" th:each="v : ${parking}">
+                <label class="form-check-label" th:for="${v.id}" th:text="${v.parkingName}"></label>
+                <input class="form-check-input" name="parkingName" th:id="${v.id}" th:value="${v.parkingName}"
+                       type="radio">
+            </div>
+            <button class="btn btn-primary" type="submit">선택</button>
+        </form>
+    </div>
+    <br/><br/><br/>
+    <img src="/images/park-bg.png">
+</div>
+
+</body>
+</html>

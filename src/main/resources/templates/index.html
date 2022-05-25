@@ -19,8 +19,8 @@
         <div class="sns-info">
             <div class="sns">
                 <a></a>
-                <a th:href="@{/oauth2/authorization/naver}" data-text="naver"><i class="xi-naver"></i></a>
-                <a th:href="@{/oauth2/authorization/kakao}" data-text="kakaotalk"><i class="xi-kakaotalk"></i></a>
+                <a data-text="naver" th:href="@{/oauth2/authorization/naver}"><i class="xi-naver"></i></a>
+                <a data-text="kakaotalk" th:href="@{/oauth2/authorization/kakao}"><i class="xi-kakaotalk"></i></a>
             </div>
         </div>
     </div>
@@ -35,10 +35,10 @@
         </div>
     </div>
 
-    <!-- Admin 관리 -->
+    <!-- Admin & User 관리 -->
     <div class="init reserve" sec:authorize="isAuthenticated()">
-        <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve/colleges}">주차구역 <span>예약하기</span></a>
-        <a sec:authorize="hasRole('ROLE_USER')" ></a>
+        <a sec:authorize="hasRole('ROLE_USER')" th:href="@{reserve/colleges}">주차구역 <span>예약하기</span></a>
+        <a sec:authorize="hasRole('ROLE_USER')"></a>
         <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve}">예약 주차구역 <span>조회/취소</span></a>
         <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/car/list}">차량<span> 관리 </span></a>
         <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/college/add}">주차장<span> 등록 </span></a>
