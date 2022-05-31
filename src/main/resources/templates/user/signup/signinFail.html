@@ -1,29 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>가입되지 않은 이메일입니다.</title>
-  <link rel="icon" href="/images/computer.png">
-  <link rel="stylesheet" th:href="@{/css/signin.css}">
-  <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <title>App에 등록되지 않은 email</title>
+    <link href="/images/computer.png" rel="icon">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
 </head>
 
 <body>
 
 <header th:fragment="header">
-  <div class="logo">
-  </div>
-  <div class="logout">
-    <a sec:authorize="isAuthenticated()" th:href="@{/logout}">나가기</a>
-  </div>
+    <div class="logo">
+    </div>
+    <div class="logout">
+        <a sec:authorize="isAuthenticated()" th:href="@{/logout}">나가기</a>
+    </div>
 </header>
 
-<div class="sign">
-  <h1 class="hS">App에 입력한 이메일 정보와 다릅니다.</h1>
+<div class="frame">
+    <div class="init check">
+        <h2>App에 등록되지 않은 email</h2>
+        <div class="sns-info">
+            <div class="sns">
+                <a></a>
+                <a data-text="naver" th:href="@{https://nid.naver.com/user2/help/myInfoV2}"
+                   th:target="_blank"><i class="xi-naver"></i></a>
+                <a data-text="kakaotalk" th:href="@{https://accounts.kakao.com/weblogin/account/info}"
+                   th:target="_blank"><i class="xi-kakaotalk"></i></a>
+            </div>
+            <br/><br/>
+            <h4>계정을 로그아웃 한 후, 나가기 버튼을 눌러주세요.</h4>
+        </div>
+    </div>
 </div>
+<script>
+    history.pushState(null, null, "http://recoder.link/signup");
 
+    window.onpopstate = function (event) {
+        history.go(1);
+    };
+</script>
 </body>
+
 </html>

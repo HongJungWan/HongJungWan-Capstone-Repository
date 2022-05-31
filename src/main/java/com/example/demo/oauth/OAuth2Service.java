@@ -25,27 +25,25 @@ public class OAuth2Service extends DefaultOAuth2UserService {
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-        OAuth2User oAuth2User=super.loadUser(userRequest);
-        OAuth2UserInfo oAuth2UserInfo=null;
+        OAuth2User oAuth2User = super.loadUser(userRequest);
+        OAuth2UserInfo oAuth2UserInfo = null;
 
 
-        if(userRequest.getClientRegistration().getRegistrationId().equals("google")){
-            oAuth2UserInfo=new GoogleUserInfo(oAuth2User.getAttributes());
-        }
-        else if(userRequest.getClientRegistration().getRegistrationId().equals("naver")){
-            oAuth2UserInfo=new NaverUserInfo((Map) oAuth2User.getAttributes().get("response"));
-        }
-        else if(userRequest.getClientRegistration().getRegistrationId().equals("kakao")){
-            oAuth2UserInfo=new KakaoUserInfo(oAuth2User.getAttributes(),(Map)oAuth2User.getAttributes().get("kakao_account"));
+        if (userRequest.getClientRegistration().getRegistrationId().equals("google")) {
+            oAuth2UserInfo = new GoogleUserInfo(oAuth2User.getAttributes());
+        } else if (userRequest.getClientRegistration().getRegistrationId().equals("naver")) {
+            oAuth2UserInfo = new NaverUserInfo((Map) oAuth2User.getAttributes().get("response"));
+        } else if (userRequest.getClientRegistration().getRegistrationId().equals("kakao")) {
+            oAuth2UserInfo = new KakaoUserInfo(oAuth2User.getAttributes(), (Map) oAuth2User.getAttributes().get("kakao_account"));
         }
 
         User buildUser = User.createUser()
                 .email(oAuth2UserInfo.getEmail())
-                .password(bCryptPasswordEncoder.encode("threeFam"))
+                .password(bCryptPasswordEncoder.encode("recoder"))
                 .name(oAuth2UserInfo.getName())
                 .role(Role.ROLE_USER)
                 .build();
-        return new PrincipalDetails(buildUser,oAuth2User.getAttributes());
+        return new PrincipalDetails(buildUser, oAuth2User.getAttributes());
     }
 
 }
