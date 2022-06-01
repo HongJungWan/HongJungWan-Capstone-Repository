@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=2}">
     <script th:src="@{https://code.jquery.com/jquery-1.12.4.js}"></script>
     <script th:src="@{https://code.jquery.com/ui/1.12.1/jquery-ui.js}"></script>
-    <link rel="icon" th:href="@{/images/computer.png}">
+    <link rel="icon" th:href="@{/images/recoder.png}">
     <link rel="stylesheet" th:href="@{/css/collegeDetail.css?ver=2}">
     <link rel="stylesheet" th:href="@{/css/navbar.css?ver=2}">
     <link rel="stylesheet" th:href="@{/css/index.css?ver=2}">
@@ -30,14 +30,14 @@
         </div>
 
         <div class="info">
-            <label fdr="address"><b><br/>주소</b></label>
+            <label fdr="address"><b>주소</b></label>
             <input disabled id="address" th:field="*{address}" type="text">
             <div class="field-error" th:errors="*{address}">
             </div>
         </div>
 
         <div class="info">
-            <label for="detailAddress"><b><br/>상세주소</b></label>
+            <label for="detailAddress"><b>상세주소</b></label>
             <input disabled id="detailAddress" th:field="*{detailAddress}" type="text">
             <div class="field-error" th:errors="*{detailAddress}">
             </div>

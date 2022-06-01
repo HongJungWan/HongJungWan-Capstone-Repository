@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>주차장 목록</title>
 
-    <link rel="icon" th:href="@{/images/computer.png}">
+    <link rel="icon" th:href="@{/images/recoder.png}">
     <link rel="stylesheet" th:href="@{/css/index.css?ver=1}">
     <link rel="stylesheet" th:href="@{/css/adminlist.css?ver=1}">
     <link rel="stylesheet" th:href="@{/css/navbar.css?ver=1}">
@@ -39,7 +39,8 @@
         <th>삭제</th>
     </tr>
 
-    <tr style="cursor:pointer;" th:each="college : ${collegeList}" th:if="${college.enabled == true} and ${collegeList.size() > 0}">
+    <tr style="cursor:pointer;" th:each="college : ${collegeList}"
+        th:if="${college.enabled == true} and ${collegeList.size() > 0}">
         <td th:text="${college.collegeName}">한신대학교 중앙도서관 주차장</td>
         <td th:text="${college.address}">경기 오산시 한신대133번길 5</td>
         <td th:text="${college.qty}">20</td>

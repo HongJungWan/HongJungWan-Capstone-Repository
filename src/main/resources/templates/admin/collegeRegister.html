@@ -10,21 +10,21 @@
     <script th:src="@{https://code.jquery.com/ui/1.12.1/jquery-ui.js}"></script>
 
     <style>
-    .field-error{
-      color:red;
-      font-weight:bold;
-    }
+        .field-error {
+            color: red;
+            font-weight: bold;
+        }
     </style>
-    <link rel="icon" th:href="@{/images/computer.png}">
+    <link rel="icon" th:href="@{/images/recoder.png}">
     <link rel="stylesheet" th:href="@{/css/index.css?ver=1}">
-    <link rel="stylesheet" th:href="@{/css/register.css?ver=1}">
     <link rel="stylesheet" th:href="@{/css/navbar.css?ver=1}">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
 </head>
 
 <body>
 <header th:replace="~{fragment/header :: header}"></header>
 <div class="register">
-    <h1 class="hR">주차장 등록하기 (관리자)</h1>
+    <h1 class="hR">주차장 등록 (관리자)</h1>
 
     <form method="post" th:action th:object="${collegeRequestDto}">
         <div class="info">
@@ -35,7 +35,7 @@
         </div>
 
         <div class="info-address">
-            <label fdr="address"><b><br/>주차장 주소</b></label>
+            <label fdr="address"><b>주차장 주소</b></label>
             <div>
                 <input id="address" readonly th:field="*{address}" type="text">
                 <input onclick="findAddr()" type="button" value="주소 검색">
@@ -45,7 +45,7 @@
         </div>
 
         <div class="info">
-            <label for="detailAddress"><b><br/>상세주소</b></label>
+            <label for="detailAddress"><b>상세주소</b></label>
             <input id="detailAddress" th:field="*{detailAddress}" type="text">
             <div class="field-error" th:errors="*{detailAddress}">
             </div>
@@ -89,36 +89,33 @@
             </div>
         </div>
 
-        <div><br/></div>
-
-        <input type="submit" value="등록하기">
+        <input type="submit" value="등록">
         <input th:onclick="|location.href='@{/}'|" type="button" value="취소">
     </form>
 </div>
 
 <script th:inline="javascript">
-function findAddr(){
-new daum.Postcode({
-oncomplete: function(data) {
+    function findAddr() {
+        new daum.Postcode({
+            oncomplete: function (data) {
 
-console.log(data);
+                console.log(data);
 
 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-var roadAddr = data.roadAddress; // 도로명 주소 변수
-var jibunAddr = data.jibunAddress; // 지번 주소 변수
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var jibunAddr = data.jibunAddress; // 지번 주소 변수
 // 우편번호와 주소 정보를 해당 필드에 넣는다.
 
-if(roadAddr !== ''){
-document.getElementById("address").value = roadAddr;
-}
-else if(jibunAddr !== ''){
-document.getElementById("address").value = jibunAddr;
-}
-}
-}).open();
-}
+                if (roadAddr !== '') {
+                    document.getElementById("address").value = roadAddr;
+                } else if (jibunAddr !== '') {
+                    document.getElementById("address").value = jibunAddr;
+                }
+            }
+        }).open();
+    }
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </body>

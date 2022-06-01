@@ -68,7 +68,7 @@ header .logout a:last-child {
     text-align: center;
     /* display: inline-block; */
     margin: 50px;
-    background-image: linear-gradient(60deg, #64b3f4 0%, #c2e59c 100%);;
+    background-image: linear-gradient(60deg, #FFFFFF 0%, #64b3f4 100%);
 }
 
 /* 본인인증 */
@@ -102,9 +102,9 @@ header .logout a:last-child {
     font-size: 50px;
     width: 70px;
     height: 70px;
-    line-height: 72px;
+    line-height: 70px;
     border-radius: 50%;
-    color: #ACFFEF;
+    color: #AFEEEE;
     margin: 5px;
     transition: 0.35s;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -120,11 +120,13 @@ header .logout a:last-child {
 
 .sns-info .sns a:nth-child(2) i {
     background-color: #00C300;
+    opacity: 0.7;
 }
 
 .sns-info .sns a:nth-child(3) i {
     background-color: #ffdc00;
     color: brown;
+    opacity: 0.7;
 }
 
 /* sns 알려주는 박스 */
@@ -172,7 +174,7 @@ header .logout a:last-child {
 
 /* 예약하기 */
 .reserve {
-    background-image: linear-gradient(60deg, #64b3f4 0%, #c2e59c 100%);
+    background-image: linear-gradient(60deg, #FFFFFF 0%, #64b3f4 100%);
 }
 
 .reserve a {
@@ -188,18 +190,18 @@ header .logout a:last-child {
 }
 
 .reserve a:nth-child(1) span {
-    font-weight: 600;
-    color: blue;
+    font-weight: 550;
+    color: #AFEEEE;
 }
 
 .reserve a:nth-child(2) span {
-    font-weight: 600;
-    color: blue;
+    font-weight: 550;
+    color: #AFEEEE;
 }
 
 .reserve a:nth-child(3) span {
-    font-weight: 600;
-    color: blue;
+    font-weight: 550;
+    color: #AFEEEE;
 }
 
 .reserve a:hover {
