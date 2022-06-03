@@ -7,7 +7,7 @@
 
 /* nav */
 header {
-    background-color: #ffffff;
+    background-color: #eeeeee;
     height: 60px;
     display: flex;
     justify-content: space-between;
@@ -36,7 +36,7 @@ header .logout a:hover {
     padding: 15px 0;
     text-align: center;
     color: #222;
-    background: #ffffff;
+    background: #eeeeee;
 }
 
 img {
