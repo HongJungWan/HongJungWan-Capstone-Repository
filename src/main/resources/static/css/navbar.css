@@ -7,15 +7,18 @@
 
 /* nav */
 header {
-    background-color: #eeeeee;
-    height: 60px;
+    height: 80px;
+    text-align: center;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
     position: fixed;
     width: 100%;
     top: 0;
+    background-color: #FFFFFF;
+    font-size: 30px !important;
 }
 
 header .logout a {
@@ -36,7 +39,7 @@ header .logout a:hover {
     padding: 15px 0;
     text-align: center;
     color: #222;
-    background: #eeeeee;
+    background-image: linear-gradient(60deg, #FFFFFF 0%, #E0FFFF 100%);
 }
 
 img {

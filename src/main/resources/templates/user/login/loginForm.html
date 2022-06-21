@@ -6,19 +6,23 @@
     <title>AdminLoginPage</title>
 
     <link rel="icon" th:href="@{/images/recoder.png}">
-    <link rel="stylesheet" th:href="@{/css/register.css?ver=1}">
+    <link rel="stylesheet" th:href="@{/css/adminlist.css?ver=1}">
     <link rel="stylesheet" th:href="@{/css/navbar.css?ver=1}">
     <link rel="stylesheet" th:href="@{/css/index.css?ver=1}">
+
     <style>
         .field-error {
             color: #dc3545;
         }
     </style>
+
 </head>
 
 <body>
+
 <header th:replace="~{fragment/header :: header}"></header>
-<div class="register">
+
+<div class="login">
     <h1 class="hR">Admin Login</h1>
 
     <form method="post" th:action="@{/login}">
@@ -35,6 +39,6 @@
         <input th:onclick="|location.href='@{/}'|" type="button" value="취소">
     </form>
 </div>
-<footer th:replace="~{fragment/footer :: footer}"></footer>
+<!--<footer th:replace="~{fragment/footer :: footer}"></footer>-->
 </body>
 </html>

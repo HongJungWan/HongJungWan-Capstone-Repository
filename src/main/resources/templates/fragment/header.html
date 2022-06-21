@@ -4,7 +4,8 @@
     <div class="logo">
     </div>
     <div class="logout">
+        <a th:href="@{/}">NOTICE</a>
         <a th:href="@{/}">HOME</a>
-        <a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a>
     </div>
 </header>

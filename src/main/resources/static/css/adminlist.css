@@ -1,131 +1,195 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap');
 
 @font-face {
-  font-family: 'SLEIGothicTTF';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'SLEIGothicTTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
-body{
-  font-family: 'Noto Sans KR', sans-serif;
-  margin: 0;
-  color: #333;
-  line-height: 1.6em;
-  display:flex;
-  height: 100vh;
-  justify-content: center;
-  align-items:center;
-  font-size: 15px;
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    color: #333;
+    line-height: 1.5em;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
 }
-a{
-  text-decoration: none;
-  color: #222;
+
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
 }
 
 header .logout a {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 header .logout a:last-child {
-  margin-right: 30px;
+    margin-right: 30px;
 }
 
 /* 테이블 CSS */
 .college-List {
-  width: 900px;
-  background-color: #fff;
-  border-collapse: collapse;
-  box-shadow: 0 0 15px rgba(0,0,0,0.200);
-  border-radius: 5px;
-  overflow: hidden;
-  margin-top:10px;
-}
-.college-List caption:not(.search) {
-  font-family: 'SLEIGothicTTF';
-  font-size: 30px;
-  margin-bottom: 30px;
+    width: 900px;
+    background-color: #fff;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.200);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
 }
 
-.car-List {
-  width: 900px;
-  background-color: #fff;
-  border-collapse: collapse;
-  box-shadow: 0 0 15px rgba(0,0,0,0.200);
-  border-radius: 5px;
-  overflow: hidden;
-  margin-top:10px;
+.college-List caption:not(.search) {
+    font-family: 'SLEIGothicTTF';
+    font-size: 30px;
+    margin-bottom: 30px;
 }
+
+/*여기부터 로그인 건들인거*/
+
+.login {
+    width: 460px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 40px;
+    background-color: #FFFFFF;
+    padding: 30px;
+}
+
+.login .hR {
+    color: dodgerblue;
+    text-align: center;
+}
+
+/* .login input { */
+.login input:not(input[type=number]) {
+    border: 1px solid #dadada;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 5px;
+}
+
+.login input[type=submit] {
+    color: #fff;
+    background-color: dodgerblue;
+    margin-top: 10px;
+}
+
+.login input:not(input[type=number]):focus {
+    border: 1px solid skyblue;
+}
+
+.info {
+    margin: 5px 0;
+}
+
+.info b {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+/*여기까지*/
+
+.car-List {
+    width: 900px;
+    background-color: #fff;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.200);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
 .car-List caption:not(.search) {
-  font-family: 'SLEIGothicTTF';
-  font-size: 30px;
-  margin-bottom: 30px;
+    font-family: 'SLEIGothicTTF';
+    font-size: 30px;
+    margin-bottom: 30px;
 }
 
 /* Search */
-caption.search{
-  font-family: 'SLEIGothicTTF';
-  margin-bottom: 15px;
+caption.search {
+    font-family: 'SLEIGothicTTF';
+    margin-bottom: 15px;
 }
-caption.search input{
-  font-family: 'Noto Sans KR', sans-serif;
+
+caption.search input {
+    font-family: 'Noto Sans KR', sans-serif;
 }
+
 caption.search input,
-caption.search button{
-  outline: none;
-  margin-left: 3px;
+caption.search button {
+    outline: none;
+    margin-left: 3px;
 }
-caption.search button{
-  color: #fff;
-  background-color: dodgerblue;
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
+
+caption.search button {
+    color: #fff;
+    background-color: dodgerblue;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .college-List tr {
-  transition: 0.3s;
+    transition: 0.3s;
 }
+
 .college-List tr:hover {
-  background-color: #eee;
+    background-color: #eee;
 }
+
 .college-List th,
 .college-List td {
-  padding: 12px;
-  text-align: center;
+    padding: 12px;
+    text-align: center;
 }
+
 /* 첫 줄 */
-.college-List tr th{
-  background-color: dodgerblue;
-  color:#eee;
+.college-List tr th {
+    background-color: dodgerblue;
+    color: #eee;
 }
 
 .car-List tr {
-  transition: 0.3s;
+    transition: 0.3s;
 }
+
 .car-List tr:hover {
-  background-color: #eee;
+    background-color: #eee;
 }
+
 .car-List th,
 .car-List td {
-  padding: 12px;
-  text-align: center;
+    padding: 12px;
+    text-align: center;
 }
+
 /* 첫 줄 */
-.car-List tr th{
-  background-color: dodgerblue;
-  color:#eee;
+.car-List tr th {
+    background-color: dodgerblue;
+    color: #eee;
 }
 
 .search div {
-  display: flex;
-  justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.btn button{
-  cursor: pointer;
-  border: none;
-  padding: 7px;
-  border-radius: 3px;
-  color: #fff;
-  background-color: #00AAFF;
+.btn button {
+    cursor: pointer;
+    border: none;
+    padding: 7px;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #00AAFF;
 }
