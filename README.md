@@ -1,13 +1,19 @@
-<p align="left">
-  <img src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white&style=flat"/></a>
-  <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=flat-square&logo=Spring&logoColor=white&style=flat"/></a>
-	<img src="https://img.shields.io/badge/-JPA-gray?logoColor=white&style=flat"/></a>
-  <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white&style=flat"/>
-  <img src="https://img.shields.io/badge/JavaScript-f7df1e?style=flat-square&logo=javascript&logoColor=white&style=flat"/></a>
-  <img src="https://img.shields.io/badge/HTML5-e34f26?style=flat-square&logo=html5&logoColor=white&style=flat"/></a>
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white&style=flat"/></a>
-	<img src="https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazon%20AWS&logoColor=white&style=flat"/></a>
-</p>
+### 공통 사항
 
 <br/>
 
+#### 커밋 컨벤션 통일 <br/>
+
+✅ 기본적으로 커밋 메시지는 제목 / 본문 / 관련이슈로 구분한다. <br/>
+✅ feat : 새로운 기능 추가 <br/>
+✅ fix : 버그 수정 <br/>
+✅ docs : 문서 수정 <br/>
+✅ style : 코드 포맷팅, 세미콜론 누락, 코브 변경이 없는 경우 <br/>
+✅ refactor : 코드 리펙토링 <br/>
+✅ test : 테스트코드, 리펙토링 테스트 코드 추가 <br/>
+✅ chore : 기타 변경사항 <br/>
+✅ 제목은 50자를 넘기지 않고, 맞침표를 붙이지 않는다. <br/>
+✅ 본문은 "어떻게" 보다 "무엇을" 과 "왜"를 설명한다. <br/>
+✅ 제목과 구분되기 위해 한칸 띄워 작성한다. <br/>
+
+<br/><br/>
