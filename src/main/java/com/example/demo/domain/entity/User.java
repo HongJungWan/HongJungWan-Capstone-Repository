@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,41 +21,32 @@ import static javax.persistence.FetchType.LAZY;
 @Setter
 public class User {
 
-    @Column(name = "user_id")
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
-
-    @Column(nullable = false)
-    private String id;
-
-    @Column(nullable = false)
-    private String email;
-
-    @Column(name = "phon_number", nullable = false)
-    private String phonNumber;
-
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
-
-    @Column(nullable = false)
-    private Integer age;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
-
     // 양방향 0509 수정
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private final List<Charge> charges = new ArrayList<>();
 
+    @Column(name = "user_id")
+    @Id
+    @GeneratedValue()
+    private Long user_id;
+    @Column(nullable = false)
+    private String id;
+    @Column(nullable = false)
+    private String email;
+    @Column(name = "phon_number", nullable = false)
+    private String phonNumber;
+    @Column(nullable = false)
+    private String password;
+    @Column(nullable = false)
+    private String name;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+    @Column(nullable = false)
+    private Integer age;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
     // 0512 수정
     @JsonIgnore
     @OneToOne(mappedBy = "user", fetch = LAZY)
