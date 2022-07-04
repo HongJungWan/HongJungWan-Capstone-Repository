@@ -48,7 +48,7 @@ public class Car {
      */
     public void cancel() {
 
-        this.setStatus(EnrollStatus.미_등록);
+        setStatus(EnrollStatus.미_등록);
     }
 
     /**
@@ -56,7 +56,7 @@ public class Car {
      */
     public void register() {
 
-        this.setStatus(EnrollStatus.등록);
+        setStatus(EnrollStatus.등록);
     }
 
 }
