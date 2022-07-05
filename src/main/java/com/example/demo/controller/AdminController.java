@@ -2,10 +2,10 @@ package com.example.demo.controller;
 
 
 import com.example.demo.domain.entity.Car;
+import com.example.demo.domain.value.CarSearch;
 import com.example.demo.dto.college.*;
 import com.example.demo.dto.reserve.ReserveWithUsernameDto;
 import com.example.demo.dto.security.PrincipalDetails;
-import com.example.demo.domain.value.CarSearch;
 import com.example.demo.service.admin.AdminService;
 import com.example.demo.service.admin.AdminServiceImpl;
 import com.example.demo.service.admin.CarServiceImpl;
@@ -59,8 +59,8 @@ public class AdminController {
     /**
      * 현재 어드민이 관리하는 주차장 목록 조회 (주차장이름, 주소만 조회)
      */
-    @ResponseBody
     @GetMapping("/colleges")
+    @ResponseBody
     public List<CollegeSimpleInfoDto> collegeSimple(Authentication authentication) {
         PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
         List<CollegeSimpleInfoDto> colleges = adminService.getAllSimpleCollegeInfo(principal.getName());
@@ -203,5 +203,5 @@ public class AdminController {
 
         return "redirect:/admin/college/list";
     }
-    
+
 }
