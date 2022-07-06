@@ -4,6 +4,7 @@ import com.example.demo.domain.value.Gender;
 import com.example.demo.domain.value.Role;
 import com.example.demo.repository.UserRepository;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +19,7 @@ public class UserTest {
     private UserRepository userRepository;
 
     @Test
+    @DisplayName("유저 테스트")
     @Rollback(false)
     void saveTest() {
         User user = User.createUser()

@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional
 @SpringBootTest
+@Transactional
 public class CollegeRepositoryTest {
 
     @Autowired

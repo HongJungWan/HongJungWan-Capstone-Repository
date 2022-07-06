@@ -5,7 +5,7 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class RequestDTO {
+public class FcmRequestDTO {
     private String title;
     private String body;
     private String targetToken;

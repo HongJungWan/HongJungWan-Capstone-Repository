@@ -1,4 +1,4 @@
-package com.example.demo.service.firebase;
+package com.example.demo.domain.value;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
