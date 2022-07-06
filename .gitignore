@@ -39,3 +39,5 @@ src/main/java/com/example/demo/AdminInit.java
 src/main/resources/firebase/test-93b15-firebase-adminsdk-7mxer-d64a2ae08e.json
 src/main/resources/firebase
 src/main/java/com/example/demo/service/firebase/FirebaseCloudMessageService.java
+
+src/main/java/com/example/demo/controller/FcmController.java
