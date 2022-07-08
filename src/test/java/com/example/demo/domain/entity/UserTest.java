@@ -8,7 +8,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
@@ -20,7 +19,6 @@ public class UserTest {
 
     @Test
     @DisplayName("유저 테스트")
-    @Rollback(false)
     void saveTest() {
         User user = User.createUser()
                 .id("1")

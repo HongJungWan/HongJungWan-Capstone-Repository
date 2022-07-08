@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     /**
-     * phonNumber로 User Entity를 찾는 부분
+     * 이메일로 User Entity를 찾는 부분
      * Entity가 존재 한다면 그 Entity를 반환 존재 안한다면 null을 반환
      */
     @Override
