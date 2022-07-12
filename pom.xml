@@ -178,6 +178,7 @@
                 <configuration>
                     <excludes>
                         <exclude>**/*Application.class</exclude>
+                        <exclude>**/Q*.class</exclude>
                     </excludes>
                 </configuration>
                 <executions>
