@@ -18,7 +18,7 @@ public class UserTest {
     private UserRepository userRepository;
 
     @Test
-    @DisplayName("유저 테스트")
+    @DisplayName("유저 엔티티 테스트")
     void saveTest() {
         User user = User.createUser()
                 .id("1")

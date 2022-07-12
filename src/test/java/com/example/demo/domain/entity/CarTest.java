@@ -19,7 +19,7 @@ class CarTest {
     private CarRepository carRepository;
 
     @Test
-    @DisplayName("차량 테스트")
+    @DisplayName("차량 엔티티 테스트")
     void saveTest() {
 
         User user = User.createUser()

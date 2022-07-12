@@ -179,7 +179,8 @@
                     <excludes>
                         <exclude>**/*Application.class</exclude>
                         <exclude>**/Q*.class</exclude>
-                        <exclude>**/config/*</exclude>
+                        <exclude>**/security/**</exclude>
+                        <exclude>**/oauth/**</exclude>
                         <exclude>**/*Dto.class</exclude>
                     </excludes>
                 </configuration>
