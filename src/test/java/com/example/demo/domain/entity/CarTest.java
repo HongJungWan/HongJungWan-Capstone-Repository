@@ -18,8 +18,6 @@ class CarTest {
     @Autowired
     private CarRepository carRepository;
 
-    private EnrollStatus enrollStatus;
-
     @Test
     @DisplayName("차량 테스트")
     void saveTest() {

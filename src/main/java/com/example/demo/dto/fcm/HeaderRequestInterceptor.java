@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.dto.fcm;
 
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
