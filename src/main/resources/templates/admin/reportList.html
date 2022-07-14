@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>신고 내역</title>
+
+    <link rel="icon" th:href="@{/images/recoder.png}">
+    <link rel="stylesheet" th:href="@{/css/index.css?ver=1}">
+    <link rel="stylesheet" th:href="@{/css/adminlist.css?ver=1}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css?ver=1}">
+</head>
+
+<body>
+<header th:replace="~{fragment/header :: header}"></header>
+<!--college-List -> report-List CSS에 추가 바람. -->
+<table class="college-List">
+    <caption>신고 내역</caption>
+    <tr>
+        <th>신고자</th>
+        <th>신고 주차 구역</th>
+        <th>위반 차량</th>
+        <th>신고 사유</th>
+        <th>신고 일자</th>
+        <th>처리 결과</th>
+    </tr>
+    <tr>
+        <td colspan="5"> 결과 없음</td>
+    </tr>
+</table>
+</body>
+</html>

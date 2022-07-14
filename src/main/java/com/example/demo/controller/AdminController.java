@@ -109,6 +109,15 @@ public class AdminController {
     }
 
     /**
+     * 신고 목록
+     */
+    @GetMapping("/report/list")
+    public String reportList() {
+
+        return "admin/reportList";
+    }
+
+    /**
      * 주차장 상세정보 조회
      */
     @GetMapping("/college/{collegeId}")
