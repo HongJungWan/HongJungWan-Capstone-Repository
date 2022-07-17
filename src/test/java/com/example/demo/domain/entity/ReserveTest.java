@@ -1,6 +1,7 @@
 package com.example.demo.domain.entity;
 
 import com.example.demo.domain.value.Gender;
+import com.example.demo.domain.value.ReserveStatus;
 import com.example.demo.domain.value.Role;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -10,11 +11,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 @Transactional
-class ChargeTest {
+class ReserveTest {
 
     @Test
-    @DisplayName("비용 엔티티 테스트")
+    @DisplayName("예약 엔티티 테스트")
     void saveTest() {
+
+        College college = College.createCollege()
+                .address("")
+                .collegeName("")
+                .dateAccept(20)
+                .detailAddress("")
+                .build();
 
         User user = User.createUser()
                 .id("1")
@@ -28,14 +36,15 @@ class ChargeTest {
                 .role(Role.ROLE_USER)
                 .build();
 
-        Charge charge = Charge.createCharge()
-                .charge_name("")
-                .amount(Integer.valueOf(3000))
+        Reserve reserve = Reserve.createReserve()
+                .parkingName("test parking")
+                .College(college)
+                .status(ReserveStatus.COMP)
                 .user(user)
-                .deadline("")
                 .build();
 
-        Assertions.assertThat(charge.getAmount()).isEqualTo(3000);
+        Assertions.assertThat(reserve.getParkingName()).isEqualTo("test parking");
+        Assertions.assertThat(reserve.getCollege().getDateAccept()).isEqualTo(20);
+        Assertions.assertThat(reserve.getUser().getName()).isEqualTo("홍");
     }
-
 }

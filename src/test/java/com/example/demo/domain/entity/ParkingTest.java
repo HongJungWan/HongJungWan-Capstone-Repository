@@ -1,10 +1,11 @@
 package com.example.demo.domain.entity;
 
-import com.example.demo.repository.ParkingRepository;
+import com.example.demo.repository.custom.ParkingCustomRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,8 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 class ParkingTest {
 
+    @Qualifier("parkingRepository")
     @Autowired
-    private ParkingRepository parkingRepository;
+    private ParkingCustomRepository parkingCustomRepository;
 
     @Test
     @DisplayName("주차 구역 엔티티 테스트")
@@ -37,10 +39,7 @@ class ParkingTest {
                 .quantity(10)
                 .build();
 
-        Parking savedParking = parkingRepository.save(parking);
-
         Assertions.assertThat(parking.getQuantity()).isEqualTo(10);
-
-//        Assertions.assertThat(parking.getCollege()).isEqualTo("test");
     }
+
 }
