@@ -25,6 +25,9 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private final List<Charge> charges = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user")
+    private final List<Report> reports = new ArrayList<>();
+
     @Column(name = "user_id")
     @Id
     @GeneratedValue()

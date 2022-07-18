@@ -1,11 +1,13 @@
 package com.example.demo.domain.entity;
 
+
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -19,7 +21,7 @@ public class Report {
     private Long report_id;
 
     @Column(name = "report_date", nullable = false)
-    private DateTime reportDate;
+    private LocalDateTime reportDate;
 
     @Column(name = "car_number", nullable = false)
     private String carNumber;
@@ -29,4 +31,22 @@ public class Report {
 
     @Column(name = "report_result", nullable = false)
     private String reportResult;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "college_id")
+    private College college;
+
+    @Builder(builderMethodName = "createReport")
+    public Report(LocalDateTime reportDate, String carNumber, String cause, String reportResult) {
+        this.reportDate = reportDate;
+        this.carNumber = carNumber;
+        this.cause = cause;
+        this.reportResult = reportResult;
+
+    }
+
 }

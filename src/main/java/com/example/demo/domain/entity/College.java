@@ -22,38 +22,34 @@ import java.util.List;
 @Getter
 public class College {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "college_id")
-    private Long id;
-
-    @Column(name = "college_name", nullable = false)
-    private String collegeName;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "admin_id")
-    private Admin admin;
-
-    @Column(name = "date_accept")
-    private Integer dateAccept;
-
-    @Column(name = "address", nullable = false)
-    private String address;
-
-    @Column(name = "detail_address", nullable = false)
-    private String detailAddress;
-
-    @Column(name = "total_quantity")
-    private Integer totalQuantity;
-
-    // true: y, false: n
-    @Type(type = "yes_no")
-    private Boolean enabled = true; // 예약 가능 여부
-
     // 0509 수정, JPA 영속성 전이, 삭제 안먹어서 PERSIST 에서 ALL로 수정
     @OneToMany(mappedBy = "college", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties({"college"})
     private final List<Parking> parkings = new ArrayList<>();
+
+    @OneToMany(mappedBy = "college")
+    private final List<Report> reports = new ArrayList<>();
+
+    @Id
+    @GeneratedValue
+    @Column(name = "college_id")
+    private Long id;
+    @Column(name = "college_name", nullable = false)
+    private String collegeName;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "admin_id")
+    private Admin admin;
+    @Column(name = "date_accept")
+    private Integer dateAccept;
+    @Column(name = "address", nullable = false)
+    private String address;
+    @Column(name = "detail_address", nullable = false)
+    private String detailAddress;
+    @Column(name = "total_quantity")
+    private Integer totalQuantity;
+    // true: y, false: n
+    @Type(type = "yes_no")
+    private Boolean enabled = true; // 예약 가능 여부
 
     @Builder(builderMethodName = "createCollege")
     public College(String collegeName, String address, String detailAddress, Integer dateAccept) {
@@ -108,12 +104,13 @@ public class College {
     }
 
     // 비즈니스 로직
+
     /**
      * 등록 취소
      */
     public void hidden() {
 
-        this.setEnabled(false);
+        setEnabled(false);
     }
 
 }
