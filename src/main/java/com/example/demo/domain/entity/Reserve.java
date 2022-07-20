@@ -34,13 +34,11 @@ public class Reserve {
     @Enumerated(value = EnumType.STRING)
     private ReserveStatus status = ReserveStatus.COMP;
 
-
     @Column(name = "parking_area_name", nullable = false)
     private String parkingName;
 
     @Builder(builderMethodName = "createReserve")
-    public Reserve(
-            User user, College College, ReserveStatus status, String parkingName) {
+    public Reserve(User user, College College, ReserveStatus status, String parkingName) {
         this.user = user;
         this.College = College;
         this.status = status;

@@ -1,6 +1,7 @@
 package com.example.demo.domain.entity;
 
 
+import com.example.demo.domain.value.ReportStatus;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,6 +15,9 @@ import java.time.LocalDateTime;
 @Table(name = "report")
 @Getter
 public class Report {
+
+    @Enumerated(value = EnumType.STRING)
+    private ReportStatus status = ReportStatus.PROCESS;
 
     @Column(name = "report_id")
     @Id
@@ -29,23 +33,20 @@ public class Report {
     @Column(name = "cause", nullable = false)
     private String cause;
 
-    @Column(name = "report_result", nullable = false)
-    private String reportResult;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "college_id")
+    @JoinColumn(name = "college_id", nullable = false)
     private College college;
 
     @Builder(builderMethodName = "createReport")
-    public Report(LocalDateTime reportDate, String carNumber, String cause, String reportResult) {
+    public Report(LocalDateTime reportDate, String carNumber, String cause, ReportStatus status) {
         this.reportDate = reportDate;
         this.carNumber = carNumber;
         this.cause = cause;
-        this.reportResult = reportResult;
+        this.status = status;
 
     }
 
