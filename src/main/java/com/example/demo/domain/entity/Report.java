@@ -22,7 +22,7 @@ public class Report {
     @Column(name = "report_id")
     @Id
     @GeneratedValue
-    private Long report_id;
+    private Long id;
 
     @Column(name = "report_date", nullable = false)
     private LocalDateTime reportDate;
