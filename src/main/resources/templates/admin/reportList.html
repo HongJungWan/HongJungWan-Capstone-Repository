@@ -27,14 +27,14 @@
         <th>처리 결과</th>
     </tr>
 
-    <tr style="cursor:pointer;" th:each="reportList : ${reportList}"
-        th:if="${reportList!=null}">
-        <td th:text="${reportList.user.name}"></td>
-        <td th:text="${reportList.college.collegeName}"></td>
-        <td th:text="${reportList.carNumber}"></td>
-        <td th:text="${reportList.cause}"></td>
-        <td th:text="${reportList.reportDate}"></td>
-        <td th:text="${reportList.status}"></td>
+    <tr style="cursor:pointer;" th:each="collect : ${collect}"
+        th:if="${collect!=null}">
+        <td th:text="${collect.user}"></td>
+        <td th:text="${collect.college}"></td>
+        <td th:text="${collect.carNumber}"></td>
+        <td th:text="${collect.cause}"></td>
+        <td th:text="${collect.reportDate}"></td>
+        <td th:text="${collect.status.PROCESS.getDescription()}"></td>
     </tr>
 
 </table>
