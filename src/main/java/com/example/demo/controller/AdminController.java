@@ -5,6 +5,7 @@ import com.example.demo.domain.entity.Car;
 import com.example.demo.domain.entity.Report;
 import com.example.demo.domain.value.CarSearch;
 import com.example.demo.dto.college.*;
+import com.example.demo.dto.report.ReportListDto;
 import com.example.demo.dto.reserve.ReserveWithUsernameDto;
 import com.example.demo.dto.security.PrincipalDetails;
 import com.example.demo.repository.ReportRepository;
@@ -26,6 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -36,7 +38,6 @@ public class AdminController {
     private final AdminService adminService;
     private final AdminServiceImpl adminServiceImpl;
     private final CarServiceImpl carServiceImpl;
-
     private final ReportRepository reportRepository;
 
 
@@ -120,7 +121,12 @@ public class AdminController {
     public String reportList(Model model) {
 
         List<Report> reportList = reportRepository.findAll();
-        model.addAttribute("reportList", reportList);
+
+        List<ReportListDto> collect = reportList.stream()
+                .map(m -> new ReportListDto(m.getId(), m.getUser().getName(), m.getCollege().getCollegeName(), m.getCarNumber(), m.getCause(), m.getReportDate(), m.getStatus()))
+                .collect(Collectors.toList());
+
+        model.addAttribute("collect", collect);
 
         return "admin/reportList";
     }
