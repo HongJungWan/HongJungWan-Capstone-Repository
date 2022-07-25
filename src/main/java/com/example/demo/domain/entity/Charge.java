@@ -33,17 +33,10 @@ public class Charge {
     private User user;
 
     @Builder(builderMethodName = "createCharge")
-    public Charge(String charge_name, Integer amount, String deadline, User user) {
+    public Charge(String charge_name, Integer amount, String deadline) {
         this.charge_name = charge_name;
         this.amount = amount;
         this.deadline = deadline;
-        this.user = user;
-    }
-
-    // 양방향 연관관계 편의 메서드 0509
-    public void addUser(User user) {
-        this.user = user;
-        user.getCharges().add(this);
     }
 
 }

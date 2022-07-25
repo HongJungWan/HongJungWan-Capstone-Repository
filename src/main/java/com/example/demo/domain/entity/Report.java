@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 public class Report {
 
     @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false)
     private ReportStatus status = ReportStatus.PROCESS;
 
     @Column(name = "report_id")

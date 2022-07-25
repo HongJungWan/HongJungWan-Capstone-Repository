@@ -3,6 +3,7 @@ package com.example.demo.domain.entity;
 
 import com.example.demo.domain.value.EnrollStatus;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
@@ -25,7 +26,11 @@ public class Car {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @Type(type = "yes_no")
+    private Boolean enabled = true;
+
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private EnrollStatus status; // 등록상태 [register, cancel]
 
     @Builder(builderMethodName = "createCar")

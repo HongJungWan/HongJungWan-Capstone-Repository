@@ -31,7 +31,6 @@ class ChargeTest {
         Charge charge = Charge.createCharge()
                 .charge_name("")
                 .amount(Integer.valueOf(3000))
-                .user(user)
                 .deadline("")
                 .build();
 

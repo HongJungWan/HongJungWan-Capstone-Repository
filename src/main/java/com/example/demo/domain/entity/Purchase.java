@@ -28,11 +28,15 @@ public class Purchase {
     @Column(name = "car_num", nullable = false)
     private String car_num;
 
-    @Column(name = "entry", nullable = false)
+    @Column(name = "entry")
     private String entry;
 
-    @Column(name = "departure", nullable = false)
+    @Column(name = "departure")
     private String departure;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Enumerated(value = EnumType.STRING)
     @Column(nullable = false)

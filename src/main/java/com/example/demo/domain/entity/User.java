@@ -21,7 +21,9 @@ import static javax.persistence.FetchType.LAZY;
 @Setter
 public class User {
 
-    // 양방향 0509 수정
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private final List<Purchase> purchases = new ArrayList<>();
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private final List<Charge> charges = new ArrayList<>();
 
@@ -56,7 +58,7 @@ public class User {
     private Car car;
 
     //0509 수정
-    @Column(nullable = false)
+    @Column
     private String car_number;
 
     @Builder(builderMethodName = "createUser")
