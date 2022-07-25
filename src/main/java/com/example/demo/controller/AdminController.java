@@ -2,10 +2,12 @@ package com.example.demo.controller;
 
 
 import com.example.demo.domain.entity.Car;
+import com.example.demo.domain.entity.Report;
 import com.example.demo.domain.value.CarSearch;
 import com.example.demo.dto.college.*;
 import com.example.demo.dto.reserve.ReserveWithUsernameDto;
 import com.example.demo.dto.security.PrincipalDetails;
+import com.example.demo.repository.ReportRepository;
 import com.example.demo.service.admin.AdminService;
 import com.example.demo.service.admin.AdminServiceImpl;
 import com.example.demo.service.admin.CarServiceImpl;
@@ -34,6 +36,9 @@ public class AdminController {
     private final AdminService adminService;
     private final AdminServiceImpl adminServiceImpl;
     private final CarServiceImpl carServiceImpl;
+
+    private final ReportRepository reportRepository;
+
 
     /**
      * 주차장 이름으로 주차장 단건 조회
@@ -112,7 +117,10 @@ public class AdminController {
      * 신고 목록
      */
     @GetMapping("/report/list")
-    public String reportList() {
+    public String reportList(Model model) {
+
+        List<Report> reportList = reportRepository.findAll();
+        model.addAttribute("reportList", reportList);
 
         return "admin/reportList";
     }

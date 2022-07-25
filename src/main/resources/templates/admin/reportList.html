@@ -15,20 +15,28 @@
 
 <body>
 <header th:replace="~{fragment/header :: header}"></header>
-<!--college-List -> report-List CSS에 추가 바람. -->
-<table class="college-List">
+
+<table class="report-List">
     <caption>신고 내역</caption>
     <tr>
         <th>신고자</th>
-        <th>신고 주차 구역</th>
+        <th>신고 주차장</th>
         <th>위반 차량</th>
         <th>신고 사유</th>
         <th>신고 일자</th>
         <th>처리 결과</th>
     </tr>
-    <tr>
-        <td colspan="5"> 결과 없음</td>
+
+    <tr style="cursor:pointer;" th:each="reportList : ${reportList}"
+        th:if="${reportList!=null}">
+        <td th:text="${reportList.user.name}"></td>
+        <td th:text="${reportList.college.collegeName}"></td>
+        <td th:text="${reportList.carNumber}"></td>
+        <td th:text="${reportList.cause}"></td>
+        <td th:text="${reportList.reportDate}"></td>
+        <td th:text="${reportList.status}"></td>
     </tr>
+
 </table>
 </body>
 </html>

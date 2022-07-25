@@ -43,12 +43,13 @@ public class Report {
     private College college;
 
     @Builder(builderMethodName = "createReport")
-    public Report(LocalDateTime reportDate, String carNumber, String cause, ReportStatus status) {
+    public Report(LocalDateTime reportDate, String carNumber, String cause, ReportStatus status, User user, College college) {
         this.reportDate = reportDate;
         this.carNumber = carNumber;
         this.cause = cause;
         this.status = status;
-
+        this.college = college;
+        this.user = user;
     }
 
 }

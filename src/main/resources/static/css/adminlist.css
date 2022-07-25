@@ -54,6 +54,22 @@ header .logout a:last-child {
     margin-bottom: 30px;
 }
 
+.report-List {
+    width: 900px;
+    background-color: #fff;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.200);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.report-List caption:not(.search) {
+    font-family: 'SLEIGothicTTF';
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
 /*여기부터 로그인 건들인거*/
 
 .login {
@@ -154,8 +170,26 @@ caption.search button {
     text-align: center;
 }
 
-/* 첫 줄 */
-.college-List tr th {
+.report-List tr th {
+    background-color: dodgerblue;
+    color: #eee;
+}
+
+.report-List tr {
+    transition: 0.3s;
+}
+
+.report-List tr:hover {
+    background-color: #eee;
+}
+
+.report-List th,
+.report-List td {
+    padding: 12px;
+    text-align: center;
+}
+
+.report-List tr th {
     background-color: dodgerblue;
     color: #eee;
 }
