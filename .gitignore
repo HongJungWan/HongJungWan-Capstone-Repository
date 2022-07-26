@@ -38,3 +38,4 @@ application-oauth.yml
 src/main/java/com/example/demo/AdminInit.java
 src/main/java/com/example/demo/service/firebase/AndroidPushNotificationsService.java
 src/main/java/com/example/demo/service/firebase
+src/test
