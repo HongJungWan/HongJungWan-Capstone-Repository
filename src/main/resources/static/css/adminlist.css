@@ -156,6 +156,11 @@ caption.search button {
     padding: 5px;
 }
 
+.college-List tr th {
+    background-color: dodgerblue;
+    color: #eee;
+}
+
 .college-List tr {
     transition: 0.3s;
 }
