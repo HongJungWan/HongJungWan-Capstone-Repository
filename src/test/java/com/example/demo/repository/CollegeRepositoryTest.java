@@ -36,7 +36,7 @@ public class CollegeRepositoryTest {
     @Test
     @DisplayName("주차장 이름으로 조회 테스트")
     void 주차장이름_조회() {
-        College college = collegeRepository.findByCollegeName("60주년 기념관 주차장")
+        College college = collegeRepository.findByCollegeName("DB 마이그레이션 TEST")
                 .orElseThrow(() -> {
                     throw new IllegalArgumentException("미등록 주차장");
                 });
