@@ -19,7 +19,7 @@ before_install:
   - chmod +x mvnw
 
 # 3
-script: "./mvnw clean package"
+# script: "./mvnw clean package"
 
 # CI 실행 완료시 메일로 알람
 # 4
