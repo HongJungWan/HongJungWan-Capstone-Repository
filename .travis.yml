@@ -14,8 +14,8 @@ cache:
     - $HOME/.m2
 
 before_install:
-  - openssl aes-256-cbc -K $encrypted_1116e8e6e492_key -iv $encrypted_1116e8e6e492_iv -in ./application.yml.enc -out ./src/main/resources/application.yml -d
-  - openssl aes-256-cbc -K $encrypted_2e8be43b8f53_key -iv $encrypted_2e8be43b8f53_iv -in ./application-oauth.yml.enc -out ./src/main/resources/application-oauth.yml -d
+  - openssl aes-256-cbc -K $encrypted_1116e8e6e492_key -iv $encrypted_1116e8e6e492_iv -in application.yml.enc -out ./src/main/resources/application.yml -d
+  - openssl aes-256-cbc -K $encrypted_2e8be43b8f53_key -iv $encrypted_2e8be43b8f53_iv -in application-oauth.yml.enc -out ./src/main/resources/application-oauth.yml -d
   - chmod +x mvnw
 
 # 3
