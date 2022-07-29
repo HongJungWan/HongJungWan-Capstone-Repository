@@ -49,8 +49,6 @@ deploy:
     deployment_group: recoder-group # 웹 콘솔에서 등록한 CodeDeploy 배포 그룹
     region: ap-northeast-2
     wait-until-deployed: true
-    on:
-      all_branches: true # master 브랜치 말고도 다른 브랜치에도 권한을 허용
 
 # CI 실행 완료시 메일로 알람
 # 4
