@@ -22,9 +22,13 @@ before_install:
 script: "./mvnw clean package"
 
 before_deploy:
-  - zip -r recoder *
-  - mkdir -p deploy
-  - mv recoder.zip deploy/recoder.zip
+  - mkdir -p before-deploy
+  - cp scripts/*.sh before-deploy/
+  - cp appspec.yml before-deploy/
+  - cp build/libs/*.jar before-deploy/
+  - cd before-deploy && zip -r before-deploy *
+  - cd ../ && mkdir -p deploy
+  - mv before-deploy/before-deploy.zip deploy/recoder.zip
 
 deploy:
   - provider: s3
