@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPOSITORY=/home/ec2-user/app/step2
-PROJECT_NAME=HongJungWan-Capstone-Repository
+PROJECT_NAME=web-0.0.1-SNAPSHOT
 
 echo "> Build 파일 복사"
 
@@ -9,7 +9,7 @@ cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> 현재 구동중인 애플리케이션 pid 확인"
 
-CURRENT_PID=$(pgrep -fl HongJungWan-Capstone-Repository | grep jar | awk '{print $1}')
+CURRENT_PID=$(pgrep -fl web-0.0.1-SNAPSHOT | grep jar | awk '{print $1}')
 
 echo "현재 구동중인 어플리케이션 pid: $CURRENT_PID"
 
