@@ -1,0 +1,10 @@
+# 1
+version: 0.0
+os: linux
+files:
+  # 2
+  - source:  /
+    # 3
+    destination: /home/ec2-user/app/step2/zip/
+    # 4
+    overwrite: yes
