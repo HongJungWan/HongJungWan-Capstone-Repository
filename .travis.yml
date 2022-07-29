@@ -36,6 +36,8 @@ deploy:
     acl: private # zip 파일 접근을 private으로
     local_dir: deploy # before_deploy에서 생성한 디렉토리
     wait-until-deployed: true
+    on:
+      all_branches: true # master 브랜치 말고도 다른 브랜치에도 권한을 허용
 
 # CI 실행 완료시 메일로 알람
 # 4
