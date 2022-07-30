@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPOSITORY=/home/ec2-user/app/step2
-PROJECT_NAME=web-0.0.1-SNAPSHOT
+PROJECT_NAME=HongJungWan-Capstone-REPOSITORY
 
 echo "> Build 파일 복사"
 
