@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
@@ -25,6 +25,7 @@
         <th>신고 사유</th>
         <th>신고 일자</th>
         <th>처리 결과</th>
+        <th>출동 알림</th>
     </tr>
 
     <tr style="cursor:pointer;" th:each="collect : ${collect}"
@@ -34,9 +35,25 @@
         <td th:text="${collect.carNumber}"></td>
         <td th:text="${collect.cause}"></td>
         <td th:text="${collect.reportDate}"></td>
-        <td th:text="${collect.status.PROCESS.getDescription()}"></td>
+        <td th:text="${collect.status.getDescription()}"></td>
+        <td>
+            <a class="w-btn-outline" href="#" th:href="'javascript:notification()'"
+               th:if="${#strings.equals(collect.status,'PROCESS')}">출동 알림</a>
+        </td>
     </tr>
 
 </table>
 </body>
+<script>
+    function notification() {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/send");
+        document.body.appendChild(form);
+        form.submit();
+        setTimeout(function () {
+            window.location.href = '/admin/report/list';
+        }, 1); // 0.001 후 자바 스크립트 리디렉션
+    }
+</script>
 </html>
