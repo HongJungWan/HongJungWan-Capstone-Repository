@@ -12,7 +12,7 @@ public class AndroidPushPeriodicNotifications {
     public static String PeriodicNotificationJson() throws JSONException {
         LocalDate localDate = LocalDate.now();
 
-        String sampleData[] = {"cXkTrS6MR_m3a9-jKrjqj_:APA91bEbhEgZcUP1HJeyLUCDL6lz3i8ZqwXLwyRM6mmTEHaAu5YF3PC9L0lMFIqHYpCiQzaWhU4j-cszW6x014yHfa4_BzwCPzWh2jqoDDTpwBBFIrP81jYcPN1acUXxOedwYw2oTbYt"};
+        String sampleData[] = {"dsIROp7dQqaVFJ62zMwsat:APA91bG6y5VDXBnpmjTNGlTHLzzZSQfv62Ar27-c-ZCAKRd0e3bL2qKF13uEzqdsxyPF3fuXGdglFe03R-mNwGUXa_bAeN_xiHOLvuAQjdoaUz4ZOfLLfgL49j8KJJlKzH1DOhInc7t0"};
 
         JSONObject body = new JSONObject();
 
