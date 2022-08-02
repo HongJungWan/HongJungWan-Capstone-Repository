@@ -52,4 +52,13 @@ public class Report {
         this.user = user;
     }
 
+    private void setStatus(ReportStatus process) {
+        this.status = process;
+    }
+
+    public void control() {
+
+        setStatus(ReportStatus.PROCESS);
+    }
+
 }
