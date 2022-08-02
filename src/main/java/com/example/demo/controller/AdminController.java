@@ -12,6 +12,7 @@ import com.example.demo.repository.ReportRepository;
 import com.example.demo.service.admin.AdminService;
 import com.example.demo.service.admin.AdminServiceImpl;
 import com.example.demo.service.admin.CarServiceImpl;
+import com.example.demo.service.report.ReportService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,8 @@ public class AdminController {
     private final AdminServiceImpl adminServiceImpl;
     private final CarServiceImpl carServiceImpl;
     private final ReportRepository reportRepository;
+
+    private final ReportService reportService;
 
 
     /**
@@ -130,6 +133,14 @@ public class AdminController {
 
         return "admin/reportList";
     }
+
+    @PostMapping("/report/{report_id}/control")
+    public String reportControl(@PathVariable("report_id") Long car_id) {
+        reportService.reportControl(car_id);
+
+        return "redirect:/admin/report/list";
+    }
+
 
     /**
      * 주차장 상세정보 조회
