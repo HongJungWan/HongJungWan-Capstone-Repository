@@ -1,67 +1,82 @@
 /* -- Header -- */
 .boxed-btn4 {
-    padding:5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
 }
+
 .Appointment span .d-lg-block {
-    display:inline-block!important;
+    display: inline-block !important;
 }
+
 /* --// Header -- */
 
 /* -- content -- */
 .field_custom {
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
+
 .field_custom span {
-    display:inline-block;
-    vertical-align:top;
+    display: inline-block;
+    vertical-align: top;
 }
 
-.w-btn-outline{
-   letter-spacing: 2px;
-   transform: scale(1.2);
-   cursor: pointer;
-   color: #ff4040;
+.w-btn-outline {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+    color: #ff4040;
 }
 
-.w-btn-danger{
-   letter-spacing: 2px;
-   transform: scale(1.2);
-   cursor: pointer;
-   color: #64D2D2;
+.g-btn-outline {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+    color: #eeeeee;
 }
 
-.field-error{
-   color:red;
-   font-weight:bold;
+.w-btn-danger {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+    color: #64D2D2;
+}
+
+.field-error {
+    color: red;
+    font-weight: bold;
 }
 
 .field_custom .field_divide {
-    display:table;
-    height:40px;
+    display: table;
+    height: 40px;
 }
+
 .field_custom .field_divide span {
     display: table-cell;
-    vertical-align:middle;
-    padding-left:20px;
+    vertical-align: middle;
+    padding-left: 20px;
 
 }
+
 .field_custom .field_divide div {
-    display:inline-block;
-    vertical-align:top;
+    display: inline-block;
+    vertical-align: top;
 }
+
 .field_custom .field_rad_mid div {
-    vertical-align:middle;
+    vertical-align: middle;
 }
+
 .field_custom .field_rad_mid span {
-    vertical-align:text-top;
-    padding-right:5px;
+    vertical-align: text-top;
+    padding-right: 5px;
 }
 
 .def_mar {
-    margin-bottom:30px;
+    margin-bottom: 30px;
 }
+
 .def_lit_mar {
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
 
 /* 모바일 메뉴에서는 보이되, 웹 메뉴에서는 표시하지 않기 위해 none 적용 */
@@ -71,12 +86,12 @@
 
 /* index 슬라이드 쇼 배경 이미지에 어두운 파란색 적용 */
 .back_darkblue {
-    position:absolute;
-    z-index:0;  /* Thymeleaf 변경으로 인해 슬라이드 이동 오류로 5 -> 0 수정 */
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
+    position: absolute;
+    z-index: 0; /* Thymeleaf 변경으로 인해 슬라이드 이동 오류로 5 -> 0 수정 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
     background-color: #040E27;
     opacity: .7;
 }
@@ -85,6 +100,7 @@
     font-size: 60px;
     font-weight: 400;
 }
+
 .carousel-item h4 {
     font-size: 28px;
 }
@@ -94,64 +110,75 @@
     .carousel-item h3 {
         font-size: 48px;
     }
+
     .carousel-item h4 {
         font-size: 22px;
     }
 }
+
 @media (max-width: 1200px) and (min-width: 992px) {
     .carousel-item h3 {
         font-size: 40px;
     }
+
     .carousel-item h4 {
         font-size: 18px;
     }
 }
+
 @media (max-width: 991px) and (min-width: 768px) {
     .carousel-item h3 {
         font-size: 34px;
     }
+
     .carousel-item h4 {
         font-size: 14px;
     }
 }
+
 @media (max-width: 767px) and (min-width: 411px) {
     .carousel-item h3 {
         font-size: 28px;
         line-height: 1.4;
     }
+
     .carousel-item h4 {
         font-size: 12px;
     }
+
     .carousel-item .boxed-btn3 {
-        padding:8px 14px 8px 14px;
-        font-size:14px;
+        padding: 8px 14px 8px 14px;
+        font-size: 14px;
     }
 }
+
 @media (max-width: 410px) {
     .carousel-item h3 {
         font-size: 16px;
     }
+
     .carousel-item h4 {
         font-size: 10px;
     }
+
     .carousel-item .boxed-btn3 {
-        padding:4px 6px 4px 6px;
-        font-size:12px;
+        padding: 4px 6px 4px 6px;
+        font-size: 12px;
     }
 }
 
 /* 중간 정렬 */
-.center{
+.center {
     text-align: center;
 }
 
 /* 간격 두기 */
-.interval{
+.interval {
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.carousel-caption-custom{
+.carousel-caption-custom {
     position: absolute;
     right: 15%;
     bottom: 50%;
@@ -165,46 +192,54 @@
 }
 
 /* z-index 강제로 1 적용(슬라이드 하단 바) */
-.zindex1{
+.zindex1 {
     z-index: 1 !important;
 }
 
 /*index 페이지 - TOP3 추천 슬라이드 padding*/
-.custom_testimonial_area{
-    padding:10px !important;
+.custom_testimonial_area {
+    padding: 10px !important;
 }
 
 /* icon css(layout-footer) */
-.icon64{
-    width:64px; height:64px;
+.icon64 {
+    width: 64px;
+    height: 64px;
 }
-.icon48{
-    width:48px; height:48px;
+
+.icon48 {
+    width: 48px;
+    height: 48px;
 }
-.margin5{
-    margin:5px;
+
+.margin5 {
+    margin: 5px;
 }
-.margin2{
-    margin:2px;
+
+.margin2 {
+    margin: 2px;
 }
-.circleIcon{
+
+.circleIcon {
     border-radius: 8px;
 }
 
 /* for Graph */
 .form_box_center {
-    margin-top:30px;
-    text-align:center;
-}
-.form_box_center div {
-    display:inline-block;
-}
-.form_box_center button {
-    border:0 none;
-    vertical-align:top;
+    margin-top: 30px;
+    text-align: center;
 }
 
-.rankingIcon {  /* 랭킹 아이콘 */
+.form_box_center div {
+    display: inline-block;
+}
+
+.form_box_center button {
+    border: 0 none;
+    vertical-align: top;
+}
+
+.rankingIcon { /* 랭킹 아이콘 */
     position: absolute;
     width: 85px;
     height: 85px;

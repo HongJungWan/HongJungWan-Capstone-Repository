@@ -26,6 +26,7 @@
         <th>신고 일자</th>
         <th>처리 결과</th>
         <th>출동 알림</th>
+        <th>확인</th>
     </tr>
 
     <tr style="cursor:pointer;" th:each="collect : ${collect}"
@@ -38,16 +39,21 @@
         <td th:text="${collect.status.getDescription()}"></td>
         <td>
             <a class="w-btn-outline" href="#" th:href="'javascript:notification()'"
-               th:if="${#strings.equals(collect.status,'PROCESS')}">출동 알림</a>
+               th:if="${#strings.equals(collect.status.getDescription(),'처리 필요')}">🚨</a>
+        </td>
+        <td>
+            <a class="g-btn-outline" href="#" th:href="'javascript:reportControl('+${collect.id}+')'"
+               th:if="${#strings.equals(collect.status.getDescription(),'처리 필요')}">확인</a>
         </td>
     </tr>
 
 </table>
 </body>
+
 <script>
     function notification() {
         var form = document.createElement("form");
-        form.setAttribute("method", "get");
+        form.setAttribute("method", "post");
         form.setAttribute("action", "/send");
         document.body.appendChild(form);
         form.submit();
@@ -56,4 +62,14 @@
         }, 1); // 0.001 후 자바 스크립트 리디렉션
     }
 </script>
+<script>
+    function reportControl(report_id) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/admin/report/" + report_id + "/control");
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
+
 </html>
