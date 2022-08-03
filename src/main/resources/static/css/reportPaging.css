@@ -1,0 +1,40 @@
+.page_wrap {
+    float: left;
+    position: fixed;
+    width: 260px;
+    text-align: center;
+    bottom: 80px;
+    display: flex;
+    /*margin: 10px;*/
+}
+
+.justify-content-center {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*margin: 10px;*/
+}
+
+.page-item {
+    width: 30px;
+    background-color: #fff;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.200);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 5px;
+    /*display: flex;*/
+    background-image: linear-gradient(60deg, #FFFFFF 0%, #CCE1FF 100%);
+}
+
+.page-list {
+    width: 30px;
+    background-color: #fff;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.200);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 5px;
+    /*display: flex;*/
+}
