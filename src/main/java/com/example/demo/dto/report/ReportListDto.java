@@ -25,6 +25,7 @@ public class ReportListDto {
 
     public ReportListDto(Report report) {
 
+        this.id = report.getId();
         this.user = report.getUser().getName();
         this.college = report.getCollege().getCollegeName();
         this.carNumber = report.getCarNumber();
