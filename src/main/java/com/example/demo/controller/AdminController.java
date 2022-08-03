@@ -15,6 +15,10 @@ import com.example.demo.service.admin.CarServiceImpl;
 import com.example.demo.service.report.ReportService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -28,7 +32,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -121,13 +124,10 @@ public class AdminController {
      * 신고 목록
      */
     @GetMapping("/report/list")
-    public String reportList(Model model) {
-
-        List<Report> reportList = reportRepository.findAll();
-
-        List<ReportListDto> collect = reportList.stream()
-                .map(m -> new ReportListDto(m.getId(), m.getUser().getName(), m.getCollege().getCollegeName(), m.getCarNumber(), m.getCause(), m.getReportDate(), m.getStatus()))
-                .collect(Collectors.toList());
+    public String reportList(Model model, @PageableDefault(page = 0, size = 6, direction = Sort.Direction.DESC) Pageable pageable) {
+        
+        Page<Report> reportList = reportRepository.findAll(pageable);
+        Page<ReportListDto> collect = reportList.map(ReportListDto::new);
 
         model.addAttribute("collect", collect);
 

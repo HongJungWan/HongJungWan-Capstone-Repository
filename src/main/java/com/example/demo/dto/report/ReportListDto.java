@@ -1,12 +1,11 @@
 package com.example.demo.dto.report;
 
+import com.example.demo.domain.entity.Report;
 import com.example.demo.domain.value.ReportStatus;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@AllArgsConstructor
 @Data
 public class ReportListDto {
 
@@ -24,4 +23,14 @@ public class ReportListDto {
 
     private ReportStatus status;
 
+    public ReportListDto(Report report) {
+
+        this.user = report.getUser().getName();
+        this.college = report.getCollege().getCollegeName();
+        this.carNumber = report.getCarNumber();
+        this.cause = report.getCause();
+        this.reportDate = report.getReportDate();
+        this.status = report.getStatus();
+
+    }
 }

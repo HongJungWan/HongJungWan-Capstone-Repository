@@ -29,8 +29,8 @@
         <th>확인</th>
     </tr>
 
-    <tr style="cursor:pointer;" th:each="collect : ${collect}"
-        th:if="${collect!=null}">
+    <tr style="cursor:pointer;" th:each="collect, loop : ${collect}" th:if="${collect!=null}"
+        }>
         <td th:text="${collect.user}"></td>
         <td th:text="${collect.college}"></td>
         <td th:text="${collect.carNumber}"></td>
@@ -46,8 +46,30 @@
                th:if="${#strings.equals(collect.status.getDescription(),'처리 필요')}">확인</a>
         </td>
     </tr>
-
 </table>
+<!-- 페이징처리 시작 -->
+<div class="page_wrap" th:if="${!collect.isEmpty()}">
+    <ul class="pagination justify-content-center">
+        <li class="page-item" th:classappend="${!collect.hasPrevious} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{|?page=${collect.number-1}|}">
+                <span><</span>
+            </a>
+        </li>
+        <li class="page-list"
+            th:classappend="${page == collect.number} ? 'active'"
+            th:each="page: ${#numbers.sequence(0, collect.totalPages-1)}"
+            th:if="${page >= collect.number-5 and page <= collect.number+5}">
+            <a class="page-link" th:href="@{|?page=${page}|}" th:text="${page}"></a>
+        </li>
+        <li class="page-item" th:classappend="${!collect.hasNext} ? 'disabled'">
+            <a class="page-link" th:href="@{|?page=${collect.number+1}|}">
+                <span>></span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- 페이징처리 끝 -->
 </body>
 
 <script>
