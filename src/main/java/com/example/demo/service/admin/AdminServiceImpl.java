@@ -1,6 +1,9 @@
 package com.example.demo.service.admin;
 
-import com.example.demo.domain.entity.*;
+import com.example.demo.domain.entity.Admin;
+import com.example.demo.domain.entity.College;
+import com.example.demo.domain.entity.Parking;
+import com.example.demo.domain.entity.Reserve;
 import com.example.demo.dto.college.*;
 import com.example.demo.dto.reserve.ReserveWithUsernameDto;
 import com.example.demo.repository.AdminRepository;
@@ -8,6 +11,9 @@ import com.example.demo.repository.CollegeRepository;
 import com.example.demo.repository.ReserveRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -70,7 +76,7 @@ public class AdminServiceImpl implements AdminService {
         //등록 취소
         college.hidden();
     }
-    
+
 
     /**
      * 주차장이름으로 주차장 정보 얻어오기
@@ -100,15 +106,17 @@ public class AdminServiceImpl implements AdminService {
         Admin admin = adminRepository.findByName(name).get();
         return collegeRepository.findAllByAdmin(admin);
     }
-
+    
     @Override
-    public List<CollegeListDto> getCollegeList(String name, String address) {
+    public Page<CollegeListDto> getCollegeList(String name, String address, int page) {
         Admin admin = adminRepository.findByName(name).get();
+        Pageable pageable = PageRequest.of(page, 6);
         if (address.equals("noSearch")) {
-            return collegeRepository.findAllCollegeInfo(admin.getId());
+            return collegeRepository.findAllCollegeInfo(pageable, admin.getId());
         }
 
-        return collegeRepository.findCollegeListByAddressAndAdmin(address, admin.getId());
+        return collegeRepository.findCollegeListByAddressAndAdmin(pageable, address, admin.getId());
+
     }
 
     /**

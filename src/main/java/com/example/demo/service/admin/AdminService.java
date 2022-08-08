@@ -2,6 +2,7 @@ package com.example.demo.service.admin;
 
 import com.example.demo.dto.college.*;
 import com.example.demo.dto.reserve.ReserveWithUsernameDto;
+import org.springframework.data.domain.Page;
 
 import java.text.ParseException;
 import java.util.List;
@@ -22,8 +23,8 @@ public interface AdminService {
      * 어드민이 관리하는 주차장 리스트를 보여주기 위한 메서드
      */
     List<CollegeSimpleInfoDto> getAllSimpleCollegeInfo(String name);
-
-    List<CollegeListDto> getCollegeList(String name, String address);
+    
+    Page<CollegeListDto> getCollegeList(String name, String address, int page);
 
     /**
      * 주차장 상세 정보 조회 후 dto로 변환

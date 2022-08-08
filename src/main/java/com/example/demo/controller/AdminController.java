@@ -8,7 +8,6 @@ import com.example.demo.dto.college.*;
 import com.example.demo.dto.report.ReportListDto;
 import com.example.demo.dto.reserve.ReserveWithUsernameDto;
 import com.example.demo.dto.security.PrincipalDetails;
-import com.example.demo.repository.ReportRepository;
 import com.example.demo.service.admin.AdminService;
 import com.example.demo.service.admin.AdminServiceImpl;
 import com.example.demo.service.admin.CarServiceImpl;
@@ -39,7 +38,6 @@ public class AdminController {
     private final AdminService adminService;
     private final AdminServiceImpl adminServiceImpl;
     private final CarServiceImpl carServiceImpl;
-    private final ReportRepository reportRepository;
     private final ReportService reportService;
 
 
@@ -105,19 +103,19 @@ public class AdminController {
     }
 
     /**
-     * 주차장 목록
+     * 주차장 목록 - paging
      */
     @GetMapping("/college/list")
     public String collegeList(@AuthenticationPrincipal PrincipalDetails principal, Model model,
-                              @RequestParam(defaultValue = "noSearch") String addressSearch) {
+                              @RequestParam(defaultValue = "noSearch") String addressSearch, @RequestParam(value = "page", defaultValue = "0") int page) {
         String adminName = principal.getName();
-        List<CollegeListDto> collegeList = adminService.getCollegeList(adminName, addressSearch);
+        Page<CollegeListDto> collegeList = adminService.getCollegeList(adminName, addressSearch, page);
         model.addAttribute("collegeList", collegeList);
         return "admin/collegeList";
     }
 
     /**
-     * 신고 목록
+     * 신고 목록 - paging
      */
     @GetMapping("/report/list")
     public String reportList(Model model, @RequestParam(value = "page", defaultValue = "0") int page) {

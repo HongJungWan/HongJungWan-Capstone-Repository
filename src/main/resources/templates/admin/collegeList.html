@@ -11,6 +11,7 @@
     <link rel="stylesheet" th:href="@{/css/adminlist.css?ver=1}">
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
     <link rel="stylesheet" th:href="@{/css/custom.css?ver=1}">
+    <link rel="stylesheet" th:href="@{/css/Paging.css}">
 </head>
 
 <body>
@@ -40,7 +41,7 @@
     </tr>
 
     <tr style="cursor:pointer;" th:each="college : ${collegeList}"
-        th:if="${college.enabled == true} and ${collegeList.size() > 0}">
+        th:if="${college.enabled == true}">
         <td th:text="${college.collegeName}">한신대학교 중앙도서관 주차장</td>
         <td th:text="${college.address}">경기 오산시 한신대133번길 5</td>
         <td th:text="${college.qty}">20</td>
@@ -59,10 +60,30 @@
                th:if="${college.enabled == true}">삭제</a>
         </td>
     </tr>
-    <tr th:unless="${collegeList.size() > 0}">
-        <td colspan="5"> 결과 없음</td>
-    </tr>
 </table>
+<!-- 페이징처리 시작 -->
+<div class="page_wrap" th:if="${!collegeList.isEmpty()}">
+    <ul class="pagination justify-content-center">
+        <li class="page-item" th:classappend="${!collegeList.hasPrevious} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{|?page=${collegeList.number-1}|}">
+                <span><</span>
+            </a>
+        </li>
+        <li class="page-list"
+            th:classappend="${page == collegeList.number} ? 'active'"
+            th:each="page: ${#numbers.sequence(0, collegeList.totalPages-1)}"
+            th:if="${page >= collegeList.number-5 and page <= collegeList.number+5}">
+            <a class="page-link" th:href="@{|?page=${page}|}" th:text="${page}"></a>
+        </li>
+        <li class="page-item" th:classappend="${!collegeList.hasNext} ? 'disabled'">
+            <a class="page-link" th:href="@{|?page=${collegeList.number+1}|}">
+                <span>></span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- 페이징처리 끝 -->
 </body>
 <script>
     function hidden(college_id) {

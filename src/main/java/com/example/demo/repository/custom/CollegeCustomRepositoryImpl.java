@@ -2,7 +2,6 @@ package com.example.demo.repository.custom;
 
 
 import com.example.demo.domain.entity.College;
-import com.example.demo.dto.college.CollegeListDto;
 import com.example.demo.dto.college.CollegeListUserDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,15 +18,6 @@ import java.util.Optional;
 public class CollegeCustomRepositoryImpl implements CollegeCustomRepository {
 
     private final EntityManager em;
-
-    @Override
-    public List<CollegeListDto> findAllCollegeInfo(Long id) {
-        return em.createQuery(
-                "select new com.example.demo.dto.college.CollegeListDto(h.id, h.collegeName, h.address, h.totalQuantity, h.enabled) " +
-                        "from College h " +
-                        "where h.admin.id = :id"
-                , CollegeListDto.class).setParameter("id", id).getResultList();
-    }
 
     @Override
     public College findOne(Long collegeId) {
@@ -48,7 +38,7 @@ public class CollegeCustomRepositoryImpl implements CollegeCustomRepository {
     }
 
     /**
-     * 예약가능 주차장 조회 + 페이징
+     * 예약가능 주차장 조회 + 레거시 페이징
      */
     @Override
     public List<CollegeListUserDto> findCollegeListPaging(int offset, int limit) {
@@ -73,20 +63,6 @@ public class CollegeCustomRepositoryImpl implements CollegeCustomRepository {
                 .setParameter("address", address)
                 .setFirstResult(offset)
                 .setMaxResults(limit)
-                .getResultList();
-    }
-
-    /**
-     * 주소로, admin으로 주차장 조회
-     */
-    @Override
-    public List<CollegeListDto> findCollegeListByAddressAndAdmin(@Param("address") String address, Long adminId) {
-        return em.createQuery(
-                        "select new com.example.demo.dto.college.CollegeListDto(h.id, h.collegeName, h.address, h.totalQuantity, h.enabled) " +
-                                "from College h " +
-                                "where h.admin.id= :adminId and h.address like '%'||:address||'%'", CollegeListDto.class)
-                .setParameter("address", address)
-                .setParameter("adminId", adminId)
                 .getResultList();
     }
 

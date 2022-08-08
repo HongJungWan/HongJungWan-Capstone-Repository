@@ -30,13 +30,13 @@ public class CollegeRepositoryTest {
         }
 
         // 현재 RDS에는 4개 등록되어있음
-        Assertions.assertThat(list.size()).isEqualTo(4);
+        Assertions.assertThat(list.size()).isEqualTo(15);
     }
 
     @Test
     @DisplayName("주차장 이름으로 조회 테스트")
     void 주차장이름_조회() {
-        College college = collegeRepository.findByCollegeName("DB 마이그레이션 TEST")
+        College college = collegeRepository.findByCollegeName("한울관 주차장")
                 .orElseThrow(() -> {
                     throw new IllegalArgumentException("미등록 주차장");
                 });
