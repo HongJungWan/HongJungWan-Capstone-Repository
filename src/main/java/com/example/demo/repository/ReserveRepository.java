@@ -20,6 +20,7 @@ public interface ReserveRepository extends JpaRepository<Reserve, Long>, Reserve
             "where ri.user.user_id = :userId")
     Optional<ReserveSimpleDto> findByUserId(Long userId);
 
+    
     /**
      * 어드민이 관리하는 주차장 리스트 - 검색 기능
      */
@@ -35,4 +36,12 @@ public interface ReserveRepository extends JpaRepository<Reserve, Long>, Reserve
     @Query("select new com.example.demo.dto.college.CollegeListDto(h.id, h.collegeName, h.address, h.totalQuantity, h.enabled) " +
             "from College h ")
     Page<CollegeListDto> findAllCollegeInfo(Pageable pageable);
+
+
+    /**
+     * 모든 예약 리스트
+     */
+    @Query("select distinct ri from Reserve ri join ri.user u where ri.College.id = :collegeId")
+    Page<Reserve> findAllReserve(Pageable pageable, Long collegeId);
+
 }

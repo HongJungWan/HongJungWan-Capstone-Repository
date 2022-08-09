@@ -5,7 +5,6 @@ import com.example.demo.domain.entity.College;
 import com.example.demo.domain.entity.Parking;
 import com.example.demo.domain.entity.Reserve;
 import com.example.demo.dto.college.*;
-import com.example.demo.dto.reserve.ReserveWithUsernameDto;
 import com.example.demo.repository.AdminRepository;
 import com.example.demo.repository.CollegeRepository;
 import com.example.demo.repository.ReserveRepository;
@@ -19,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -106,7 +104,7 @@ public class AdminServiceImpl implements AdminService {
         Admin admin = adminRepository.findByName(name).get();
         return collegeRepository.findAllByAdmin(admin);
     }
-    
+
     @Override
     public Page<CollegeListDto> getCollegeList(String name, String address, int page) {
         Admin admin = adminRepository.findByName(name).get();
@@ -239,15 +237,11 @@ public class AdminServiceImpl implements AdminService {
      */
     @Transactional(readOnly = true)
     @Override
-    public List<ReserveWithUsernameDto> getReserveCondition(Long collegeId) {
-        List<Reserve> reserves = reserveRepository.findAllReserve(collegeId);
-        if (reserves.isEmpty()) {
-            return null;
-        }
+    public Page<Reserve> getReserveCondition(int page, Long collegeId) {
 
-        return reserves.stream()
-                .map(ri -> new ReserveWithUsernameDto(ri))
-                .collect(Collectors.toList());
+        Pageable pageable = PageRequest.of(page, 6);
+
+        return reserveRepository.findAllReserve(pageable, collegeId);
     }
 
 }

@@ -3,6 +3,7 @@ package com.example.demo.controller;
 
 import com.example.demo.domain.entity.Car;
 import com.example.demo.domain.entity.Report;
+import com.example.demo.domain.entity.Reserve;
 import com.example.demo.domain.value.CarSearch;
 import com.example.demo.dto.college.*;
 import com.example.demo.dto.report.ReportListDto;
@@ -170,10 +171,13 @@ public class AdminController {
      * 예약 현황 조회
      */
     @GetMapping("/college/reserves/{collegeId}")
-    public String reserveCondition(@PathVariable Long collegeId, Model model) {
-        List<ReserveWithUsernameDto> reserveConditions = adminService.getReserveCondition(collegeId);
+    public String reserveCondition(@PathVariable Long collegeId, Model model, @RequestParam(value = "page", defaultValue = "0") int page) {
 
+        Page<Reserve> reserveCondition = adminService.getReserveCondition(page, collegeId);
+        Page<ReserveWithUsernameDto> reserveConditions = reserveCondition.map(ReserveWithUsernameDto::new);
+        
         model.addAttribute("reserveConditions", reserveConditions);
+
         return "admin/reserveCondition";
     }
 

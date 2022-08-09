@@ -1,7 +1,6 @@
 package com.example.demo.repository.custom;
 
 import com.example.demo.domain.entity.Parking;
-import com.example.demo.domain.entity.Reserve;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -23,16 +22,5 @@ public class ReserveCustomRepositoryImpl implements ReserveCustomRepository {
                 .setParameter("collegeId", collegeId)
                 .getResultList();
     }
-
-    //0508 애 건들여야 할듯
-    @Override
-    public List<Reserve> findAllReserve(Long collegeId) {
-        return em.createQuery(
-                        "select distinct ri " +
-                                "from Reserve ri " +
-                                "join fetch ri.user u " +
-                                "where ri.College.id = :collegeId", Reserve.class)
-                .setParameter("collegeId", collegeId)
-                .getResultList();
-    }
+    
 }

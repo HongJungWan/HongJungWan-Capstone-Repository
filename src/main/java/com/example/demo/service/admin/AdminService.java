@@ -1,7 +1,7 @@
 package com.example.demo.service.admin;
 
+import com.example.demo.domain.entity.Reserve;
 import com.example.demo.dto.college.*;
-import com.example.demo.dto.reserve.ReserveWithUsernameDto;
 import org.springframework.data.domain.Page;
 
 import java.text.ParseException;
@@ -23,7 +23,7 @@ public interface AdminService {
      * 어드민이 관리하는 주차장 리스트를 보여주기 위한 메서드
      */
     List<CollegeSimpleInfoDto> getAllSimpleCollegeInfo(String name);
-    
+
     Page<CollegeListDto> getCollegeList(String name, String address, int page);
 
     /**
@@ -40,6 +40,6 @@ public interface AdminService {
     /**
      * 예약 현황 정보
      */
-    List<ReserveWithUsernameDto> getReserveCondition(Long collegeId);
+    Page<Reserve> getReserveCondition(int page, Long collegeId);
 
 }

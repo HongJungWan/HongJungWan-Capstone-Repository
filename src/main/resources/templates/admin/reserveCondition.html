@@ -9,6 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/adminlist.css?ver=2}">
     <link rel="stylesheet" th:href="@{/css/navbar.css?ver=2}">
     <link rel="stylesheet" th:href="@{/css/index.css?ver=2}">
+    <link rel="stylesheet" th:href="@{/css/Paging.css}">
 </head>
 
 <body>
@@ -38,5 +39,28 @@
     </tr>
 
 </table>
+<!-- 페이징처리 시작 -->
+<div class="page_wrap" th:if="${!reserveConditions.isEmpty()}">
+    <ul class="pagination justify-content-center">
+        <li class="page-item" th:classappend="${!reserveConditions.hasPrevious} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{|?page=${reserveConditions.number-1}|}">
+                <span><</span>
+            </a>
+        </li>
+        <li class="page-list"
+            th:classappend="${page == reserveConditions.number} ? 'active'"
+            th:each="page: ${#numbers.sequence(0, reserveConditions.totalPages-1)}"
+            th:if="${page >= reserveConditions.number-5 and page <= reserveConditions.number+5}">
+            <a class="page-link" th:href="@{|?page=${page}|}" th:text="${page}"></a>
+        </li>
+        <li class="page-item" th:classappend="${!reserveConditions.hasNext} ? 'disabled'">
+            <a class="page-link" th:href="@{|?page=${reserveConditions.number+1}|}">
+                <span>></span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- 페이징처리 끝 -->
 </body>
 </html>
