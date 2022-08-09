@@ -1,16 +1,15 @@
 package com.example.demo.service.reserve;
 
-import com.example.demo.dto.college.CollegeListUserDto;
+import com.example.demo.dto.college.CollegeListDto;
 import com.example.demo.dto.parking.ParkingReserveDto;
 import com.example.demo.dto.reserve.ReserveSimpleDto;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public interface ReserveService {
-
-    List<CollegeListUserDto> getAllCollegeInfo(int offset, int limit);
-
-    List<CollegeListUserDto> getAllCollegeInfoSearchByAddress(String address, int offset, int limit);
+    
+    Page<CollegeListDto> getCollegeList(String address, int page);
 
     List<ParkingReserveDto> getAvailableParkingNameList(Long collegeId);
 

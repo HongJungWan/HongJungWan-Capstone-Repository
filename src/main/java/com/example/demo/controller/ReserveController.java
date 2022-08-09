@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.college.CollegeListUserDto;
+import com.example.demo.dto.college.CollegeListDto;
 import com.example.demo.dto.parking.ParkingReserveDto;
 import com.example.demo.dto.reserve.ReserveRequestDto;
 import com.example.demo.dto.reserve.ReserveSimpleDto;
@@ -8,6 +8,7 @@ import com.example.demo.dto.security.PrincipalDetails;
 import com.example.demo.service.reserve.ReserveService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,40 +26,20 @@ public class ReserveController {
     private final ReserveService reserveService;
 
     /**
-     * 예약 가능 주차장 조회
+     * 예약 가능 주차장 조회, 검색
      */
-    @GetMapping("/colleges")
-    public String collegeList(
-            @RequestParam(name = "offset", defaultValue = "0") int offset,
-            @RequestParam(name = "limit", defaultValue = "10") int limit, Model model,
-            @AuthenticationPrincipal PrincipalDetails user) {
+
+    @GetMapping("/college/list")
+    public String collegeList(@AuthenticationPrincipal PrincipalDetails user, Model model,
+                              @RequestParam(defaultValue = "noSearch") String addressSearch, @RequestParam(value = "page", defaultValue = "0") int page) {
 
         if (1 == reserveService.validateDuplicateUser(user.getUsername())) {
             return "user/reserve/duplicate";
         }
 
-        List<CollegeListUserDto> collegeListDtos = reserveService.getAllCollegeInfo(offset, limit);
-
-        model.addAttribute("collegeList", collegeListDtos);
-
+        Page<CollegeListDto> collegeList = reserveService.getCollegeList(addressSearch, page);
+        model.addAttribute("collegeList", collegeList);
         return "user/reserve/collegeList";
-
-    }
-
-    /**
-     * 예약 가능 주차장 주소로 검색
-     */
-    @GetMapping("/search")
-    public String searchByAddress(
-            @RequestParam(name = "offset", defaultValue = "0") int offset,
-            @RequestParam(name = "limit", defaultValue = "10") int limit, Model model,
-            @RequestParam String addressSearch) {
-
-        List<CollegeListUserDto> collegeListDtos = reserveService.getAllCollegeInfoSearchByAddress(addressSearch, offset, limit);
-        model.addAttribute("collegeList", collegeListDtos);
-
-        return "user/reserve/collegeList";
-
     }
 
     /**
@@ -124,4 +105,5 @@ public class ReserveController {
 
         return "redirect:/";
     }
+
 }

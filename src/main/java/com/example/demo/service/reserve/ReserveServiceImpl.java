@@ -5,7 +5,7 @@ import com.example.demo.domain.entity.Parking;
 import com.example.demo.domain.entity.Reserve;
 import com.example.demo.domain.entity.User;
 import com.example.demo.domain.value.ReserveStatus;
-import com.example.demo.dto.college.CollegeListUserDto;
+import com.example.demo.dto.college.CollegeListDto;
 import com.example.demo.dto.parking.ParkingReserveDto;
 import com.example.demo.dto.reserve.ReserveSimpleDto;
 import com.example.demo.repository.CollegeRepository;
@@ -14,6 +14,9 @@ import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.custom.ParkingCustomRepositoryImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,29 +31,24 @@ import java.util.stream.Collectors;
 public class ReserveServiceImpl implements ReserveService {
 
     private final ParkingCustomRepositoryImpl parkingCustomRepository;
-
     private final CollegeRepository collegeRepository;
-
     private final UserRepository userRepository;
-
     private final ReserveRepository reserveRepository;
 
     /**
-     * 유저가 예약하기 버튼을 눌렀을 때 모든 주차장의 간단한 정보 (주차장 이름, 주소, 주차 구역 남은 자리) 보여주기
+     * 모든 주차장 구역 (유저)
      */
     @Override
-    public List<CollegeListUserDto> getAllCollegeInfo(int offset, int limit) {
+    public Page<CollegeListDto> getCollegeList(String address, int page) {
 
-        return collegeRepository.findCollegeListPaging(offset, limit);
+        Pageable pageable = PageRequest.of(page, 6);
+        if (address.equals("noSearch")) {
+            return reserveRepository.findAllCollegeInfo(pageable);
+        }
 
+        return reserveRepository.findCollegeListByAddressAndAdmin(pageable, address);
     }
 
-    @Override
-    public List<CollegeListUserDto> getAllCollegeInfoSearchByAddress(String address, int offset, int limit) {
-
-        return collegeRepository.findCollegeListByAddressPaging(offset, limit, address);
-
-    }
 
     /**
      * 예약 가능 주차 구역 조회

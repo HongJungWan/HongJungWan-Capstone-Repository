@@ -10,6 +10,8 @@
     <link rel="stylesheet" th:href="@{/css/adminlist.css}">
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <link rel="stylesheet" th:href="@{/css/Paging.css}">
 </head>
 
 <body>
@@ -21,13 +23,13 @@
     <caption>주차장 목록</caption>
     <caption class="search">
         <div>
-            <form method="get" th:action="@{/reserve/search}">
+            <form method="get" th:action="@{/reserve/college/list}">
                 <label for="addressSearch">주소검색 </label>
                 <input id="addressSearch" name="addressSearch" type="text">
                 <button type="submit">검색</button>
             </form>
 
-            <button th:onclick="|location.href='@{/reserve/colleges}'|">
+            <button th:onclick="|location.href='@{/reserve/college/list}'|">
                 전체보기
             </button>
         </div>
@@ -38,19 +40,36 @@
         <th>이용 가능 주차구역</th>
     </tr>
 
-    <tr style="cursor:pointer;" th:each="college : ${collegeList}" th:if="${collegeList.size() > 0}"
+
+    <tr style="cursor:pointer;" th:each="college : ${collegeList}" th:if="${college.enabled == true}"
         th:onclick="|location.href='@{/reserve/{collegeId}/parking (collegeId=${college.id})}'|">
-
-        <td th:text="${college.collegeName}">송암관 주차장</td>
-        <td th:text="${college.address}">한신대길 137번길</td>
-        <td th:text="${college.qty}">100</td>
+        <td th:text="${college.collegeName}"></td>
+        <td th:text="${college.address}"></td>
+        <td th:text="${college.qty}"></td>
     </tr>
-
-    <tr th:unless="${collegeList.size() > 0}">
-        <td colspan="3"> 결과 없음</td>
-    </tr>
-
 </table>
-
+<!-- 페이징처리 시작 -->
+<div class="page_wrap" th:if="${!collegeList.isEmpty()}">
+    <ul class="pagination justify-content-center">
+        <li class="page-item" th:classappend="${!collegeList.hasPrevious} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{|?page=${collegeList.number-1}|}">
+                <span><</span>
+            </a>
+        </li>
+        <li class="page-list"
+            th:classappend="${page == collegeList.number} ? 'active'"
+            th:each="page: ${#numbers.sequence(0, collegeList.totalPages-1)}"
+            th:if="${page >= collegeList.number-5 and page <= collegeList.number+5}">
+            <a class="page-link" th:href="@{|?page=${page}|}" th:text="${page}"></a>
+        </li>
+        <li class="page-item" th:classappend="${!collegeList.hasNext} ? 'disabled'">
+            <a class="page-link" th:href="@{|?page=${collegeList.number+1}|}">
+                <span>></span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- 페이징처리 끝 -->
 </body>
 </html>
