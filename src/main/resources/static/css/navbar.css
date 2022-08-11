@@ -39,6 +39,15 @@
     background-size: cover;
 }
 
+.duplicate {
+    width: 8%;
+    height: 15%;
+    background-image: url('static/images/cancel.png');
+    display: block;
+    margin: 0px auto;
+    background-size: cover;
+}
+
 .main {
     width: 100%;
     height: 90%;
