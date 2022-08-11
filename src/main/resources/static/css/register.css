@@ -20,7 +20,7 @@ body {
     color: #222;
     font-weight: 300;
     margin: 0;
-    background-color: #FFFFFF;
+    background-color: #eeeeee;
 }
 
 a {
@@ -38,7 +38,7 @@ input, select {
     margin: auto;
     margin-top: 200px;
     margin-bottom: 40px;
-    background-color: #FFFFFF;
+    background-color: #eeeeee;
     padding: 30px;
 }
 

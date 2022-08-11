@@ -72,12 +72,21 @@ header .logout a:last-child {
 
 /*여기부터 로그인 건들인거*/
 
+body {
+    font-size: 14px;
+    line-height: 1.5em;
+    color: #222;
+    font-weight: 300;
+    margin: 0;
+    background-color: #eeeeee;
+}
+
 .login {
     width: 460px;
     margin: auto;
     margin-top: 100px;
     margin-bottom: 40px;
-    background-color: #FFFFFF;
+    background-color: #eeeeee;
     padding: 30px;
 }
 

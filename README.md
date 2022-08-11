@@ -3,11 +3,13 @@
 * [WEB - Repository 바로 가기](https://github.com/HongJungWan/HongJungWan-Capstone-Repository)
 * [App - Repository 바로 가기](https://github.com/Capstone-Demo/Re-Coder-App-Web/tree/siyeon/basiccode)
 
----
+<br/><br/>
 
 # ReCoder
 
 ### 🚗 대학 주차 관리 플랫폼 [ `Web` / `App` ]
+
+<br/>
 
 > 영상처리 및 문자인식 OCR을 통한 주차 관리 서비스 (Web / App)
 
@@ -21,12 +23,12 @@
 
 ### 👬 팀원 소개
 
-| <img src="src/main/resources/static/images/서핑짤.jpg" width="200"> |         .....         |         .....          |
-|:----------------------------------------------------------------:|:---------------------:|:----------------------:|
-|                             **홍정완**                              |        **김현지**        |        **김시연**         |
-|            Web(FE / **BE**) <br/><br/> **AWS Infra**             | Android <br/><br/> DB | Android <br/><br/> OCR |
-|                                 팀장                                 |             팀원          |      팀원                  |
-|                                    "습관이 전부다"                                |           "이슈에 올릴게요"              |          "사회에 선한 영향을 미치고 싶은 개발자"                |
+| <img src="src/main/resources/static/images/readme00.jpg" width="200"> |         .....         |         .....          |
+|:---------------------------------------------------------------------:|:---------------------:|:----------------------:|
+|                                **홍정완**                                |        **김현지**        |        **김시연**         |
+|               Web(FE / **BE**) <br/><br/> **AWS Infra**               | Android <br/><br/> DB | Android <br/><br/> OCR |
+|                                  팀장                                   |             팀원          |      팀원                  |
+|                               "습관이 전부다"                               |           "이슈에 올릴게요"              |          "사회에 선한 영향을 미치고 싶은 개발자"                |
 
 <br/><br/>
 
@@ -69,19 +71,19 @@
 
 ### 🛠 기술 스택
 
-<img src="src/main/resources/static/images/기술 스택.png" width="600">
+<img src="src/main/resources/static/images/readme02.png" width="600">
 
 <br/><br/>
 
 ### 📎 서버 구조도
 
-<img src="src/main/resources/static/images/220729 서버구조도.png" width="850">
+<img src="src/main/resources/static/images/readme01.png" width="850">
 
 <br/><br/>
 
 ### DB ERD
 
-<img src="src/main/resources/static/images/issue-DB.png" width="850">
+<img src="src/main/resources/static/images/readme03.png" width="850">
 
 <br/><br/>
 

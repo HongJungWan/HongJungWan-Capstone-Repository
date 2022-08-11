@@ -3,16 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>인증 및 예약</title>
-    <link rel="icon" th:href="@{/images/recoder.png}">
+    <link rel="icon" th:href="@{/images/logo2.png}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
     <link href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" th:href="@{/css/fontawesome.css}">
+    <link rel="stylesheet" th:href="@{/css/templatemo-plot-listing.css}">
+    <link rel="stylesheet" th:href="@{/css/animated.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.css}">
 </head>
 <body>
 
-<header th:replace="~{fragment/header :: header}"></header>
+<header class="header-area header-sticky wow slideInDown" data-wow-delay="0s" data-wow-duration="0.75s"
+        th:insert="fragment/header.html">
+</header>
 
+<img class="main" src="images/index.image.jpg">
 <div class="frame">
+
     <!-- 본인 인증 -->
     <div class="init check" sec:authorize="!isAuthenticated()">
         <h1> 예약 </h1>
@@ -20,35 +31,67 @@
         <div class="sns-info">
             <div class="sns">
                 <a></a>
+                <!--                <a data-text="help" th:href="@{/}"><i class="xi-map-o"></i> </a>-->
                 <a data-text="naver" th:href="@{/oauth2/authorization/naver}"><i class="xi-naver"></i></a>
                 <a data-text="kakaotalk" th:href="@{/oauth2/authorization/kakao}"><i class="xi-kakaotalk"></i></a>
             </div>
         </div>
     </div>
-    <img src="images/recoder2.png">
+
     <div class="init check" sec:authorize="!isAuthenticated()">
         <h1> 관리자 </h1>
 
         <div class="sns-info">
             <div class="sns">
-                <a data-text="Admin" th:href="@{/adminLogin}"><i class="xi-user"></i></a>
+                <a data-text="Admin" th:href="@{/adminLogin}"><i class="xi-taxi"></i></a>
             </div>
         </div>
     </div>
 
     <!-- Admin & User 관리 -->
     <div class="init reserve" sec:authorize="isAuthenticated()">
-        <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve/college/list}">주차구역 <span>예약</span></a>
-        <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve}">예약 <span>조회 및 취소</span></a>
-        <a sec:authorize="hasRole('ROLE_USER')">신고 결과 <span>조회</span></a>
+        <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve/college/list}">주차구역 예약</a>
+        <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve}">예약 조회 및 취소</a>
+        <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/}">Q&A</a>
         <a sec:authorize="hasRole('ROLE_USER')"></a>
-        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/car/list}">차량<span> 관리 </span></a>
-        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/college/add}">주차장<span> 등록 </span></a>
-        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/college/list}">주차장<span> 목록 </span></a>
-        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/report/list}">신고<span> 내역 </span></a>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/car/list}">차량 관리</a>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/college/add}">주차장 등록</a>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/college/list}">주차장 목록</a>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/report/list}">신고 내역</a>
     </div>
 </div>
 <!--<footer th:replace="~{fragment/footer :: footer}"></footer>-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="about">
+                    <div class="logo">
+                        <img src="images/logo.png">
+                    </div>
+                    <p>ReCoder는 대학 주차 서비스의 문제점을 통합 솔루션으로 제공해 <br/> 해결하고자 하는 사이트입니다. 이용해주셔서 감사합니다.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="contact-us">
+                    <h4>Contact Us</h4>
+                    <p>hong43ok@gmail.com</p>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <a href="#">010-7175-3614</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="sub-footer">
+                    <p>Copyright © 2022 ReCoder - HongJungWan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 <!-- Channel Plugin Scripts -->
 <script>
