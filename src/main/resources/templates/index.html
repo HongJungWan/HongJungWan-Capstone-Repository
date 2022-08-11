@@ -5,10 +5,9 @@
     <title>인증 및 예약</title>
     <link rel="icon" th:href="@{/images/logo2.png}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
     <link href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 
     <link rel="stylesheet" th:href="@{/css/fontawesome.css}">
     <link rel="stylesheet" th:href="@{/css/templatemo-plot-listing.css}">
@@ -31,7 +30,6 @@
         <div class="sns-info">
             <div class="sns">
                 <a></a>
-                <!--                <a data-text="help" th:href="@{/}"><i class="xi-map-o"></i> </a>-->
                 <a data-text="naver" th:href="@{/oauth2/authorization/naver}"><i class="xi-naver"></i></a>
                 <a data-text="kakaotalk" th:href="@{/oauth2/authorization/kakao}"><i class="xi-kakaotalk"></i></a>
             </div>
@@ -53,14 +51,13 @@
         <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve/college/list}">주차구역 예약</a>
         <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/reserve}">예약 조회 및 취소</a>
         <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/}">Q&A</a>
-        <a sec:authorize="hasRole('ROLE_USER')"></a>
+        <!--        <a sec:authorize="hasRole('ROLE_USER')"></a>-->
         <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/car/list}">차량 관리</a>
         <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/college/add}">주차장 등록</a>
         <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/college/list}">주차장 목록</a>
         <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/report/list}">신고 내역</a>
     </div>
 </div>
-<!--<footer th:replace="~{fragment/footer :: footer}"></footer>-->
 <footer>
     <div class="container">
         <div class="row">

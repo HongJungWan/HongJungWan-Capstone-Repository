@@ -5,9 +5,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>AdminLoginPage</title>
 
-    <link rel="icon" th:href="@{/images/recoder.png}">
+    <link rel="icon" th:href="@{/images/logo2.png}">
     <link rel="stylesheet" th:href="@{/css/adminlist.css?ver=1}">
-    <link rel="stylesheet" th:href="@{/css/navbar.css?ver=1}">
     <link rel="stylesheet" th:href="@{/css/index.css?ver=1}">
 
     <style>
@@ -19,8 +18,6 @@
 </head>
 
 <body>
-
-<header th:replace="~{fragment/header :: header}"></header>
 
 <div class="login">
     <h1 class="hR">Admin Login</h1>
@@ -39,6 +36,5 @@
         <input th:onclick="|location.href='@{/}'|" type="button" value="취소">
     </form>
 </div>
-<!--<footer th:replace="~{fragment/footer :: footer}"></footer>-->
 </body>
 </html>

@@ -30,6 +30,14 @@
 /*    text-decoration: underline;*/
 /*}*/
 
+.reserveSelectForm {
+    width: 30%;
+    height: 30%;
+    background-image: url('static/images/parking.jpg');
+    display: block;
+    margin: 0px auto;
+    background-size: cover;
+}
 
 .main {
     width: 100%;
