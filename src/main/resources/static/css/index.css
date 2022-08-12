@@ -179,26 +179,6 @@ header .logout a:last-child {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/*.reserve a:nth-child(1) span {*/
-/*    font-weight: 550;*/
-/*    color: #AFEEEE;*/
-/*}*/
-
-/*.reserve a:nth-child(2) span {*/
-/*    font-weight: 550;*/
-/*    color: #AFEEEE;*/
-/*}*/
-
-/*.reserve a:nth-child(3) span {*/
-/*    font-weight: 550;*/
-/*    color: #AFEEEE;*/
-/*}*/
-
-/*.reserve a:nth-child(4) span {*/
-/*    font-weight: 550;*/
-/*    color: #AFEEEE;*/
-/*}*/
-
 .reserve a:hover {
     transform: scale(1.05);
 }
