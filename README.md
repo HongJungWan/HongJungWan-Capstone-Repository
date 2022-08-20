@@ -25,8 +25,10 @@
 
 | <img src="src/main/resources/static/images/readme00.jpg" width="200"> |         .....         |         .....          |
 |:---------------------------------------------------------------------:|:---------------------:|:----------------------:|
-|                                **홍정완**                                |        **김현지**        |        **김시연**         |
-|               Web(FE / **BE**) <br/><br/> **AWS Infra**               | Android <br/><br/> DB | Android <br/><br/> OCR |
+|                                **홍정완**                                |        **김현지**        |        **
+김시연**         |
+|               Web(FE / **BE**) <br/><br/> **AWS
+Infra**               | Android <br/><br/> DB | Android <br/><br/> OCR |
 |                                  팀장                                   |             팀원          |      팀원                  |
 |                               "습관이 전부다"                               |           "이슈에 올릴게요"              |          "사회에 선한 영향을 미치고 싶은 개발자"                |
 
@@ -57,15 +59,17 @@
 
 <br/><br/>
 
-### ⚙️ 기능
+### ⚙️ I.A(Information Architecture)
 
-* 정리 중 ...
+#### Web I.A
+
+<img src="src/main/resources/static/images/readme05.png" width="600">
 
 <br/><br/>
 
-### 📄 정보 구조도
+#### Android I.A
 
-* 정리 중 ...
+<img src="src/main/resources/static/images/readme06.png" width="600">
 
 <br/><br/>
 
