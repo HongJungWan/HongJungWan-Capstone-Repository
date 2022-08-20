@@ -4,10 +4,10 @@ import com.example.demo.domain.entity.Car;
 import com.example.demo.domain.value.CarSearch;
 import com.example.demo.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -19,8 +19,8 @@ public class CarServiceImpl implements CarService{
     /**
      * 동적 쿼리, 검색
      */
-    public List<Car> findAll(CarSearch carSearch) {
-        return carRepository.findAll(carSearch);
+    public Page<Car> findAll(CarSearch carSearch, Pageable pageable) {
+        return carRepository.findAll(carSearch, pageable);
     }
 
 

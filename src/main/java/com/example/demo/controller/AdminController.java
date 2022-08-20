@@ -5,6 +5,7 @@ import com.example.demo.domain.entity.Car;
 import com.example.demo.domain.entity.Report;
 import com.example.demo.domain.entity.Reserve;
 import com.example.demo.domain.value.CarSearch;
+import com.example.demo.dto.car.CarListDto;
 import com.example.demo.dto.college.*;
 import com.example.demo.dto.report.ReportListDto;
 import com.example.demo.dto.reserve.ReserveWithUsernameDto;
@@ -16,6 +17,8 @@ import com.example.demo.service.report.ReportService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -199,8 +202,10 @@ public class AdminController {
     }
 
     @GetMapping("/car/list")
-    public String carList(@ModelAttribute("carSearch") CarSearch carSearch, Model model) {
-        List<Car> cars = carServiceImpl.findAll(carSearch);
+    public String carList(@ModelAttribute("carSearch") CarSearch carSearch, @PageableDefault(size= 6) Pageable pageable, Model model) {
+        Page<Car> car = carServiceImpl.findAll(carSearch, pageable);
+        Page<CarListDto> cars = car.map(CarListDto::new);
+
         model.addAttribute("cars", cars);
 
         return "admin/carList";

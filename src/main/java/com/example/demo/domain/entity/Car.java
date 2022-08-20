@@ -40,27 +40,16 @@ public class Car {
         this.status = status;
     }
 
-    //==연관관계 메서드==//
     public void setUser(User user) {
         this.user = user;
         user.setCar(this);
     }
 
-    //==비즈니스 로직==//
-
-    /**
-     * 등록 취소
-     */
     public void cancel() {
-
         setStatus(EnrollStatus.미_등록);
     }
 
-    /**
-     * 등록
-     */
     public void register() {
-
         setStatus(EnrollStatus.등록);
     }
 

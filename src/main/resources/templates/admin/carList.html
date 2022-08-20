@@ -43,21 +43,41 @@
         <th>차주</th>
         <th>차량 번호</th>
         <th>등록 상태</th>
-        <th></th>
+        <th>등록</th>
     </tr>
     <tr style="cursor:pointer;" th:each="car : ${cars}">
         <td th:text="${car.id}"></td>
-        <td th:text="${car.user.name}"></td>
-        <td th:text="${car.car_number}"></td>
-        <td th:text="${car.status}"></td>
+        <td th:text="${car.userName}"></td>
+        <td th:text="${car.carNumber}"></td>
+        <td th:text="${car.enrollStatus}"></td>
         <td>
             <a class="w-btn-outline" href="#" th:href="'javascript:cancel('+${car.id}+')'"
-               th:if="${car.status.name() == '등록'}">등록 취소</a>
+               th:if="${#strings.equals(car.enrollStatus.getDescription(),'등록')}">등록 취소</a>
             <a class="w-btn-danger" href="#" th:href="'javascript:register('+${car.id}+')'"
-               th:if="${car.status.name() == '미_등록'}">등록</a>
+               th:if="${#strings.equals(car.enrollStatus.getDescription(),'미_등록')}">등록</a>
         </td>
     </tr>
 </table>
+<div class="page_wrap" th:if="${!cars.isEmpty()}">
+    <ul class="pagination justify-content-center">
+        <li class="page-item" th:classappend="${!cars.hasPrevious} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{|?page=${cars.number-1}|}">
+                <span><</span>
+            </a>
+        </li>
+        <li class="page-list"
+            th:classappend="${page == cars.number} ? 'active'"
+            th:each="page: ${#numbers.sequence(0, cars.totalPages-1)}"
+            th:if="${page >= cars.number-5 and page <= cars.number+5}">
+            <a class="page-link" th:href="@{|?page=${page}|}" th:text="${page}"></a>
+        </li>
+        <li class="page-item" th:classappend="${!cars.hasNext} ? 'disabled'">
+            <a class="page-link" th:href="@{|?page=${cars.number+1}|}">
+                <span>></span>
+            </a>
+        </li>
+    </ul>
 </div>
 </body>
 <script>

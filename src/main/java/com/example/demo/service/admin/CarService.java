@@ -2,15 +2,15 @@ package com.example.demo.service.admin;
 
 import com.example.demo.domain.entity.Car;
 import com.example.demo.domain.value.CarSearch;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface CarService {
 
     /**
      * 동적 쿼리, 검색
      */
-    List<Car> findAll(CarSearch carSearch);
+    Page<Car> findAll(CarSearch carSearch, Pageable pageable);
 
     /**
      * 등록 취소

@@ -2,12 +2,12 @@ package com.example.demo.repository.custom;
 
 import com.example.demo.domain.entity.Car;
 import com.example.demo.domain.value.CarSearch;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface CarCustomRepository {
 
-    List<Car> findAll(CarSearch carSearch);
+    Page<Car> findAll(CarSearch carSearch, Pageable pageable);
 
     Car findOne(Long id);
 }
