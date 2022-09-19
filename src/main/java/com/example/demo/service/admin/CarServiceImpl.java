@@ -30,10 +30,8 @@ public class CarServiceImpl implements CarService{
     @Transactional
     public void cancelCar(Long car_id) {
 
-        //등록 엔티티 조회
-        Car car = carRepository.findOne(car_id);
+        Car car = carRepository.getById(car_id);
 
-        //등록 취소
         car.cancel();
     }
 
@@ -43,10 +41,8 @@ public class CarServiceImpl implements CarService{
     @Transactional
     public void registerCar(Long car_id) {
 
-        //등록 엔티티 조회
-        Car car = carRepository.findOne(car_id);
+        Car car = carRepository.getById(car_id);
 
-        //등록
         car.register();
     }
 

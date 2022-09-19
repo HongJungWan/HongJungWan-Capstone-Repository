@@ -9,5 +9,4 @@ public interface CarCustomRepository {
 
     Page<Car> findAll(CarSearch carSearch, Pageable pageable);
 
-    Car findOne(Long id);
 }

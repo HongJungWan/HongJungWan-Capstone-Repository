@@ -26,15 +26,6 @@ public class CarCustomRepositoryImpl implements CarCustomRepository{
         this.em = em;
     }
 
-    // 5,12 test
-    public void save(Car car) {
-        em.persist(car);
-    }
-
-    public Car findOne(Long id) {
-        return em.find(Car.class, id);
-    }
-
     public Page<Car> findAll(CarSearch carSearch, Pageable pageable) {
 
         JPAQueryFactory query = new JPAQueryFactory(em);
