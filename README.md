@@ -23,11 +23,11 @@
 
 ### 👬 팀원 소개
 
-| <img src="src/main/resources/static/images/readme00.jpg" width="200"> |         .....         |         .....          |
-|:---------------------------------------------------------------------:|:---------------------:|:----------------------:|
-|                                **홍정완**                                |        **김현지**        |        **김시연**         |
-|               Web(FE / **BE**) <br/><br/> **AWS Infra**               | Android <br/><br/> DB | Android <br/><br/> OCR |
-|                                  팀장                                   |             팀원          |      팀원                  |
+| <img src="https://user-images.githubusercontent.com/76596316/191249739-2cccb523-2768-46ba-b0e3-d3780a851dc9.jpg" width="200"> |         .....         |         .....          |
+|:-----------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:----------------------:|
+|                                                            **홍정완**                                                            |        **김현지**        |        **김시연**         |
+|                                           Web(FE / **BE**) <br/><br/> **AWS Infra**                                           | Android <br/><br/> DB | Android <br/><br/> OCR |
+|                                                              팀장                                                               |             팀원          |      팀원                  |
 
 <br/><br/>
 
@@ -60,31 +60,31 @@
 
 #### Web I.A
 
-<img src="src/main/resources/static/images/readme05.png" width="600">
+<img src="https://user-images.githubusercontent.com/76596316/191250050-1ab08f44-e4d8-4406-8ee5-3baee3868be8.png" width="600">
 
 <br/><br/>
 
 #### Android I.A
 
-<img src="src/main/resources/static/images/readme06.png" width="600">
+<img src="https://user-images.githubusercontent.com/76596316/191250196-5698a6b2-64d2-4910-8f98-069b504f8baf.png" width="600">
 
 <br/><br/>
 
 ### 🛠 기술 스택
 
-<img src="src/main/resources/static/images/readme02.png" width="600">
+<img src="https://user-images.githubusercontent.com/76596316/191250326-d7044f76-90f2-4e3b-8984-f861ad9f80b9.png" width="600">
 
 <br/><br/>
 
 ### 📎 서버 구조도
 
-<img src="src/main/resources/static/images/readme01.png" width="850">
+<img src="https://user-images.githubusercontent.com/76596316/191250424-5b8644ec-c656-4a56-bf93-2db2e24632fc.png" width="700">
 
 <br/><br/>
 
 ### DB ERD
 
-<img src="src/main/resources/static/images/readme03.png" width="850">
+<img src="https://user-images.githubusercontent.com/76596316/191250581-af7c0bb0-e1af-4746-a7d5-b09bd58dd618.png" width="700">
 
 <br/><br/>
 
@@ -114,13 +114,17 @@ Android 개발 환경
 
 ### 🧐 프로젝트 진행 시, 고민했던 점들
 
+* [갑자기 ❓ EC2 SSH Connection refused](https://velog.io/@daydream/Capstone-%EA%B0%91%EC%9E%90%EA%B8%B0-EC2-SSH-Connection-refused)
+
+* [Travis CI 공짜라며..](https://velog.io/@daydream/Capstone-Travis-CI-%EA%B3%B5%EC%A7%9C%EB%9D%BC%EB%A9%B0)
+
 * [Travis CI Build, Test Failed 원인 분석 및 해결](https://velog.io/@daydream/Capstone-Travis-CI-Build-Test-Failed-%EC%9B%90%EC%9D%B8-%EB%B6%84%EC%84%9D-%EB%B0%8F-%ED%95%B4%EA%B2%B0)
 
 * [FCM Push 알림 서버를 비동기, 다중 송신으로 개선해 보자](https://velog.io/@daydream/Spring-FCM-Push-%EC%95%8C%EB%A6%BC-%EC%84%9C%EB%B2%84-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%A0%84%EC%86%A1)
 
 * [EC2 인스턴스에 Swap 공간으로 메모리 할당](https://velog.io/@daydream/EC2-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%97%90-Swap-%EA%B3%B5%EA%B0%84%EC%9C%BC%EB%A1%9C-%EB%A9%94%EB%AA%A8%EB%A6%AC-%ED%95%A0%EB%8B%B9)
 
-* [[Spring] FCM을 통해 Push 알림 서버 구축하기](https://velog.io/@daydream/Spring-FCM%EC%9D%84-%ED%86%B5%ED%95%B4-Push-%EC%95%8C%EB%A6%BC-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%B6%95)
+* [FCM을 통해 Push 알림 서버 구축하기](https://velog.io/@daydream/Spring-FCM%EC%9D%84-%ED%86%B5%ED%95%B4-Push-%EC%95%8C%EB%A6%BC-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%B6%95)
 
 * [FCM 알림 구현 중, 비공개 키 파일을 못 찾는 현상](https://velog.io/@daydream/Capstone-java.io.FileNotFoundException-class-path-resource-cannot-be-opened-because-it-does-not-exist)
 
