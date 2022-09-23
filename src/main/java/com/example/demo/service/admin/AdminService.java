@@ -42,4 +42,9 @@ public interface AdminService {
      */
     Page<Reserve> getReserveCondition(int page, Long collegeId);
 
+    /**
+     * 주차장 등록 취소(hidden)
+     * */
+    void cancelCollege(Long collegeId);
+
 }

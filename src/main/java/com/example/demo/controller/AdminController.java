@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-
 import com.example.demo.domain.entity.Car;
 import com.example.demo.domain.entity.Report;
 import com.example.demo.domain.entity.Reserve;
@@ -11,8 +10,7 @@ import com.example.demo.dto.report.ReportListDto;
 import com.example.demo.dto.reserve.ReserveWithUsernameDto;
 import com.example.demo.dto.security.PrincipalDetails;
 import com.example.demo.service.admin.AdminService;
-import com.example.demo.service.admin.AdminServiceImpl;
-import com.example.demo.service.admin.CarServiceImpl;
+import com.example.demo.service.admin.CarService;
 import com.example.demo.service.report.ReportService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,8 +38,9 @@ import java.util.Map;
 public class AdminController {
 
     private final AdminService adminService;
-    private final AdminServiceImpl adminServiceImpl;
-    private final CarServiceImpl carServiceImpl;
+
+    private final CarService carService;
+
     private final ReportService reportService;
 
 
@@ -203,7 +202,7 @@ public class AdminController {
 
     @GetMapping("/car/list")
     public String carList(@ModelAttribute("carSearch") CarSearch carSearch, @PageableDefault(size= 6) Pageable pageable, Model model) {
-        Page<Car> car = carServiceImpl.findAll(carSearch, pageable);
+        Page<Car> car = carService.findAll(carSearch, pageable);
         Page<CarListDto> cars = car.map(CarListDto::new);
 
         model.addAttribute("cars", cars);
@@ -216,7 +215,7 @@ public class AdminController {
      */
     @PostMapping("/car/{car_id}/cancel")
     public String cancelCar(@PathVariable("car_id") Long car_id) {
-        carServiceImpl.cancelCar(car_id);
+        carService.cancelCar(car_id);
 
         return "redirect:/admin/car/list";
     }
@@ -226,7 +225,7 @@ public class AdminController {
      */
     @PostMapping("/car/{car_id}/register")
     public String registerCar(@PathVariable("car_id") Long car_id) {
-        carServiceImpl.registerCar(car_id);
+        carService.registerCar(car_id);
 
         return "redirect:/admin/car/list";
     }
@@ -236,7 +235,7 @@ public class AdminController {
      */
     @PostMapping("/college/{collegeId}/hidden")
     public String cancelCollege(@PathVariable("collegeId") Long collegeId) {
-        adminServiceImpl.cancelCollege(collegeId);
+        adminService.cancelCollege(collegeId);
 
         return "redirect:/admin/college/list";
     }
