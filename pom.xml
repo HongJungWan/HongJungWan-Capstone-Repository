@@ -183,7 +183,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M4</version>
                 <configuration>
-                    <skipTests>true</skipTests>
+                    <skipTests>false</skipTests>
                 </configuration>
             </plugin>
             <plugin>
@@ -196,7 +196,11 @@
                         <exclude>**/Q*.class</exclude>
                         <exclude>**/security/**</exclude>
                         <exclude>**/oauth/**</exclude>
-                        <exclude>**/*Dto.class</exclude>
+                        <exclude>**/dto/**</exclude>
+                        <exclude>**/exception/**</exclude>
+                        <exclude>**/config/**</exclude>
+                        <exclude>**/firebase/**</exclude>
+                        <exclude>**/FcmMessage*/**</exclude>
                     </excludes>
                     <rules>
                         <rule>
