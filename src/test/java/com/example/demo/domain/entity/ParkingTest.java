@@ -1,21 +1,15 @@
 package com.example.demo.domain.entity;
 
-import com.example.demo.repository.custom.ParkingCustomRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
 class ParkingTest {
-
-    @Qualifier("parkingRepository")
-    @Autowired
-    private ParkingCustomRepository parkingCustomRepository;
 
     @Test
     @DisplayName("주차 구역 엔티티 테스트")
@@ -39,7 +33,61 @@ class ParkingTest {
                 .quantity(10)
                 .build();
 
-        Assertions.assertThat(parking.getQuantity()).isEqualTo(10);
+        assertThat(parking.getQuantity()).isEqualTo(10);
+
+    }
+
+    @Test
+    @DisplayName("주차구역 예약 취소 시, 자리 +1 증가")
+    void cancel() {
+
+        // given
+        Parking parking = Parking.createParking()
+                .quantity(10)
+                .build();
+
+        // when
+        parking.cancel();
+
+        // then
+        assertThat(parking.getQuantity()).isEqualTo(11);
+
+    }
+
+    @Test
+    @DisplayName("주차구역 예약 시, 자리 -1 증가")
+    void removeStock() {
+
+        // given
+        Parking parking = Parking.createParking()
+                .quantity(10)
+                .build();
+
+        // when
+        parking.removeStock();
+
+        // then
+        assertThat(parking.getQuantity()).isEqualTo(9);
+
+    }
+
+    @Test
+    @DisplayName("주차장 수정 시, 값 제대로 수정되는지 테스트")
+    void updateParkingQty() {
+
+        // given
+        Integer quantity = 20;
+
+        Parking parking = Parking.createParking()
+                .quantity(10)
+                .build();
+
+        // when
+        parking.updateParkingQty(quantity);
+
+        // then
+        assertThat(parking.getQuantity()).isEqualTo(20);
+
     }
 
 }

@@ -1,9 +1,10 @@
-package com.example.demo.service.user;
+package com.example.demo.domain.service.user;
 
 import com.example.demo.domain.entity.User;
 import com.example.demo.domain.value.Gender;
 import com.example.demo.domain.value.Role;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.service.user.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

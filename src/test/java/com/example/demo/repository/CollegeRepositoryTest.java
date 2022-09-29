@@ -29,8 +29,7 @@ public class CollegeRepositoryTest {
             System.out.println("dto.getAddress() = " + dto.getAddress());
         }
 
-        // 현재 RDS에는 4개 등록되어있음
-        Assertions.assertThat(list.size()).isEqualTo(15);
+        Assertions.assertThat(list.size()).isEqualTo(14);
     }
 
     @Test

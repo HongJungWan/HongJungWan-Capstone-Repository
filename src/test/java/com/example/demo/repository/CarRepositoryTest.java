@@ -1,7 +1,6 @@
 package com.example.demo.repository;
 
 import com.example.demo.domain.entity.Car;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
@@ -26,7 +27,7 @@ class CarRepositoryTest {
             System.out.println("CarRepositoryTest.findByAll() = " + car.getCar_number());
         }
 
-        Assertions.assertThat(list.size()).isEqualTo(5);
+        assertThat(list.size()).isEqualTo(17);
     }
 
 }
