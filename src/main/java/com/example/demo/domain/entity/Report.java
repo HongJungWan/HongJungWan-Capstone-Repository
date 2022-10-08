@@ -16,10 +16,6 @@ import java.time.LocalDateTime;
 @Getter
 public class Report {
 
-    @Enumerated(value = EnumType.STRING)
-    @Column(nullable = false)
-    private ReportStatus status = ReportStatus.PROCESS;
-
     @Column(name = "report_id")
     @Id
     @GeneratedValue
@@ -42,6 +38,10 @@ public class Report {
     @JoinColumn(name = "college_id", nullable = false)
     private College college;
 
+    @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false)
+    private ReportStatus status = ReportStatus.PROCESS;
+
     @Builder(builderMethodName = "createReport")
     public Report(LocalDateTime reportDate, String carNumber, String cause, ReportStatus status, User user, College college) {
         this.reportDate = reportDate;
@@ -56,9 +56,6 @@ public class Report {
         this.status = process;
     }
 
-    public void control() {
-
-        setStatus(ReportStatus.PROCESS);
-    }
+    public void control() {setStatus(ReportStatus.PROCESS);}
 
 }
