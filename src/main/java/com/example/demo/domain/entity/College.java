@@ -1,7 +1,3 @@
-/*
- * 0509 매핑 완료
- * */
-
 package com.example.demo.domain.entity;
 
 import com.example.demo.exception.parking.NotEnoughStockException;
@@ -22,7 +18,30 @@ import java.util.List;
 @Getter
 public class College {
 
-    // 0509 수정, JPA 영속성 전이, 삭제 안먹어서 PERSIST 에서 ALL로 수정
+    @Id
+    @GeneratedValue
+    @Column(name = "college_id")
+    private Long id;
+
+    @Column(name = "college_name", nullable = false)
+    private String collegeName;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "admin_id")
+    private Admin admin;
+
+    @Column(name = "date_accept")
+    private Integer dateAccept;
+
+    @Column(name = "address", nullable = false)
+    private String address;
+
+    @Column(name = "detail_address", nullable = false)
+    private String detailAddress;
+
+    @Column(name = "total_quantity")
+    private Integer totalQuantity;
+
     @OneToMany(mappedBy = "college", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties({"college"})
     private final List<Parking> parkings = new ArrayList<>();
@@ -30,24 +49,6 @@ public class College {
     @OneToMany(mappedBy = "college")
     private final List<Report> reports = new ArrayList<>();
 
-    @Id
-    @GeneratedValue
-    @Column(name = "college_id")
-    private Long id;
-    @Column(name = "college_name", nullable = false)
-    private String collegeName;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "admin_id")
-    private Admin admin;
-    @Column(name = "date_accept")
-    private Integer dateAccept;
-    @Column(name = "address", nullable = false)
-    private String address;
-    @Column(name = "detail_address", nullable = false)
-    private String detailAddress;
-    @Column(name = "total_quantity")
-    private Integer totalQuantity;
-    // true: y, false: n
     @Type(type = "yes_no")
     private Boolean enabled = true; // 예약 가능 여부
 
@@ -65,20 +66,16 @@ public class College {
         admin.getColleges().add(this);
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setTotalParkingQuantity(Integer qty) {
+        totalQuantity = qty;
+    }
+
+    public void setEnabled(boolean flag) {
+        enabled = flag;
     }
 
     public void cancel() {
         totalQuantity++;
-    }
-
-    public void updateDateAccept(Integer dateAccept) {
-        this.dateAccept = dateAccept;
-    }
-
-    public void setTotalParkingQuantity(Integer qty) {
-        totalQuantity = qty;
     }
 
     public void removeStock() {
@@ -93,23 +90,7 @@ public class College {
         totalQuantity = restStock;
     }
 
-    public void setEnabled(boolean flag) {
-        enabled = flag;
-    }
-
-    // 연관관계 편의 메서드
-    private void addAdmin(Admin admin) {
-        this.admin = admin;
-        admin.getColleges().add(this);
-    }
-
-    // 비즈니스 로직
-
-    /**
-     * 등록 취소
-     */
     public void hidden() {
-
         setEnabled(false);
     }
 
