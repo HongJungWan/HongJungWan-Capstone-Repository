@@ -44,11 +44,6 @@ public class Parking {
 
     }
 
-    public void cancel() {
-        quantity++;
-        enabled = true;
-    }
-
     public void setEnabled(boolean flag) {
         enabled = flag;
     }
@@ -57,13 +52,6 @@ public class Parking {
     public void addCollege(College college) {
         this.college = college;
         college.getParkings().add(this);
-    }
-
-    //==비즈니스 로직==//
-
-    //예약 취소 시, 사용
-    public void addStock() {
-        quantity += 1;
     }
 
     //예약 시, 사용
@@ -79,8 +67,14 @@ public class Parking {
         quantity = restStock;
     }
 
+    public void cancel() {
+        quantity++;
+        enabled = true;
+    }
+
     //주차장 수정 시, 사용
     public void updateParkingQty(Integer quantity) {
         this.quantity = quantity;
     }
+
 }
