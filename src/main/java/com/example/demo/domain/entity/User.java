@@ -6,9 +6,13 @@ package com.example.demo.domain.entity;
 import com.example.demo.domain.value.Gender;
 import com.example.demo.domain.value.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +22,42 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @Table(name = "user")
 @Getter
-@Setter
 public class User {
+
+    @Column(name = "user_id")
+    @Id
+    @GeneratedValue()
+    private Long user_id;
+
+    @Column(nullable = false)
+    private String id;
+
+    @Column(nullable = false)
+    private String email;
+
+    @Column(name = "phon_number", nullable = false)
+    private String phonNumber;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
+    @Column(nullable = false)
+    private Integer age;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "user", fetch = LAZY)
+    private Car car;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private final List<Purchase> purchases = new ArrayList<>();
@@ -30,34 +68,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     private final List<Report> reports = new ArrayList<>();
 
-    @Column(name = "user_id")
-    @Id
-    @GeneratedValue()
-    private Long user_id;
-    @Column(nullable = false)
-    private String id;
-    @Column(nullable = false)
-    private String email;
-    @Column(name = "phon_number", nullable = false)
-    private String phonNumber;
-    @Column(nullable = false)
-    private String password;
-    @Column(nullable = false)
-    private String name;
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
-    @Column(nullable = false)
-    private Integer age;
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
-    // 0512 수정
-    @JsonIgnore
-    @OneToOne(mappedBy = "user", fetch = LAZY)
-    private Car car;
-
-    //0509 수정
     @Column
     private String car_number;
 
