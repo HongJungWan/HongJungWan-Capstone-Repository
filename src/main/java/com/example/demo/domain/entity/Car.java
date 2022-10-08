@@ -2,7 +2,10 @@
 package com.example.demo.domain.entity;
 
 import com.example.demo.domain.value.EnrollStatus;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -11,7 +14,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "car")
 @Getter
-@Setter
 public class Car {
 
     @Column(name = "car_id")
@@ -26,12 +28,12 @@ public class Car {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Type(type = "yes_no")
-    private Boolean enabled = true;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EnrollStatus status; // 등록상태 [register, cancel]
+
+    @Type(type = "yes_no")
+    private final Boolean enabled = true;
 
     @Builder(builderMethodName = "createCar")
     public Car(String car_number, User user, EnrollStatus status) {
@@ -40,9 +42,8 @@ public class Car {
         this.status = status;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-        user.setCar(this);
+    public void setStatus(EnrollStatus enrollStatus) {
+        status = enrollStatus;
     }
 
     public void cancel() {
